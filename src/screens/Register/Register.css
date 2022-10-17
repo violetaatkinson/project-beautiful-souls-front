@@ -11,6 +11,7 @@
 
 .Register-form {
     height: 65%;
+    min-width: 300px;
     width: 25%;
     background-color: white;
     border-radius: 20px;
