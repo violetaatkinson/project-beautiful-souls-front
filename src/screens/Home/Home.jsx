@@ -1,4 +1,5 @@
 import React from "react";
+// eslint-disable-next-line 
 import home from "./Home.css";
 import Cat from "../../assets/cat.png";
 import { Link } from "react-router-dom";

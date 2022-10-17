@@ -1,0 +1,51 @@
+.Register {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #56CCF2;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #2F80ED, #56CCF2);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #2F80ED, #56CCF2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    height: 100vh;
+}
+
+.Register-form {
+    height: 65%;
+    width: 25%;
+    background-color: white;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+.Register-form h1 {
+    color: #2F80ED;
+    letter-spacing: 1.5px;
+    
+}
+
+.Register-form-group {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.Register > img {
+    margin-bottom: -90px;
+}
+
+
+.btn {
+    color: white;
+    background-color: #2F80ED;
+    border-color: #2F80ED;
+    letter-spacing: 2px;
+    padding: 10px 85px;
+    border-radius: 10px;
+    font-size: 16px; 
+    font-weight: 600;
+}
+

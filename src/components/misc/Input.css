@@ -1,0 +1,9 @@
+.form-control {
+    width: 100%;
+    display: block;
+    border: none;
+    border-bottom: 1px solid #999;
+    padding: 6px 30px;
+    box-sizing: border-box;
+    
+}
