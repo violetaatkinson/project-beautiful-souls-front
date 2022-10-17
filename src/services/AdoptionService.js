@@ -1,14 +1,17 @@
-import http from "./BaseService";
+import createHttp from "./BaseService";
 
-export const getAdoptions = () => http.get("/adoptions").then((res) => res);
+const authenticatedHttp = createHttp(true)
+const unauthenticatedHttp = createHttp(false)
 
-export const getAdoptionsDetail = (id) => http.get(`/adoptions/${id}`).then((res) => res);
+export const getAdoptions = () => unauthenticatedHttp.get("/adoptions").then((res) => res);
+
+export const getAdoptionsDetail = (id) => unauthenticatedHttp.get(`/adoptions/${id}`).then((res) => res);
 
 export const createAdoption = (body) =>
-  http.post("adoptions/create", body).then((res) => res);
+authenticatedHttp.post("adoptions/create", body).then((res) => res);
 
 export const updateAdoption = (id, body) =>
-  http.post(`/adoptions/${id}`, body).then((res) => res);
+authenticatedHttp.post(`/adoptions/${id}`, body).then((res) => res);
 
 export const deleteAdoption = (id) =>
-  http.post(`/adoptions/${id}`).then((res) => res);
+authenticatedHttp.post(`/adoptions/${id}`).then((res) => res);

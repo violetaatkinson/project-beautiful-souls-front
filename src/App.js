@@ -26,7 +26,7 @@ function App() {
               <Login/>
             </UnprotectedRoute>
           } />
-          {/* <Route path='/profile' element={<User/>} />  */}
+          
           {/* donde veo mi perfil , edito mi perfil , elimino mi perfil y veo mis likes */}
           {/* <Route path='adoptions' element={<Adoptions/>}/> */}
           {/* donde veo las adopciones , las creo , edito y elimino */}
