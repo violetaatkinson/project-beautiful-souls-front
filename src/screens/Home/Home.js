@@ -9,7 +9,7 @@ export default function Home() {
 			<img src={Cat} alt="logo" height={190} />
 			<h1>Beautiful Souls</h1>
 			<p className="home-p">Don't have an account yet ?</p>
-			<Link className="link" to="/signup">Register</Link>
+			<Link className="link" to="/register">Register</Link>
 			<p>Do you have an account ?</p>
 			<Link className="link-1" to="/login">Login</Link>
 		</div>
