@@ -2,7 +2,7 @@ import * as Yup from 'yup';
 import ERRORS from '../../constants/formErrors';
 
 const registerSchema = Yup.object().shape({
-    name: Yup
+  userName: Yup
       .string()
       .required(ERRORS.ERROR_REQUIRED),
     email: Yup
