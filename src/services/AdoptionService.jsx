@@ -7,6 +7,8 @@ export const getAdoptions = () => unauthenticatedHttp.get("/adoptions").then((re
 
 export const getAdoptionsDetail = (id) => unauthenticatedHttp.get(`/adoptions/${id}`).then((res) => res);
 
+export const getLikedAdoptions = (id) => unauthenticatedHttp.get(`/like/${id}`).then((res) => res);
+
 export const createAdoption = (body) =>
 authenticatedHttp.post("adoptions/create", body).then((res) => res);
 
@@ -15,3 +17,8 @@ authenticatedHttp.post(`/adoptions/${id}`, body).then((res) => res);
 
 export const deleteAdoption = (id) =>
 authenticatedHttp.post(`/adoptions/${id}`).then((res) => res);
+
+
+
+
+

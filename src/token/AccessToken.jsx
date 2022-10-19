@@ -16,3 +16,4 @@ export const logout = () => {
 
   window.location.assign("/login"); // lo "mismo" que el redirect, para redireccionar a /login
 };
+

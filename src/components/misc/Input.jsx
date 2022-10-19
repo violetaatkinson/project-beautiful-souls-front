@@ -6,12 +6,12 @@ function Input({
     onChange, value, id, name, error, onBlur
   }) {
     return (
-      <div className="mb-3">
-        <label htmlFor={id} className="form-label">
+      <div>
+        <label htmlFor={id}>
           {label}
         </label>
         <input
-          type={type} className={`form-control ${error ? 'is-invalid' : ''}`}
+          type={type} className={`f-control ${error ? 'is-invalid' : ''}`}
           id={id} placeholder={placeholder}
           onChange={onChange} value={value}
           name={name} onBlur={onBlur}

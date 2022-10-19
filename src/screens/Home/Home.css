@@ -29,6 +29,10 @@
     margin-top: -5px;
 }
 
+.home-pa {
+    margin-top: 10px;
+}
+
 .link {
     color: white;
     text-decoration: none;
@@ -51,3 +55,4 @@
 .Login > img {
     margin-top: -50px;
 }
+

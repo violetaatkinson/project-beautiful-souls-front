@@ -1,0 +1,14 @@
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-info > h2 {
+    margin-top: 20px;
+}
+
+.profile-info > h5 {
+    margin-top: -16px;
+}

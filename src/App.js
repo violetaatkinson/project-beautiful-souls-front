@@ -3,8 +3,8 @@ import Home from './screens/Home/Home';
 import Register from './screens/Register/Register';
 import Login from './screens/Login/Login';
 import UnprotectedRoute from './components/misc/UnprotectedRoute';
-// import User from './screens/User/User';
-// import Adoptions from './screens/Adoptions/Adoptions';
+import NewAdoption from './screens/Adoptions/NewAdoption/NewAdoption'
+import Profile from './screens/Profile/Profile'
 
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Telugu:wght@100&display=swap" rel="stylesheet"></link>
 
@@ -26,10 +26,9 @@ function App() {
               <Login/>
             </UnprotectedRoute>
           } />
-          
-          {/* donde veo mi perfil , edito mi perfil , elimino mi perfil y veo mis likes */}
-          {/* <Route path='adoptions' element={<Adoptions/>}/> */}
-          {/* donde veo las adopciones , las creo , edito y elimino */}
+          <Route path='/profile' element={<Profile/>}/>
+          <Route path='adoptions/create' element={<NewAdoption/>}/>
+       
       </Routes>
     </div>
   );

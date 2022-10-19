@@ -11,7 +11,7 @@ export default function Home() {
 			<h1>Beautiful Souls</h1>
 			<p className="home-p">Don't have an account yet ?</p>
 			<Link className="link" to="/register">Register</Link>
-			<p>Do you have an account ?</p>
+			<p className="home-pa">Do you have an account ?</p>
 			<Link className="link-1" to="/login">Login</Link>
 		</div>
 	);

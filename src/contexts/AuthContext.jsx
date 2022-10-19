@@ -52,3 +52,8 @@ export const AuthContextProvider = ({ children }) => {
 }
 
 export default AuthContext
+
+// verifyJWT => recibir un token => decodedToken = > sacamos la info del token
+// accesToken = >  cojo el token del localStorage y envio el valor de access_token
+// getAccessToken => nos devuelve el token del localStorage con la clave access_token
+ 

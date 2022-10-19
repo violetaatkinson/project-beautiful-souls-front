@@ -94,7 +94,7 @@ const INITIAL_VALUES = {
                               onBlur={handleBlur}  
                             />
                         </div>
-                        <button type="submit" className="btn" disabled={isSubmitting}>
+                        <button type="submit" className="btn mt-4" disabled={isSubmitting}>
                             {isSubmitting ? 'Loading' : 'Submit'}
                         </button>
                     </form>

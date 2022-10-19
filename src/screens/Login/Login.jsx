@@ -47,8 +47,7 @@ function Login() {
 
       <form onSubmit={handleSubmit}>
         <div className="Register-form-group">
-            <Input
-              
+            <Input 
               placeholder="Introduce your email"
               type="email"
               name="email"
@@ -62,7 +61,6 @@ function Login() {
         </div>
         <div className="Register-form-group">
             <Input
-              
               placeholder="Write your password"
               type="password"
               name="password"
@@ -74,7 +72,7 @@ function Login() {
             />
 
         </div>
-        <button type="submit" className="btn">
+        <button type="submit" className="btn mt-4">
           {isSubmitting ? 'Loading' : 'Login'}
         </button>
       </form>
