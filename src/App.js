@@ -5,6 +5,7 @@ import Login from './screens/Login/Login';
 import UnprotectedRoute from './components/misc/UnprotectedRoute';
 import Profile from './screens/Profile/Profile'
 import NewAdoption from './screens/Adoptions/NewAdoption/NewAdoption'
+import AdoptionList from './screens/Adoptions/AdoptionList/AdoptionList'
 import ProtectedRoute from './components/misc/ProtectedRoute';
 import { useAuthContext } from './contexts/AuthContext';
 
@@ -36,9 +37,13 @@ function App() {
                 <Profile/>
               </ProtectedRoute>
             }/>
-            <Route path='/adoptions/create' element={<NewAdoption/>}/>
-            
-        
+            <Route path='/adoptions/create' element={
+              <ProtectedRoute>
+                <NewAdoption/>
+              </ProtectedRoute>
+            }/>
+            <Route path='/adoptions' element={<AdoptionList/>}/>
+            <Route path='adoptions/:id' element={<AdoptionList/>}/>
         </Routes>
       ) : <p>Loading...</p>}
     </div>

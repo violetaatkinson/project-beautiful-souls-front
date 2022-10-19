@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { createAdoption } from '../../../services/AdoptionService';
-
+import { useNavigate } from 'react-router-dom';
 
 const DoAdoption = () => {
- 
+    const navigate = useNavigate()
     const [data, setAdoptions] = useState({
         name:"",
         years :"",
@@ -24,7 +24,7 @@ const DoAdoption = () => {
         createAdoption(data)
         .then((response) => {
             console.log(response)
-            // redijo
+            navigate('/adoptions')
     })
    }
 
