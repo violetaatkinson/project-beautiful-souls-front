@@ -1,18 +1,21 @@
-import { useState, useEffect } from 'react';
-import { getCurrentUser } from '../../services/UserService'
+import { useContext } from 'react';
+import AuthContext from '../../contexts/AuthContext';
 
 // eslint-disable-next-line 
 import profile from "./Profile.css";
 
 const Profile = () => {
-   const [user, setUser] = useState([]);
+
+   const { user } = useContext(AuthContext)
+
+//    const [user, setUser] = useState([]);
   
-  useEffect(() => {
-   getCurrentUser()
-     .then(userData => {
-      setUser(userData);
-     })
-    }, []);
+//   useEffect(() => {
+//    getCurrentUser()
+//      .then(userData => {
+//       setUser(userData);
+//      })
+//     }, []);
 
   
     return (
