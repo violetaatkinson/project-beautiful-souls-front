@@ -6,9 +6,22 @@
 }
 
 .profile-info > h2 {
-    margin-top: 20px;
+    margin-top: 10px;
+    font-size: 40px;
 }
 
 .profile-info > h5 {
-    margin-top: -16px;
+    margin-top: 0px;
 }
+
+
+
+.curved {
+    position: relative;
+    background: #2F80ED;
+    height: 70%;
+    border-bottom-left-radius: 50% 23%;
+    border-bottom-right-radius: 50% 23%;
+    color: white;
+    letter-spacing: 1.5px;
+  }

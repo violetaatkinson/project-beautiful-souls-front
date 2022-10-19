@@ -27,6 +27,7 @@ const INITIAL_VALUES = {
       validateOnChange: false,
     })
   
+    
     const navigate = useNavigate();
 
     function onSubmit(values) { // Lo declaro como function en vez de const, porque asi por el hoisting la puedo usar en el useFormik
@@ -52,6 +53,7 @@ const INITIAL_VALUES = {
           })
       }
 
+      
       return (
         <div className="Register">
         <img src={Cat} alt="logo" height={190} />

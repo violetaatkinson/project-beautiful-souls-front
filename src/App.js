@@ -3,7 +3,6 @@ import Home from './screens/Home/Home';
 import Register from './screens/Register/Register';
 import Login from './screens/Login/Login';
 import UnprotectedRoute from './components/misc/UnprotectedRoute';
-import NewAdoption from './screens/Adoptions/NewAdoption/NewAdoption'
 import Profile from './screens/Profile/Profile'
 
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Telugu:wght@100&display=swap" rel="stylesheet"></link>
@@ -27,7 +26,7 @@ function App() {
             </UnprotectedRoute>
           } />
           <Route path='/profile' element={<Profile/>}/>
-          <Route path='adoptions/create' element={<NewAdoption/>}/>
+          
        
       </Routes>
     </div>
