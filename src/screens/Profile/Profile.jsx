@@ -23,8 +23,8 @@ const Profile = () => {
       <section className="curved">
          <div className='profile-info'>
             <h2>Profile</h2>
-            <img src={user.image} alt={user.name} className="rounded-circle border-3 m-2" width={120}/>
-            <h5>{user.name}</h5>
+            <img src={user.image} alt={user.userName} className="rounded-circle border-3 m-2" width={120}/>
+            <h5>{user.userName}</h5>
          </div>
 
       </section>

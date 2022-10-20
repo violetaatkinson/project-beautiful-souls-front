@@ -6,17 +6,19 @@ import UnprotectedRoute from './components/misc/UnprotectedRoute';
 import Profile from './screens/Profile/Profile'
 import NewAdoption from './screens/Adoptions/NewAdoption/NewAdoption'
 import AdoptionList from './screens/Adoptions/AdoptionList/AdoptionList'
+import AdoptionDetail from './screens/Adoptions/AdoptionDetail/AdoptionDetail';
 import ProtectedRoute from './components/misc/ProtectedRoute';
 import { useAuthContext } from './contexts/AuthContext';
+
 
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Telugu:wght@100&display=swap" rel="stylesheet"></link>
 
 function App() {
   const { isAuthenticationFetched } = useAuthContext()
-
+  
   return (
     <div className="App">
-      
+    
       {isAuthenticationFetched ? (
         <Routes>
             <Route path='/' element={
@@ -32,6 +34,7 @@ function App() {
                 <Login/>
               </UnprotectedRoute>
             } />
+            
             <Route path='/profile' element={
               <ProtectedRoute>
                 <Profile/>
@@ -43,7 +46,7 @@ function App() {
               </ProtectedRoute>
             }/>
             <Route path='/adoptions' element={<AdoptionList/>}/>
-            <Route path='adoptions/:id' element={<AdoptionList/>}/>
+            <Route path='/adoptions/:id' element={<AdoptionDetail/>}/>
         </Routes>
       ) : <p>Loading...</p>}
     </div>
