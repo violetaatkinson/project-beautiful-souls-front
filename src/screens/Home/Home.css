@@ -37,8 +37,9 @@
     color: white;
     text-decoration: none;
     border: 1.5px solid white;
-    padding: 10px 75px;
+    padding: 10px 70px;
     border-radius: 10px;
+    text-transform: uppercase;
    
     
 }
@@ -49,6 +50,7 @@
     border: 1.5px solid white;
     padding: 10px 85px;
     border-radius: 10px;
+    text-transform: uppercase;
     
 }
 

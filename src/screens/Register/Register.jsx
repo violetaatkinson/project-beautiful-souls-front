@@ -65,10 +65,10 @@ const INITIAL_VALUES = {
                               
                               placeholder="Your name"
                               name="userName"
-                              id="name"
-                              value={values.name}
+                              id="userName"
+                              value={values.userName}
                               onChange={handleChange}
-                              error={errors.name}
+                              error={errors.userName}
                               onBlur={handleBlur}  
                             />
                         </div>

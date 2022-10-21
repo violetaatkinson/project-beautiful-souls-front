@@ -11,7 +11,7 @@ import ProtectedRoute from './components/misc/ProtectedRoute';
 import { useAuthContext } from './contexts/AuthContext';
 
 
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Telugu:wght@100&display=swap" rel="stylesheet"></link>
+
 
 function App() {
   const { isAuthenticationFetched } = useAuthContext()
@@ -54,3 +54,5 @@ function App() {
 }
 
 export default App;
+
+

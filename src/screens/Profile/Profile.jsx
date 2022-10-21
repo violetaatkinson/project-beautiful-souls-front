@@ -7,6 +7,7 @@ import profile from "./Profile.css";
 const Profile = () => {
 
    const { user } = useContext(AuthContext)
+   
 
 //    const [user, setUser] = useState([]);
   

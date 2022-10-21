@@ -2,17 +2,19 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getAdoptionsDetail } from "../../../services/AdoptionService"
 
+
 function AdoptionDetail() {
     const [pet, setDetail] = useState()
     const { id } = useParams();
-
+      
     useEffect(() => {
-		getAdoptionsDetail(id)
-            .then((detail) => {
-                setDetail(detail);
-            });
+        getAdoptionsDetail(id)
+        .then((detail) => {
+            setDetail(detail);
+        });
 	}, [id]);
-
+    
+ 
     return (
         <div>
             {pet ? (
@@ -26,7 +28,7 @@ function AdoptionDetail() {
                             <p>{pet.size}</p>
                             <p>{pet.gender}</p>
                             <p>{pet.description}</p>
-                        </div>
+                        </div>    
                     </div>	
 				</>
 			) : (
@@ -37,3 +39,6 @@ function AdoptionDetail() {
 }
 
 export default AdoptionDetail
+
+
+

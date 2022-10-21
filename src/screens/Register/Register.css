@@ -44,9 +44,10 @@
     background-color: #2F80ED;
     border-color: #2F80ED;
     letter-spacing: 2px;
-    padding: 10px 85px;
+    padding: 10px 100px;
     border-radius: 10px;
     font-size: 16px; 
     font-weight: 600;
+    text-transform: uppercase;
 }
 
