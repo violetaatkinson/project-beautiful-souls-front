@@ -1,0 +1,29 @@
+.detail {
+    height: 120vh;
+    background-color: #F5F7FB; 
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.detail h1 {
+ color: #414141;
+ text-transform: capitalize;
+ font-weight: 600;
+
+}
+
+.detail span {
+    display: flex;
+    flex-direction: row;
+    gap: 7%;
+    font-size: 32px;
+    font-weight: 200;
+}
+
+.buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20%;
+ }
