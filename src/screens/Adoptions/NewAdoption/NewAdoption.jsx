@@ -34,19 +34,19 @@ const DoAdoption = ({ edit }) => {
 
 	};
 
-	const onSubmit = (event, values) => {
+	const onSubmit = (event) => {
 		event.preventDefault();
 		const formData = new FormData()
 
-		for (let value in values) {
-			formData.append(value, values[value])
+		for (let value in data) {
+			formData.append(value, data[value])
 		  }
 
 		if (edit) {
 			// llamare al servicio de editar
 		} else {
 
-			createAdoption(data, formData).then((response) => {
+			createAdoption(formData).then((response) => {
 				console.log(response);
 				navigate("/adoptions");
 			});
@@ -96,7 +96,7 @@ const DoAdoption = ({ edit }) => {
 							name="size"
 							id="size"
 						>
-							<option selected>Select size</option>
+							<option value>Select size</option>
 							<option value="Small">Small</option>
 							<option value="Medium">Medium</option>
 							<option value="Large">Large</option>
@@ -114,7 +114,7 @@ const DoAdoption = ({ edit }) => {
 							name="gender"
 							id="gender"
 						>
-							<option selected>Select gender</option>
+							<option value>Select gender</option>
 							<option value="Female">Female</option>
 							<option value="Male">Male</option>
 						</select>
@@ -124,7 +124,7 @@ const DoAdoption = ({ edit }) => {
                     <label className="form-label">Specie</label>
 					<br></br>
                     <select className="form-control" aria-label="Default select example" value={data.specie} onChange={handleOnChange} name="specie" id="specie">
-                        <option selected>Select specie</option>
+                        <option value>Select specie</option>
                         <option value="Dog">Dog</option>
                         <option value="Cat">Cat</option>
                         <option value="Bird">Bird</option>
@@ -147,7 +147,7 @@ const DoAdoption = ({ edit }) => {
                 <div className="mt-3">
                     <label className="form-label">About my pet</label>
                     <br></br>
-					<textarea
+					<input
 						className="form-control "
 						value={data.description}
 						onChange={handleOnChange}

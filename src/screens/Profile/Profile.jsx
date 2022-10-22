@@ -15,7 +15,7 @@ const Profile = () => {
   
    useEffect(() => {
       getLikes()
-         .then(dbLikes => setLikes(dbLikes))
+         .then(dbLikes => setLikes(dbLikes.filter(like => like))) // Te quita los nulls y los undefined
    }, []);
 
   
@@ -29,6 +29,7 @@ const Profile = () => {
          </div>
 
       </section>
+      
       {likes.map(like => (
          <p key={like._id}>{like.name}</p>
       ))}
