@@ -1,5 +1,7 @@
-import { useContext } from 'react';
+import { useState } from 'react';
+import { useContext, useEffect } from 'react';
 import AuthContext from '../../contexts/AuthContext';
+import { getLikes } from '../../services/UserService';
 
 // eslint-disable-next-line 
 import profile from "./Profile.css";
@@ -9,14 +11,12 @@ const Profile = () => {
    const { user } = useContext(AuthContext)
    
 
-//    const [user, setUser] = useState([]);
+   const [likes, setLikes] = useState([]);
   
-//   useEffect(() => {
-//    getCurrentUser()
-//      .then(userData => {
-//       setUser(userData);
-//      })
-//     }, []);
+   useEffect(() => {
+      getLikes()
+         .then(dbLikes => setLikes(dbLikes))
+   }, []);
 
   
     return (
@@ -29,6 +29,9 @@ const Profile = () => {
          </div>
 
       </section>
+      {likes.map(like => (
+         <p key={like._id}>{like.name}</p>
+      ))}
       </div>
     )
   }

@@ -45,7 +45,11 @@ function App() {
                 <NewAdoption/>
               </ProtectedRoute>
             }/>
-            <Route path='/adoptions' element={<AdoptionList/>}/>
+            <Route path='/adoptions' element={
+              <ProtectedRoute>
+                <AdoptionList/>
+              </ProtectedRoute>
+            }/>
             <Route path='/adoptions/:id' element={<AdoptionDetail/>}/>
         </Routes>
       ) : <p>Loading...</p>}

@@ -3,7 +3,7 @@ import createHttp from "./BaseService";
 const authenticatedHttp = createHttp(true)
 const unauthenticatedHttp = createHttp(false)
 
-export const getAdoptions = () => unauthenticatedHttp.get("/adoptions").then((res) => res);
+export const getAdoptions = () => authenticatedHttp.get("/adoptions").then((res) => res);
 
 export const getAdoptionsDetail = (id) => unauthenticatedHttp.get(`/adoptions/${id}`).then((res) => res);
 
@@ -18,7 +18,8 @@ authenticatedHttp.post(`/adoptions/${id}`, body).then((res) => res);
 export const deleteAdoption = (id) =>
 authenticatedHttp.post(`/adoptions/${id}`).then((res) => res);
 
-
+export const likeAdoptions = (id) =>
+authenticatedHttp.post(`/like/${id}`).then((res) => res);
 
 
 

@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { createAdoption } from "../../../services/AdoptionService";
 import { useNavigate } from "react-router-dom";
 // eslint-disable-next-line
 import NewAdoption from "./NewAdoption.css";
+
+// si edit es true, necesito un useEffect donde traerme el adoption actual, pera rellenar los campos
 
 const DoAdoption = ({ edit }) => {
 	const navigate = useNavigate();
@@ -16,17 +18,40 @@ const DoAdoption = ({ edit }) => {
 		size: "",
 	});
 
+	useEffect(() => {
+
+	}, [])
+
 	const handleOnChange = (event) => {
-		const { value, name } = event.target;
-		setAdoptions({ ...data, [name]: value });
+		const { value, name , type, files  } = event.target;
+		if (type === 'file') {
+		  setAdoptions({ ...data, [name]: files[0] })
+		} else {
+		  setAdoptions({ ...data, [name]: value }) // C://djakldjalksjd
+		}
+
+		
+
 	};
 
-	const onSubmit = (event) => {
+	const onSubmit = (event, values) => {
 		event.preventDefault();
-		createAdoption(data).then((response) => {
-			console.log(response);
-			navigate("/adoptions");
-		});
+		const formData = new FormData()
+
+		for (let value in values) {
+			formData.append(value, values[value])
+		  }
+
+		if (edit) {
+			// llamare al servicio de editar
+		} else {
+
+			createAdoption(data, formData).then((response) => {
+				console.log(response);
+				navigate("/adoptions");
+			});
+		}
+
 	};
 
 	return (
@@ -46,8 +71,8 @@ const DoAdoption = ({ edit }) => {
 						placeholder="Pet name"
 					/>
 				</div>
-				<div class="row align-items-center">
-					<div class="col mt-2">
+				<div className="row align-items-center">
+					<div className="col mt-2">
 						<label className="form-label">Years</label>
 						<input
 							className="form-control"
@@ -59,11 +84,11 @@ const DoAdoption = ({ edit }) => {
 							placeholder="years"
 						/>
 					</div>
-					<div class="col mt-2">
+					<div className="col mt-2">
 						<label className="form-label">Sizes</label>
 						<br></br>
 						<select
-							class="form-select"
+							className="form-select"
 							size="2"
 							aria-label="size 3 select example"
 							value={data.size}
@@ -77,11 +102,11 @@ const DoAdoption = ({ edit }) => {
 							<option value="Large">Large</option>
 						</select>
 					</div>
-					<div class="col mt-2">
+					<div className="col mt-2">
 						<label className="form-label">Gender</label>
 						<br></br>
 						<select
-							class="form-select"
+							className="form-select"
 							size="2"
 							aria-label="efault select example"
 							value={data.gender}
@@ -95,10 +120,10 @@ const DoAdoption = ({ edit }) => {
 						</select>
 					</div>    
 				</div>
-                <div class="mt-2">
+                <div className="mt-2">
                     <label className="form-label">Specie</label>
 					<br></br>
-                    <select class="form-control" aria-label="Default select example" value={data.specie} onChange={handleOnChange} name="specie" id="specie">
+                    <select className="form-control" aria-label="Default select example" value={data.specie} onChange={handleOnChange} name="specie" id="specie">
                         <option selected>Select specie</option>
                         <option value="Dog">Dog</option>
                         <option value="Cat">Cat</option>
@@ -106,13 +131,20 @@ const DoAdoption = ({ edit }) => {
                         <option value="Reptile">Reptile</option>
                     </select>
                 </div>
-                <div class="mt-3">
+                <div className="mt-3">
                     <label className="form-label">Image</label>
-                    <input type="file" class="form-control" id="image"   value={data.image}
-                            onChange={handleOnChange} 
-                            name="image"></input>
-                </div>
-                <div class="mt-3">
+                    <input
+					 	placeholder="Add file"
+          				type="file"
+          				name="image"
+          				id="file"
+         				onChange={handleOnChange}
+          				/>
+				</div>		
+         
+
+
+                <div className="mt-3">
                     <label className="form-label">About my pet</label>
                     <br></br>
 					<textarea

@@ -1,6 +1,11 @@
-import { getAdoptions} from "../../../services/AdoptionService"
+import { getAdoptions, likeAdoptions} from "../../../services/AdoptionService"
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import like from '../../../assets/like.png';
+import dislike from '../../../assets/dislike.png';
+import back from '../../../assets/back.png';
+// eslint-disable-next-line
+import list from './AdoptionList.css'
 
 
 
@@ -14,26 +19,51 @@ function AdoptionList() {
                 setPets(adoption);
             });
 	}, []);
+
+    const handleLike = (id) => {
+        likeAdoptions(id)
+            .then(res => {
+                // hacer un setPets, pero quitandome la pet que tiene este id
+            })
+    }
    
     return (
-        <div>
-            {pets.map((pet) => {
-                return (
-                   <div key={pet._id}>
-                   <Link className="link-unstyled" to={`/adoptions/${pet._id}`}>
-                          <h1>{pet.name}</h1>
-                      </Link>
-                        <small>{pet.years}</small> 
-                   </div> 
-                )
+        <div className="list">
+             <div className="mt-4 filters">
+                <button className="filter">Dogs</button>
+                <button className="filter">Cats</button>
+                <button className="filter">Birds</button>
+                <button className="filter">Reptiles</button>
+            </div>
+            <div className="container">
+                <div className="row">
+                    {pets.map((pet) => {
+                        return (
+                            <div className="col" key={pet._id}>
+                                <div className="card list-card mt-5 " width="18rem">
+                                    <img src={pet.image} className="card-img-top" alt={pet.name}/>
+                                    <div className="card-body">
+                                        <Link className="link-unstyled" to={`/adoptions/${pet._id}`}>
 
-            })}
+                                            <h4 className="card-title">{pet.name}<p className="card-text">{pet.years}</p></h4>
+                                        </Link> 
+                                    </div>
+                                    <div className="buttons mb-3">
+                                        <img src={like} alt="like" onClick={() => handleLike(pet._id)} />
+                                        <img src={back} alt="back"/>
+                                        <img src={dislike} alt="dislike"/>
+                                    </div>
+                                </div>
+                            </div>
+                        )
+
+                    })}
+                </div>
+            </div> 
         </div>
     )
 }
 
 export default AdoptionList
 
-//esto hacerlo un componente card asi esta mas prolijo 
-
-
+ 
