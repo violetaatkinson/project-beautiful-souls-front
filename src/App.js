@@ -51,6 +51,7 @@ function App() {
               </ProtectedRoute>
             }/>
             <Route path='/adoptions/:id' element={<AdoptionDetail/>}/>
+            <Route path="/adoptions/edit/:id" element={<NewAdoption edit />} />
         </Routes>
       ) : <p>Loading...</p>}
     </div>

@@ -1,4 +1,4 @@
-import { getAdoptions, likeAdoptions} from "../../../services/AdoptionService"
+import { getAdoptions, likeAdoptions } from "../../../services/AdoptionService"
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import like from '../../../assets/like.png';
@@ -23,10 +23,14 @@ function AdoptionList() {
     const handleLike = (id) => {
         likeAdoptions(id)
             .then(res => {
+                const likedPet = pets.filter(pet => pet._id !== id)
+                setPets(likedPet)
                 // hacer un setPets, pero quitandome la pet que tiene este id
             })
     }
    
+
+
     return (
         <div className="list">
              <div className="mt-4 filters">

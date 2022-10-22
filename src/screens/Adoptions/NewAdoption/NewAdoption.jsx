@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
-import { createAdoption } from "../../../services/AdoptionService";
+import { createAdoption , updateAdoption , getAdoptionsDetail} from "../../../services/AdoptionService";
 import { useNavigate } from "react-router-dom";
+import { useParams } from 'react-router-dom';
 // eslint-disable-next-line
 import NewAdoption from "./NewAdoption.css";
 
@@ -8,6 +9,7 @@ import NewAdoption from "./NewAdoption.css";
 
 const DoAdoption = ({ edit }) => {
 	const navigate = useNavigate();
+	const { id } = useParams()
 	const [data, setAdoptions] = useState({
 		name: "",
 		years: "",
@@ -19,8 +21,15 @@ const DoAdoption = ({ edit }) => {
 	});
 
 	useEffect(() => {
+		if (edit) {
+			getAdoptionsDetail(id)
+			.then(edited => setAdoptions(edited))
+		}
+	}, [id,edit])
 
-	}, [])
+	
+
+
 
 	const handleOnChange = (event) => {
 		const { value, name , type, files  } = event.target;
@@ -30,10 +39,9 @@ const DoAdoption = ({ edit }) => {
 		  setAdoptions({ ...data, [name]: value }) // C://djakldjalksjd
 		}
 
-		
-
 	};
 
+	
 	const onSubmit = (event) => {
 		event.preventDefault();
 		const formData = new FormData()
@@ -43,7 +51,8 @@ const DoAdoption = ({ edit }) => {
 		  }
 
 		if (edit) {
-			// llamare al servicio de editar
+			updateAdoption(id,formData).then(edited => console.log(edited))
+			
 		} else {
 
 			createAdoption(formData).then((response) => {
