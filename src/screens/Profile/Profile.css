@@ -26,3 +26,9 @@
     letter-spacing: 1.5px;
   }
 
+.card img {
+    width: 100px;
+}
+.card {
+    width:200px;
+}

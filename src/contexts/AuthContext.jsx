@@ -24,7 +24,6 @@ export const AuthContextProvider = ({ children }) => {
         setUser(user)
         setIsAuthenticationFetched(true)
         // cb && cb() Callback por si queremos hacer algo justo al traernos el usuario
-        console.log('el user loco: ', user);
       })
   }
 

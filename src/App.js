@@ -13,12 +13,13 @@ import { useAuthContext } from './contexts/AuthContext';
 
 
 
+
 function App() {
   const { isAuthenticationFetched } = useAuthContext()
   
   return (
     <div className="App">
-    
+        
       {isAuthenticationFetched ? (
         <Routes>
             <Route path='/' element={
