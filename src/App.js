@@ -1,15 +1,16 @@
 import { Route, Routes } from 'react-router-dom';
+import { useAuthContext } from './contexts/AuthContext';
 import Home from './screens/Home/Home';
 import Register from './screens/Register/Register';
 import Login from './screens/Login/Login';
 import UnprotectedRoute from './components/misc/UnprotectedRoute';
 import Profile from './screens/Profile/Profile'
+import LikedPets from './screens/Adoptions/LikedPets/LikedPets';
 import Dashboard from './components/misc/Dashbord';
 import NewAdoption from './screens/Adoptions/NewAdoption/NewAdoption'
 import AdoptionList from './screens/Adoptions/AdoptionList/AdoptionList'
 import AdoptionDetail from './screens/Adoptions/AdoptionDetail/AdoptionDetail';
 import ProtectedRoute from './components/misc/ProtectedRoute';
-import { useAuthContext } from './contexts/AuthContext';
 import Search from './components/misc/Search';
 
 
@@ -56,6 +57,7 @@ function App() {
             <Route path='/adoptions/:id' element={<AdoptionDetail/>}/>
             <Route path="/adoptions/edit/:id" element={<NewAdoption edit />} />
             <Route path="/search" element={<Search/>}/>
+            <Route path="/likedpets" element={<LikedPets/>}/>
             
         </Routes>
       ) : <p>Loading...</p>}

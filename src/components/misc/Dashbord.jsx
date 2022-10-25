@@ -12,7 +12,9 @@ function Dashboard () {
             <Link className="link-unstyled" to={"/adoptions"}>
                 <img src={logo} alt="logo" width={65}/>
             </Link>
-            <img src={star} alt="star" width={45}/>
+            <Link className="link-unstyled" to={"/likedpets"}>
+                <img src={star} alt="star" width={45}/>
+            </Link>
             <Link className="link-unstyled" to={"/search"}>
                 <img src={look} alt="look" width={45}/>
             </Link>

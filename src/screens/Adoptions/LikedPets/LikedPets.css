@@ -1,0 +1,36 @@
+h4 {
+    color: #414141;
+    margin-left: 20px;
+    letter-spacing: 1.5px;
+}
+
+.row img {
+    border-radius: 5px;
+}
+.row h5 {
+    text-transform: capitalize;
+    text-align: center;
+    color: #414141;
+}
+
+.container {
+    margin-left: 22px;
+    color: #414141;
+}
+
+.heart {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    gap:30%
+    
+}
+
+.del {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center; 
+    gap: 7%;
+}
