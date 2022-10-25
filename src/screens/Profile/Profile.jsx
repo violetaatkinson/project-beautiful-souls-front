@@ -7,8 +7,7 @@ import { getAllMyAdoptions, likeAdoptions, deleteAdoption } from "../../services
 import liked from "../../assets/like.png";
 import dislike from "../../assets/dislike.png";
 import back from "../../assets/back.png";
-import edit from "../../assets/edit.png"
-import trash from "../../assets/delete.png"
+
 
 // eslint-disable-next-line
 import profile from "./Profile.css";
@@ -63,12 +62,7 @@ const Profile = () => {
 						className="rounded-circle border-3 m-2"
 						width={120}
 					/>
-					<div className="">
-						<p>Edit</p>
-						<img src={edit} alt="edit" />
-						<p>Delete</p>
-						<img src={trash} alt="trash" />
-					</div>
+					
 					<h5>{user.userName}</h5>
 				</div>
 			</section>

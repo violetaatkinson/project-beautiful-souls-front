@@ -1,0 +1,23 @@
+.carousel-inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.carousel-caption h3 {
+    font-size: 50px;
+    font-weight: 400;
+    letter-spacing: 1.5px;
+    margin-top: -230px !important;
+    text-transform: uppercase;
+}
+
+.carousel-inner img {
+    border-radius: 5px;
+    height: 500px;
+}
+
+.btn-outline-secondary {
+    letter-spacing: 1.5px;
+}

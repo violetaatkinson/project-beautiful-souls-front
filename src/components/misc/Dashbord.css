@@ -1,0 +1,12 @@
+.dashbord {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10%;
+    position:relative ;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 8px;
+    box-shadow:inset 0px 3px 3px -3px rgba(50, 50, 50, 0.75);
+}

@@ -168,7 +168,7 @@ const DoAdoption = ({ edit }) => {
                 </div>
                     
                 <div className="mt-4 mb-4">
-                    <button type="submit" className="btn form-control">Submit</button>
+                    <button type="submit" className="button form-control">Submit</button>
                 </div>
 			
 			</form>
