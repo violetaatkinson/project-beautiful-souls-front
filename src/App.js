@@ -23,7 +23,7 @@ function App() {
   
   return (
     <div className="App">
-        
+       
       {isAuthenticationFetched ? (
         <Routes>
             <Route path='/' element={
@@ -91,3 +91,15 @@ function App() {
 export default App;
 
 
+// el edit profile no funciona nose a donde redireccionarlo nose como llamar al usuario
+// una vez que la info este editada como la mando al perfil
+//hacer el delete del usuario
+// hacer responsive create adoption , edit profil , search, favs 
+// como hago las adopciones como tinder ?
+// en adopciones poner un contador de cuantas mascotas hay en adopcion
+// contador en cuantas mascotas se adoptaron
+// una vez adoptado hacer form para las mascotas q ya estan adoptadas 
+// si no hay mascotas creadas q no aparezca el cartel de create adoptions 
+//sino algo como una imagen de crear una adopcion
+// si no hay mascotas likeadas q no aparezca el cartel de create adoptions 
+//sino algo como una imagen de crear una adopcion

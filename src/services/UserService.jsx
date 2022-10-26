@@ -11,7 +11,10 @@ export const createUser = (body) =>
   http.post("/users", body).then((res) => res); // esto lo use en el register
 
 export const updateUser = (id, body) =>
-  http.post(`/users/${id}`, body).then((res) => res);
+  http.put(`/users/${id}`, body, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    }}).then((res) => res);
 
 export const deleteUser = (id) =>
   http.post(`/users/${id}`).then((res) => res);

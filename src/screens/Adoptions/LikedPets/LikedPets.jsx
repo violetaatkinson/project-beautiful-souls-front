@@ -42,6 +42,7 @@ const LikedPets = () => {
           .then(() => {
               setMyPets((prevPets) => [...prevPets.filter(pet => pet._id !== _id)])
           })
+       
       }
 
 	return (
@@ -100,6 +101,5 @@ const LikedPets = () => {
 };
 
 export default LikedPets;
-
 
 

@@ -1,12 +1,13 @@
 import {  useState , useEffect } from "react";
-import { useParams,  useNavigate } from 'react-router-dom';
-import { updateUser } from '../../../services/UserService'
+import { useNavigate } from 'react-router-dom';
+import { useAuthContext } from "../../../contexts/AuthContext";
+import { updateUser, getCurrentUser } from '../../../services/UserService'
 
 const Edit = ({edit}) => {
-    const { id } = useParams()
+    const { user } = useAuthContext()
     const navigate = useNavigate();
     
-    const [user, setUser] = useState({
+    const [userState, setUserState] = useState({
 		userName: "",
 		email: "",
         firstName:"",
@@ -19,41 +20,45 @@ const Edit = ({edit}) => {
 
     useEffect(() => {
         if (edit) {
-            updateUser(id)
-            .then(user => setUser(user))
+            getCurrentUser()
+            	.then(userFetched => {
+					Object.keys(userFetched).forEach(key => {
+						if (userFetched[key] === null) {
+						  delete userFetched[key];
+						}
+					});
+					setUserState(prevState => ({ ...prevState, ...userFetched }))
+				})
         }
-      }, [id, edit])
-
-      console.log( updateUser(id));
+      }, [edit])
 
     const handleOnChange = (event) => {
 		const { value, name , type, files  } = event.target;
 		if (type === 'file') {
-            setUser({ ...user, [name]: files[0] })
+            setUserState({ ...userState, [name]: files[0] })
 		} else {
-            setUser({ ...user, [name]: value }) 
+            setUserState({ ...userState, [name]: value }) 
 		}
-
 	};
+
+
 
     const onSubmit = (event) => {
 		event.preventDefault();
 		const formData = new FormData()
-
-		for (let value in user) {
-			formData.append(value, user[value])
+		for (let value in userState) {
+			formData.append(value, userState[value])
 		  }
           
         if (edit) {
-			updateUser(id,formData)
-            .then((edited) => {
-				console.log(edited);
-				navigate("/edit/profile");
-			});
-			
-		} 
-		
+			updateUser(user.id, formData)
+				.then((edited) => {
+					navigate("/profile");
+				});
+		}
 	};
+
+		
 
 	return (
 		<div className="Create">
@@ -64,7 +69,7 @@ const Edit = ({edit}) => {
                         <label className="form-label" htmlFor="username">User Name</label>
                         <input
 							className="form-control"
-							value={user.userName}
+							value={userState.userName}
 							onChange={handleOnChange}
 							name="username"
 							type="text"
@@ -76,7 +81,7 @@ const Edit = ({edit}) => {
                         <label className="form-label" htmlFor="email">Email</label>
                         <input
 							className="form-control"
-							value={user.email}
+							value={userState.email}
 							onChange={handleOnChange}
 							name="email"
 							type="text"
@@ -90,9 +95,9 @@ const Edit = ({edit}) => {
                         <label className="form-label" htmlFor="firstname">First name</label>
                         <input
 							className="form-control"
-							value={user.firstName}
+							value={userState.firstName}
 							onChange={handleOnChange}
-							name="firstname"
+							name="firstName"
 							type="text"
 							id="firstname"
 							placeholder="first name"
@@ -102,9 +107,9 @@ const Edit = ({edit}) => {
                         <label className="form-label" htmlFor="lastname">Last Name</label>
                         <input
 							className="form-control"
-							value={user.lastName}
+							value={userState.lastName}
 							onChange={handleOnChange}
-							name="lastname"
+							name="lastName"
 							type="text"
 							id="lastname"
 							placeholder="last name"
@@ -116,7 +121,7 @@ const Edit = ({edit}) => {
                         <label className="form-label" htmlFor="gender">Gender</label>
                         <input
 							className="form-control"
-							value={user.gender}
+							value={userState.gender}
 							onChange={handleOnChange}
 							name="gender"
 							type="text"
@@ -128,7 +133,7 @@ const Edit = ({edit}) => {
                         <label className="form-label" htmlFor="age">Age</label>
                         <input
 							className="form-control "
-							value={user.age}
+							value={userState.age}
 							onChange={handleOnChange}
 							name="age"
 							type="number"
@@ -137,12 +142,12 @@ const Edit = ({edit}) => {
 						/>
                     </div>
                     <div className="col-md-5 mt-2">
-                        <label className="form-label" htmlFor="age">Phone Number</label>
+                        <label className="form-label" htmlFor="phonenumber">Phone Number</label>
                         <input
 							className="form-control"
-							value={user.phoneNumber}
+							value={userState.phoneNumber}
 							onChange={handleOnChange}
-							name="phonenumber"
+							name="phoneNumber"
 							type="text"
 							id="phonenumber"
 							placeholder="Phone number"
@@ -150,8 +155,13 @@ const Edit = ({edit}) => {
                     </div>
                 </div>
                 <div className="input-group mb-3 mt-4">
-                    <input type="file" className="form-control" id="inputGroupFile02" name="image" onChange={handleOnChange}/>
-                    <label className="input-group-text" for="inputGroupFile02" htmlFor="image">Upload</label>
+                    <input 
+						type="file" 
+						className="form-control"
+						id="file"
+						name="image" 
+						onChange={handleOnChange}/>
+                    <label className="input-group-text" htmlFor="image">Upload</label>
                 </div>
                 <div className="mt-4 mb-4">
                     <button type="submit" className="button form-control">Submit</button>
