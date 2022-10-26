@@ -61,7 +61,7 @@ const LikedPets = () => {
                                 <Link className="link-unstyled " to={`/adoptions/${myPet._id}`}>
                                     <h5 className="mt-2">{myPet.name}</h5>
                                     <div className="del">
-                                        <button class="btn btn-outline-secondary btn-sm mt-2"><img src={trash} alt="trash" width={25} onClick={() => handleDelete(myPet._id)}/></button>
+                                        <button className="btn btn-outline-secondary btn-sm mt-2"><img src={trash} alt="trash" width={25} onClick={() => handleDelete(myPet._id)}/></button>
                                         <Link className="link-unstyled" to={`/adoptions/edit/${myPet._id}`}>
 									    <button className="btn btn-outline-success btn-sm mt-2"><img src={pen} alt="pen" width={25}/></button>
 									    </Link>
@@ -85,7 +85,7 @@ const LikedPets = () => {
                                 <Link>
                                     <div className="heart mb-3">
                                         <h5 className="mt-3">{like.name}</h5>
-                                        <button class="btn btn-outline-danger btn-sm mt-2"><img src={heart} alt="heart" width={25} onClick={() => handleLike(like._id)}/></button>
+                                        <button className="btn btn-outline-danger btn-sm mt-2"><img src={heart} alt="heart" width={25} onClick={() => handleLike(like._id)}/></button>
                                     </div>    
                                 </Link>
                             </div>

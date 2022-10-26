@@ -1,7 +1,7 @@
 import { useFormik } from 'formik';
 import { useNavigate } from 'react-router-dom';
 import { createUser } from '../../services/UserService';
-import Input from '../../components/misc/Input'
+import Input from '../../components/misc/Input/Input'
 import RegisterSchema from './RegisterSchema'
 import Cat from "../../assets/cat.png";
 

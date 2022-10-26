@@ -28,9 +28,6 @@ const DoAdoption = ({ edit }) => {
 	}, [id,edit])
 
 	
-
-
-
 	const handleOnChange = (event) => {
 		const { value, name , type, files  } = event.target;
 		if (type === 'file') {
@@ -68,7 +65,7 @@ const DoAdoption = ({ edit }) => {
 			<h1 className="text-center mt-3">Create adoption</h1>
 			<form onSubmit={onSubmit} className=" mt-3">
 				<div>
-					<label className="form-label">Name</label>
+					<label className="form-label" htmlFor="name">Name</label>
 					<br></br>
 					<input
 						className="form-control"
@@ -82,7 +79,7 @@ const DoAdoption = ({ edit }) => {
 				</div>
 				<div className="row align-items-center">
 					<div className="col mt-2">
-						<label className="form-label">Years</label>
+						<label className="form-label" htmlFor="years">Years</label>
 						<input
 							className="form-control"
 							value={data.years}
@@ -94,7 +91,7 @@ const DoAdoption = ({ edit }) => {
 						/>
 					</div>
 					<div className="col mt-2">
-						<label className="form-label">Sizes</label>
+						<label className="form-label" htmlFor="sizes">Sizes</label>
 						<br></br>
 						<select
 							className="form-select"
@@ -112,7 +109,7 @@ const DoAdoption = ({ edit }) => {
 						</select>
 					</div>
 					<div className="col mt-2">
-						<label className="form-label">Gender</label>
+						<label className="form-label" htmlFor="gender">Gender</label>
 						<br></br>
 						<select
 							className="form-select"
@@ -130,7 +127,7 @@ const DoAdoption = ({ edit }) => {
 					</div>    
 				</div>
                 <div className="mt-2">
-                    <label className="form-label">Specie</label>
+                    <label className="form-label" htmlFor="specie">Specie</label>
 					<br></br>
                     <select className="form-control" aria-label="Default select example" value={data.specie} onChange={handleOnChange} name="specie" id="specie">
                         <option value>Select specie</option>
@@ -140,21 +137,9 @@ const DoAdoption = ({ edit }) => {
                         <option value="Reptile">Reptile</option>
                     </select>
                 </div>
-                <div className="mt-3">
-                    <label className="form-label">Image</label>
-                    <input
-					 	placeholder="Add file"
-          				type="file"
-          				name="image"
-          				id="file"
-         				onChange={handleOnChange}
-          				/>
-				</div>		
          
-
-
                 <div className="mt-3">
-                    <label className="form-label">About my pet</label>
+                    <label className="form-label" htmlFor="description">About my pet</label>
                     <br></br>
 					<input
 						className="form-control "
@@ -166,6 +151,17 @@ const DoAdoption = ({ edit }) => {
 						placeholder="description"
 					/>
                 </div>
+                <div className=" input-group mb-3 mt-4">
+                    <input
+					 	placeholder="Add file"
+          				type="file"
+          				name="image"
+          				id="file"
+						className="form-control"
+         				onChange={handleOnChange}
+          				/>
+					<label class="input-group-text" for="inputGroupFile02" htmlFor="image">Upload</label>
+				</div>		
                     
                 <div className="mt-4 mb-4">
                     <button type="submit" className="button form-control">Submit</button>

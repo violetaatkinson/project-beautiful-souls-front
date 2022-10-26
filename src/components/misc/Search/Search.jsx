@@ -1,8 +1,8 @@
-import profile from "../../assets/pro.avif";
-import find from "../../assets/find.avif";
-import adoption from "../../assets/adoption.avif";
-import friends from "../../assets/friends.jpeg"
-import owner from "../../assets/owner.jpeg"
+import profile from "../../../assets/pro.avif";
+import find from "../../../assets/find.avif";
+import adoption from "../../../assets/adoption.avif";
+import friends from "../../../assets/friends.jpeg"
+import owner from "../../../assets/owner.jpeg"
 // eslint-disable-next-line 
 import search from "./Search.css";
 import { Link } from 'react-router-dom'
