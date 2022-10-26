@@ -1,23 +1,4 @@
-.filters {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-evenly;
-}
 
-.filters button {
-    border: none;
-    background-color: #2F80ED;
-    color: white;
-    padding: 10px 18px;
-    border-radius: 10px;
-}
-
-.filter:hover{
-    color: #2F80ED;
-    background-color: white;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-}
 
 .list-card  img{
     height:285px;

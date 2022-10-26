@@ -72,7 +72,7 @@ function Login() {
             />
 
         </div>
-        <button type="submit" className="btn mt-4">
+        <button type="submit" className="button mt-4">
           {isSubmitting ? 'Loading' : 'Login'}
         </button>
       </form>

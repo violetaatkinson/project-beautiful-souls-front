@@ -32,13 +32,7 @@ function AdoptionList() {
 
 
     return (
-        <div className="list">
-             <div className="mt-4 filters">
-                <button className="filter">Dogs</button>
-                <button className="filter">Cats</button>
-                <button className="filter">Birds</button>
-                <button className="filter">Reptiles</button>
-            </div>
+        <div className="list mb-5">
             <div className="container">
                 <div className="row">
                     {pets.map((pet) => {
@@ -48,7 +42,6 @@ function AdoptionList() {
                                     <img src={pet.image} className="card-img-top" alt={pet.name}/>
                                     <div className="card-body">
                                         <Link className="link-unstyled" to={`/adoptions/${pet._id}`}>
-
                                             <h4 className="card-title">{pet.name}<p className="card-text">{pet.years}</p></h4>
                                         </Link> 
                                     </div>
