@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { Link } from 'react-router-dom'
 import AuthContext from "../../contexts/AuthContext";
 
 // eslint-disable-next-line
@@ -33,7 +34,9 @@ const Profile = () => {
 							</span>
 						</div>
 						<div className="other-info ml-4 mb-2 mt-2">
-							<button type="button" class="btn btn-outline-secondary">Edit Profile</button>
+							<Link className="link-unstyled" to={"/edit/profile"}>
+								<button type="button" class="btn btn-outline-secondary">Edit Profile</button>
+							</Link>
 							<button type="button" class="btn btn-outline-danger">Delete Profile</button>
 						</div>				
 				</div>	
