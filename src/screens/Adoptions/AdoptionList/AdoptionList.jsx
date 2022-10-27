@@ -1,16 +1,17 @@
 import { getAdoptions, likeAdoptions } from "../../../services/AdoptionService"
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import like from '../../../assets/like.png';
-import dislike from '../../../assets/dislike.png';
-import back from '../../../assets/back.png';
+import heart from '../../../assets/corazon.png'
+import no from '../../../assets/close.png'
+import back from '../../../assets/return.png'
+
 // eslint-disable-next-line
 import list from './AdoptionList.css'
 
 
-
 function AdoptionList() {
     const [pets, setPets] = useState([]);
+
   
     useEffect(() => {
 		getAdoptions()
@@ -33,24 +34,22 @@ function AdoptionList() {
 
     return (
         <div className="list mb-5">
-            <div className="container">
+            <div className="container tinder mt-5">
                 <div className="row">
                     {pets.map((pet) => {
                         return (
-                            <div className="col" key={pet._id}>
-                                <div className="card list-card mt-5 " width="18rem">
-                                    <img src={pet.image} className="card-img-top" alt={pet.name}/>
-                                    <div className="card-body">
-                                        <Link className="link-unstyled" to={`/adoptions/${pet._id}`}>
-                                            <h4 className="card-title">{pet.name}<p className="card-text">{pet.years}</p></h4>
-                                        </Link> 
-                                    </div>
-                                    <div className="buttons mb-3">
-                                        <img src={like} alt="like" onClick={() => handleLike(pet._id)} />
-                                        <img src={back} alt="back"/>
-                                        <img src={dislike} alt="dislike"/>
-                                    </div>
-                                </div>
+                            <div className="col tinder-card" key={pet._id}>
+                            <img src={pet.image} alt={pet.name} width={250} className="mt-3"/>
+                            <div className="card-body tinder-info">
+                                <Link className="link-unstyled" to={`/adoptions/${pet._id}`}>
+                                    <h4 className="card-title">{pet.name}<p className="card-text">{pet.years}</p></h4>
+                                </Link>
+                            </div>
+                            <div className="tinder-buttons mt-2">
+                                <button className="btn btn-danger btn-sm ">Like <img src={heart} alt="heart" width={17} onClick={() => handleLike(pet._id)}/></button>
+                                <button className="btn btn-success btn-sm ">Return <img src={back} alt="heart" width={17} /></button>
+                                <button className="btn btn-dark btn-sm ">Dislike <img src={no} alt="heart" width={13} /></button>
+                            </div>
                             </div>
                         )
 

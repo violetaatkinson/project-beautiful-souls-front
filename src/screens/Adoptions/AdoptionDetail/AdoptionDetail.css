@@ -1,9 +1,10 @@
 .detail {
-    height: 120vh;
-    background-color: #F5F7FB; 
     display: flex;
     flex-direction: column;
-    
+}
+
+.detail img {
+    border-radius: 5px;
 }
 
 .detail h1 {

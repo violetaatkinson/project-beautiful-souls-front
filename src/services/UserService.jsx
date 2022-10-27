@@ -17,6 +17,6 @@ export const updateUser = (id, body) =>
     }}).then((res) => res);
 
 export const deleteUser = (id) =>
-  http.post(`/users/${id}`).then((res) => res);
+  http.delete(`/users/${id}`).then((res) => res);
 
 export const getLikes = () => http.get('/like')

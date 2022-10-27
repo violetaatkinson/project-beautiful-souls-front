@@ -1,12 +1,21 @@
 import { useContext } from "react";
 import { Link } from 'react-router-dom'
 import AuthContext from "../../contexts/AuthContext";
+import { deleteUser } from "../../services/UserService";
 
 // eslint-disable-next-line
 import profile from "./Profile.css";
 
 const Profile = () => {
 	const { user } = useContext(AuthContext);
+
+	const handleDelete = (_id) => {
+        deleteUser(_id)
+            .then((deletedUser) => {
+			    //aca nose como seguir
+          })   
+    }
+
 
 	return (
 		<div>
@@ -35,9 +44,13 @@ const Profile = () => {
 						</div>
 						<div className="other-info ml-4 mb-2 mt-2">
 							<Link className="link-unstyled" to={"/edit/profile"}>
-								<button type="button" class="btn btn-outline-secondary">Edit Profile</button>
+								<button type="button" className="btn btn-outline-secondary">Edit Profile</button>
 							</Link>
-							<button type="button" class="btn btn-outline-danger">Delete Profile</button>
+							<button 
+								type="button"
+								className="btn btn-outline-danger"
+								onClick={() => handleDelete(user._id)}
+								>Delete Profile</button>
 						</div>				
 				</div>	
 		</div>

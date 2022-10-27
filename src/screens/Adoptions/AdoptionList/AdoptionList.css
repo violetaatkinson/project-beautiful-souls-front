@@ -1,28 +1,34 @@
 
-
-.list-card  img{
-    height:285px;
-    width:285px;
-}
-
-.buttons img {
-    width:50px;
-    height: 50px;
-}
-.list-card { 
-    background-color:#F5F7FB; 
-    width:18rem;
-}
-
-.card-body h4 {
- color: #414141;
+.tinder-info h4 {
+ color: white;
  text-transform: capitalize;
  font-weight: 600;
  display: flex;
  gap:4%
+
 }
 
-.card-body p {
+.tinder-info p {
     font-weight: 300;
-    color: #414141;
+    color: white;
+}
+
+.tinder-info{ 
+    margin-top: -65px ;
+    color: white;
+}
+
+.tinder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tinder-buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 4%;
+
 }
