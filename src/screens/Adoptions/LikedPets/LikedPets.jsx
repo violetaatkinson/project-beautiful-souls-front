@@ -103,3 +103,7 @@ const LikedPets = () => {
 export default LikedPets;
 
 
+// si no hay mascotas creadas q no aparezca el cartel de create adoptions 
+//sino algo como una imagen de crear una adopcion
+// si no hay mascotas likeadas q no aparezca el cartel de create adoptions 
+//sino algo como una imagen de crear una adopcion

@@ -15,9 +15,6 @@ import Search from './components/misc/Search/Search';
 import Edit from './screens/Profile/Edit/Edit';
 
 
-
-
-
 function App() {
   const { isAuthenticationFetched } = useAuthContext()
   
@@ -91,8 +88,8 @@ function App() {
 export default App;
 
 
-// el edit profile no funciona nose a donde redireccionarlo nose como llamar al usuario
-// una vez que la info este editada como la mando al perfil
+
+// editar la imagen
 //hacer el delete del usuario
 // hacer responsive create adoption , edit profil , search, favs 
 // como hago las adopciones como tinder ?
