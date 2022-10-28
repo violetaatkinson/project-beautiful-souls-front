@@ -8,18 +8,18 @@ import dash from './Dashboard.css'
 
 function Dashboard () {
     return (
-        <div className='dashbord'>
+        <div className='dashbord mt-4'>
             <Link className="link-unstyled" to={"/adoptions"}>
-                <img src={logo} alt="logo" width={65}/>
+                <img src={logo} alt="logo" width={53}/>
             </Link>
             <Link className="link-unstyled" to={"/likedpets"}>
-                <img src={star} alt="star" width={45}/>
+                <img src={star} alt="star" width={40}/>
             </Link>
             <Link className="link-unstyled" to={"/search"}>
-                <img src={look} alt="look" width={45}/>
+                <img src={look} alt="look" width={40}/>
             </Link>
             <Link className="link-unstyled" to={"/chat"}>
-                <img src={chat} alt="chat" width={45}/>
+                <img src={chat} alt="chat" width={40}/>
             </Link>
         </div>
     )

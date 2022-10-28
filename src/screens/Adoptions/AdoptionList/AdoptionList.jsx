@@ -33,7 +33,7 @@ function AdoptionList() {
 
 
     return (
-        <div className="list mb-5">
+        <div>
             <div className="container tinder mt-5">
                 <div className="row">
                     {pets.map((pet) => {
@@ -62,4 +62,4 @@ function AdoptionList() {
 
 export default AdoptionList
 
- 
+

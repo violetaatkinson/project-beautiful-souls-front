@@ -1,0 +1,76 @@
+import { createAdopted  } from '../../services/AdoptedService'
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+const Adopted = () => {
+    
+    const navigate = useNavigate();
+    
+    const [data, setAdopted] = useState({
+		image: "",
+        content: ""	
+	});
+
+    const handleOnChange = (event) => {
+		const { value, name , type, files  } = event.target;
+		if (type === 'file') {
+            setAdopted({ ...data, [name]: files[0] })
+		} else {
+            setAdopted({ ...data, [name]: value }) // C://djakldjalksjd
+		}
+
+	};
+
+    const onSubmit = (event) => {
+		event.preventDefault();
+		const formData = new FormData()
+
+		for (let value in data) {
+			formData.append(value, data[value])
+		  }
+
+
+          createAdopted (formData).then((response) => {
+				console.log(response);
+				navigate("/adopted");
+			});
+		}
+
+	return (
+		<div>
+		 	<h1 className="text-center mt-3">Already Adopted</h1>
+                <form onSubmit={onSubmit} className=" mt-3">
+                    <div className=" input-group mb-3 mt-4">
+                        <input
+                            className="form-control"
+                            placeholder="Add file"
+                            type="file"
+                            name="image"
+                            id="file"
+                            onChange={handleOnChange}  
+                        />
+                        <label class="input-group-text" for="inputGroupFile02" htmlFor="image">Upload</label>
+                    </div>
+                    <div className="mt-3">
+                        <label className="form-label" htmlFor="content">Tell Your Story</label>
+                        <br></br>    
+                            <input
+                                className="form-control "
+                                value={data.content}
+                                onChange={handleOnChange}
+                                name="content"
+                                type="text"
+                                id="content"
+                                placeholder="content"
+                            />
+                    </div>
+                    <div className="mt-4 mb-4">
+                        <button type="submit" className="button form-control">Submit</button>
+                    </div>
+                </form>
+		</div>
+	);
+}
+
+export default Adopted;
+

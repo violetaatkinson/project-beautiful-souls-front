@@ -13,6 +13,8 @@ import AdoptionDetail from './screens/Adoptions/AdoptionDetail/AdoptionDetail';
 import ProtectedRoute from './components/misc/ProtectedRoute';
 import Search from './components/misc/Search/Search';
 import Edit from './screens/Profile/Edit/Edit';
+import NewAdopted from './screens/Adopted/NewAdopted'
+// import Navbar from './components/misc/Navbar/Navbar';
 
 
 function App() {
@@ -20,7 +22,7 @@ function App() {
   
   return (
     <div className="App">
-       
+       {/* <Navbar/> */}
       {isAuthenticationFetched ? (
         <Routes>
             <Route path='/' element={
@@ -77,6 +79,11 @@ function App() {
                  <LikedPets/>
               
             }/>
+            <Route path="/adopted/create" element={
+              
+              <NewAdopted/>
+           
+         }/>
             
         </Routes>
       ) : <p>Loading...</p>}
@@ -87,9 +94,9 @@ function App() {
 
 export default App;
 
-
-
-// editar la imagen
+// el navbar no se ve en el home , registro , login , profile , edit , create  
+// en el adoptions xq no se centra
+// editar la imagen del perfil
 //hacer el delete del usuario
 // hacer responsive create adoption , edit profil , search, favs 
 // como hago las adopciones como tinder ?
