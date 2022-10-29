@@ -1,34 +1,50 @@
-
-.tinder-info h4 {
- color: white;
- text-transform: capitalize;
- font-weight: 600;
- display: flex;
- gap:4%
-
+.item-img {
+    height: 400px;
+    width: 90vw;
+    margin: auto;
+    background-position: center;
+    background-size: cover;
 }
 
-.tinder-info p {
-    font-weight: 300;
-    color: white;
-}
-
-.tinder-info{ 
-    margin-top: -65px ;
-    color: white;
-}
-
-.tinder {
+.carousel-card-buttons {
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
 }
 
-.tinder-buttons {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 4%;
+.item-content a {
+    position: absolute;
+    text-transform: capitalize;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 5px 10px;
+    border-radius: 4px;
+    
+}
 
+.item-content a h4 {
+    margin: 0;
+   color: white;
+   font-weight: 500;
+}
+
+.carousel-card-buttons {
+    margin: 10px 0;
+}
+
+.carousel-card-buttons button {
+    margin: 0 5px;
+}
+
+.carousel-card-buttons button img {
+    width: 17px;
+    height: 17px !important;
+}
+
+@media screen and (min-width: 700px) {
+    .item-img {
+        height: 300px;
+        width: 200px;
+    }
 }

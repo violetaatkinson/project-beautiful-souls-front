@@ -55,7 +55,7 @@ const Adopted = () => {
                             id="file"
                             onChange={handleOnChange}  
                         />
-                        <label class="input-group-text" for="inputGroupFile02" htmlFor="image">Upload</label>
+                        <label className="input-group-text" htmlFor="image">Upload</label>
                     </div>
                     <div className="mt-3">
                         <label className="form-label" htmlFor="content">Tell Your Story</label>

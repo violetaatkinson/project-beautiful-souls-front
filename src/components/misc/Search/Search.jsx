@@ -13,7 +13,7 @@ function Search() {
 	return (
 		<NavbarLayout>
 			<div>
-				<section className="carousel-inner mt-4 mb-3">
+				<section className="carousel-inner search-card mt-4 mb-3">
 					<img src={profile} alt="profile" />
 					<div className="carousel-caption d-none d-md-block">
 						<h3>Edit your profile</h3>
@@ -24,7 +24,7 @@ function Search() {
 						</Link>
 					</div>
 				</section>
-				<section className="carousel-inner mt-4 mb-3">
+				<section className="carousel-inner search-card mt-4 mb-3">
 					<img src={find} alt="find" />
 					<div className="carousel-caption d-none d-md-block">
 						<h3>Find your partner</h3>
@@ -35,7 +35,7 @@ function Search() {
 						</Link>
 					</div>
 				</section>
-				<section className="carousel-inner mt-4 mb-3">
+				<section className="carousel-inner  search-card mt-4 mb-3">
 					<img src={adoption} alt="search" />
 					<div className="carousel-caption d-none d-md-block">
 						<h3>Find them a home</h3>
@@ -46,7 +46,7 @@ function Search() {
 						</Link>
 					</div>
 				</section>
-				<section className="carousel-inner mt-4 mb-3">
+				<section className="carousel-inner search-card mt-4 mb-3">
 					<img src={owner} alt="search" />
 					<div className="carousel-caption d-none d-md-block">
 						<h3>Share Your Story</h3>
@@ -57,7 +57,7 @@ function Search() {
 						</Link>
 					</div>
 				</section>
-				<section className="carousel-inner mt-4 mb-3">
+				<section className="carousel-inner search-card mt-4 mb-3">
 					<img src={dogs} alt="search" />
 					<div className="carousel-caption d-none d-md-block">
 						<h3>They Found Their Home</h3>
@@ -69,7 +69,7 @@ function Search() {
 						</Link>
 					</div>
 				</section>
-				<section className="carousel-inner mt-4 mb-3">
+				<section className="carousel-inner search-card mt-4 mb-3">
 					<img src={friends} alt="search" />
 					<div className="carousel-caption d-none d-md-block">
 						<h3>Keep In Touch</h3>

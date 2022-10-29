@@ -21,7 +21,6 @@ function App() {
   
   return (
     <div className="App">
-       {/* <Navbar/> */}
       {isAuthenticationFetched ? (
         <Routes>
             <Route path='/' element={
@@ -92,10 +91,10 @@ function App() {
 
 export default App;
 
-// en el adoptions xq no se centra
-// editar la imagen del perfil
+
+
 // hacer responsive create adoption , edit profil , search, favs 
-// como hago las adopciones como tinder ?
+
 // en adopciones poner un contador de cuantas mascotas hay en adopcion
 // contador en cuantas mascotas se adoptaron
 // una vez adoptado hacer form para las mascotas q ya estan adoptadas no encuentra el user 

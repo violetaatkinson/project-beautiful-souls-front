@@ -10,6 +10,12 @@ import list from './AdoptionList.css'
 import { NavbarLayout } from "../../../layout/NavbarLayout";
 
 
+// como hago las adopciones como tinder ?
+//funcionalidad de boton de dislike que no me lo muestre mas si no quiero a ese pet
+// funcionalidad de boton de return que me traiga a ese pet de nuevo 
+// los botones siempre quedan y tienen que estar fuera de la card 
+//para que solo se muestre una imagen a la vez
+
 function AdoptionList() {
     const [pets, setPets] = useState([]);
 
@@ -35,34 +41,38 @@ function AdoptionList() {
 
     return (
         <NavbarLayout>
-            <div>
-                <div className="container tinder mt-5">
-                    <div className="row">
-                        {pets.map((pet) => {
-                            return (
-                                <div className="col tinder-card" key={pet._id}>
-                                <img src={pet.image} alt={pet.name} width={250} className="mt-3"/>
-                                <div className="card-body tinder-info">
+            <div id="carouselExampleSlidesOnly" className="carousel slide" data-bs-ride="carousel">
+                <div className="carousel-inner">
+                    {pets.map((pet) => {
+                        return (
+                            <div className={`carousel-item ${pet._id === pets[0]._id ? "active" : ""}`} key={pet._id}>
+                                <div style={{backgroundImage: 'url(' + pet.image + ')'}} className="item-img"></div>
+                                <div className="item-content">
                                     <Link className="link-unstyled" to={`/adoptions/${pet._id}`}>
-                                        <h4 className="card-title">{pet.name}<p className="card-text">{pet.years}</p></h4>
+                                        <h4>{pet.name}</h4>
                                     </Link>
+                                    <div className="carousel-card-buttons">
+                                        <button className="btn btn-danger btn-sm">
+                                            <img src={heart} alt="heart" height={20} onClick={() => handleLike(pet._id)}/>
+                                        </button>
+                                        <button className="btn btn-success btn-sm ">
+                                            <img src={back} alt="heart" />
+                                        </button>
+                                        <button className="btn btn-dark btn-sm ">
+                                            <img src={no} alt="heart" />
+                                        </button>                          
+                                    </div>
                                 </div>
-                                <div className="tinder-buttons mt-2">
-                                    <button className="btn btn-danger btn-sm ">Like <img src={heart} alt="heart" width={17} onClick={() => handleLike(pet._id)}/></button>
-                                    <button className="btn btn-success btn-sm ">Return <img src={back} alt="heart" width={17} /></button>
-                                    <button className="btn btn-dark btn-sm ">Dislike <img src={no} alt="heart" width={13} /></button>
-                                </div>
-                                </div>
-                            )
-
-                        })}
-                    </div>
-                </div> 
+                            </div>
+                        )
+                    })}
+                </div>
             </div>
         </NavbarLayout>
     )
 }
 
 export default AdoptionList
+
 
 
