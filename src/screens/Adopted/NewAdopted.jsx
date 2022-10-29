@@ -1,6 +1,9 @@
 import { createAdopted  } from '../../services/AdoptedService'
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Link } from 'react-router-dom';
+
+import backArrow from "../../assets/go-back.png";
 
 const Adopted = () => {
     
@@ -38,6 +41,9 @@ const Adopted = () => {
 
 	return (
 		<div>
+        <Link className="link-unstyled" to={"/search"}>
+			<img src={backArrow} alt="back" width={40} className="mt-4 arrow ml-4" />
+		</Link>
 		 	<h1 className="text-center mt-3">Already Adopted</h1>
                 <form onSubmit={onSubmit} className=" mt-3">
                     <div className=" input-group mb-3 mt-4">

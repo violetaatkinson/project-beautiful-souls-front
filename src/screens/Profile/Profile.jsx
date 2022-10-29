@@ -2,21 +2,20 @@ import { useContext } from "react";
 import { Link } from 'react-router-dom'
 import AuthContext from "../../contexts/AuthContext";
 import { deleteUser } from "../../services/UserService";
-
-// eslint-disable-next-line
-import profile from "./Profile.css";
+import { logout } from '../../token/AccessToken'
+import "./Profile.css";
 
 const Profile = () => {
 	const { user } = useContext(AuthContext);
 
-	const handleDelete = (_id) => {
-        deleteUser(_id)
-            .then((deletedUser) => {
-			    //aca nose como seguir
-          })   
+	const handleDelete = (id) => {
+        deleteUser(id)
+            .then(() => {
+				console.log('Eliminado')
+          })
     }
 
-
+	
 	return (
 		<div>
 		 	<h3 className="mt-4 text-center mt-3">Profile</h3>
@@ -32,7 +31,7 @@ const Profile = () => {
 				<hr></hr>
 				<div className="card-body user">
 					<h4 className="card-title mb-3 ">Other Information</h4>
-						<div className="card-text">
+						<div className="card-text ml-5">
 							<p><strong>Email :</strong> {user.email}</p>
 							<p><strong>Phone number :</strong> {user.phoneNumber}</p>
 							<p><strong>First name :</strong> {user.firstName}</p>
@@ -42,15 +41,16 @@ const Profile = () => {
 								<p><strong>Age :</strong> {user.age}</p>
 							</span>
 						</div>
-						<div className="other-info ml-4 mb-2 mt-2">
+						<div className="other-info ml-2 mb-2 mt-2 ">
 							<Link className="link-unstyled" to={"/edit/profile"}>
-								<button type="button" className="btn btn-outline-secondary">Edit Profile</button>
+								<button type="button" className="btn btn-outline-secondary">Edit</button>
 							</Link>
-							<button 
+								<button className="btn btn-outline-dark" onClick={() => logout(user.id)}>Logout</button>
+								<button 
 								type="button"
 								className="btn btn-outline-danger"
-								onClick={() => handleDelete(user._id)}
-								>Delete Profile</button>
+								onClick={() => handleDelete(user.id)}
+								>Delete</button>
 						</div>				
 				</div>	
 		</div>

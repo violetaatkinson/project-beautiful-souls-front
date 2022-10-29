@@ -3,6 +3,9 @@ import { useParams } from "react-router-dom";
 import { getAdoptionsDetail } from "../../../services/AdoptionService"
 // eslint-disable-next-line 
 import adoptionDetail from './AdoptionDetail.css'
+import backArrow from '../../../assets/go-back.png'
+import {Link} from "react-router-dom"
+
 
 
 function AdoptionDetail() {
@@ -19,6 +22,9 @@ function AdoptionDetail() {
  
     return (
         <div>
+        <Link className="link-unstyled" to={"/adoptions"}>
+				<img src={backArrow} alt="back" width={40} className="mt-4 arrow ml-4" />
+		</Link>
             {pet ? (
 				<>
 				    <div className="detail align-items-center">

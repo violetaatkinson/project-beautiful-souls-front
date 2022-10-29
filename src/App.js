@@ -6,7 +6,6 @@ import Login from './screens/Login/Login';
 import UnprotectedRoute from './components/misc/UnprotectedRoute';
 import Profile from './screens/Profile/Profile'
 import LikedPets from './screens/Adoptions/LikedPets/LikedPets';
-import Dashboard from "./components/misc/Dashboard/Dashboard";
 import NewAdoption from './screens/Adoptions/NewAdoption/NewAdoption'
 import AdoptionList from './screens/Adoptions/AdoptionList/AdoptionList'
 import AdoptionDetail from './screens/Adoptions/AdoptionDetail/AdoptionDetail';
@@ -87,23 +86,23 @@ function App() {
             
         </Routes>
       ) : <p>Loading...</p>}
-        <Dashboard/>
     </div>
   );
 }
 
 export default App;
 
-// el navbar no se ve en el home , registro , login , profile , edit , create  
 // en el adoptions xq no se centra
 // editar la imagen del perfil
-//hacer el delete del usuario
 // hacer responsive create adoption , edit profil , search, favs 
 // como hago las adopciones como tinder ?
 // en adopciones poner un contador de cuantas mascotas hay en adopcion
 // contador en cuantas mascotas se adoptaron
-// una vez adoptado hacer form para las mascotas q ya estan adoptadas 
+// una vez adoptado hacer form para las mascotas q ya estan adoptadas no encuentra el user 
 // si no hay mascotas creadas q no aparezca el cartel de create adoptions 
 //sino algo como una imagen de crear una adopcion
 // si no hay mascotas likeadas q no aparezca el cartel de create adoptions 
 //sino algo como una imagen de crear una adopcion
+//chat de usuarios si like un pet que me aparezca la foto del perro y que pueda chatear con ese usuario
+//que creo la adopcion
+// notificaciones de likes, chat y de nuevas adopciones creadas y de nuevos duenos que han adoptado

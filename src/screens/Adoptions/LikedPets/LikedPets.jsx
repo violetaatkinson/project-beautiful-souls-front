@@ -5,6 +5,7 @@ import { getLikes } from "../../../services/UserService";
 import heart from '../../../assets/corazon.png'
 import trash from '../../../assets/trash.png'
 import pen from '../../../assets/boligrafo.png'
+import { NavbarLayout } from "../../../layout/NavbarLayout";
 
 // eslint-disable-next-line 
 import likedPets from './LikedPets.css'
@@ -46,7 +47,8 @@ const LikedPets = () => {
       }
 
 	return (
-		<div>
+    <NavbarLayout>
+	    <div>
             <form className="d-flex col-auto mt-4 mb-4" role="search">
                 <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
                 <button className="btn btn-outline-dark" type="submit">Search</button>
@@ -95,8 +97,8 @@ const LikedPets = () => {
                 </div>
             </section>
 
-		</div>
-				
+	    </div>
+    </NavbarLayout>
 	);
 };
 
