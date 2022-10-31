@@ -23,7 +23,7 @@ function AdoptionDetail() {
     return (
         <div>
         <Link className="link-unstyled" to={"/adoptions"}>
-				<img src={backArrow} alt="back" width={40} className="mt-4 arrow ml-4" />
+				<img src={backArrow} alt="back" width={20} className="mt-4 arrow ml-4" />
 		</Link>
             {pet ? (
 				<>

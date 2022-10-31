@@ -4,6 +4,7 @@ import AuthContext from "../../contexts/AuthContext";
 import { deleteUser } from "../../services/UserService";
 import { logout } from '../../token/AccessToken'
 import "./Profile.css";
+import back from '../../assets/go-back.png'
 
 const Profile = () => {
 	const { user } = useContext(AuthContext);
@@ -18,26 +19,28 @@ const Profile = () => {
 	
 	return (
 		<div>
+			<Link className="link-unstyled" to={"/search"}>
+				<img src={back} alt="back" width={20} className="mt-4 arrow-pr" />
+			</Link>
 		 	<h3 className="mt-4 text-center mt-3">Profile</h3>
 			 <div className="user" >
 			 	<img
 						src={user.image}
 						alt={user.userName}
-						className="rounded-circle bg-info bg-opacity-10 border border-3 m-2 "
-						width={120}
+						class="rounded-circle border mt-2 mb-3 " width="150" height="150"
 					/>
 				<h5 className="text-capitalize">{user.userName}</h5>
 			 </div>
 				<hr></hr>
 				<div className="card-body user">
 					<h4 className="card-title mb-3 ">Other Information</h4>
-						<div className="card-text ml-5">
+						<div className="card-text prof">
 							<p><strong>Email :</strong> {user.email}</p>
 							<p><strong>Phone number :</strong> {user.phoneNumber}</p>
 							<p><strong>First name :</strong> {user.firstName}</p>
 							<p><strong>Last name :</strong> {user.lastName}</p>
 							<span className="other-info">
-								<p><strong>Gender :</strong> {user.gender} {user.gender ? "♂" : "♀" }</p>
+								<p><strong>Gender :</strong> {user.gender}</p>
 								<p><strong>Age :</strong> {user.age}</p>
 							</span>
 						</div>

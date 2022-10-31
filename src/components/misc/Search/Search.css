@@ -1,0 +1,21 @@
+.search {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.search h3 {
+    font-size: 40px;
+}
+
+.search-img {
+    height: 580px;
+}
+
+.search-info h3 {
+    margin-top: -250px;
+    color: white;
+}

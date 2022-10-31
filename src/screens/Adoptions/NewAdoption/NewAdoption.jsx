@@ -62,8 +62,8 @@ const DoAdoption = ({ edit }) => {
 				<img
 					src={backArrow}
 					alt="back"
-					width={40}
-					className="mt-4 arrow ml-4"
+					width={20}
+					className="mt-4 search-arrow"
 				/>
 			</Link>
 			<h1 className="text-center mb-4">Create adoption</h1>
@@ -75,7 +75,7 @@ const DoAdoption = ({ edit }) => {
 						</label>
 						<br></br>
 						<input
-							className="form-control"
+							className="form-control "
 							value={data.name}
 							onChange={handleOnChange}
 							name="name"

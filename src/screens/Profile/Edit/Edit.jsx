@@ -60,7 +60,7 @@ const Edit = ({ edit }) => {
 	return (
 		<div>
 			<Link className="link-unstyled" to={"/search"}>
-				<img src={backArrow} alt="back" width={40} className="mt-4 arrow ml-4" />
+				<img src={backArrow} alt="back" width={20} className="mt-4 search-arrow" />
 			</Link>
 			<h1 className="text-center mb-4">Edit Your Profile</h1>
 			<div className="Create">

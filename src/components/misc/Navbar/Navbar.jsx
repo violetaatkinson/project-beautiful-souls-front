@@ -13,10 +13,10 @@ function Navbar () {
     return (
         <div className='navbar'>
             <Link className="link-unstyled" to={"/profile"}>
-                <img src={user.image} alt="user" className="rounded-circle bg-info bg-opacity-10 border border-3 m-2 user-img" width={40}/>
+                <img src={user.image} alt="user" className="rounded-circle m-2 user-img" width={60} height={60}/>
             </Link>
-           <img src={logo} alt="logo" width={51}/>
-           <img src={bell} alt ="bell" width={35}/>
+           <img src={logo} alt="logo" width={55} height={55}/>
+           <img src={bell} alt ="bell" width={40} height={40} className="bell"/>
         </div>
     )
 }

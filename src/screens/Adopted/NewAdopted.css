@@ -1,0 +1,11 @@
+.new-adopted {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 30px;
+}
+
+.search-arrow {
+    margin-left: 20px;
+}
