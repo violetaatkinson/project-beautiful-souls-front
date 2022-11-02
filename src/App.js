@@ -13,6 +13,7 @@ import ProtectedRoute from './components/misc/ProtectedRoute';
 import Search from './components/misc/Search/Search';
 import Edit from './screens/Profile/Edit/Edit';
 import NewAdopted from './screens/Adopted/NewAdopted'
+import ListAdopted from './screens/Adopted/ListAdopted'
 // import Navbar from './components/misc/Navbar/Navbar';
 
 
@@ -82,6 +83,12 @@ function App() {
               <NewAdopted/>
            
          }/>
+           <Route path="/adopted" element={
+              
+              <ListAdopted/>
+           
+         }/>
+          
             
         </Routes>
       ) : <p>Loading...</p>}
@@ -93,11 +100,11 @@ export default App;
 
 
 
-// hacer responsive create adoption , edit profil , search, favs 
 
+// que se suba la imagen de los animales que ya han sido adoptados
 // en adopciones poner un contador de cuantas mascotas hay en adopcion
 // contador en cuantas mascotas se adoptaron
-// una vez adoptado hacer form para las mascotas q ya estan adoptadas no encuentra el user 
+
 // si no hay mascotas creadas q no aparezca el cartel de create adoptions 
 //sino algo como una imagen de crear una adopcion
 // si no hay mascotas likeadas q no aparezca el cartel de create adoptions 

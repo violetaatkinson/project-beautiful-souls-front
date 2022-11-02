@@ -80,7 +80,7 @@ const LikedPets = () => {
                         {likes.map((like) =>(
                             <div key={like._id} className="col-12 col-md-6 col-lg-4">
                                 <img src={like.image} alt={like.name} width={200} className="mt-3"/>
-                                <Link>
+                                <Link className="link-unstyled " to={`/adoptions/${like._id}`}>
                                     <h5 className="petName">{like.name}</h5>
                                 </Link>
                                 <div className="del">

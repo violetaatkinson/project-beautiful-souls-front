@@ -15,7 +15,9 @@ function Navbar () {
             <Link className="link-unstyled" to={"/profile"}>
                 <img src={user.image} alt="user" className="rounded-circle m-2 user-img" width={60} height={60}/>
             </Link>
-           <img src={logo} alt="logo" width={55} height={55}/>
+            <Link className="link-unstyled" to={"/adoptions"}>
+                <img src={logo} alt="logo" width={55} height={55}/>
+            </Link>
            <img src={bell} alt ="bell" width={40} height={40} className="bell"/>
         </div>
     )

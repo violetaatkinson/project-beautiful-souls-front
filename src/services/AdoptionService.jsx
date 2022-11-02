@@ -23,5 +23,8 @@ authenticatedHttp.delete(`/adoptions/${id}`).then((res) => res);
 export const likeAdoptions = (id) =>
 authenticatedHttp.post(`/like/${id}`).then((res) => res);
 
+export const dislikeAdoptions = (id) =>
+authenticatedHttp.post(`/dislike/${id}`).then((res) => res);
+
 
 

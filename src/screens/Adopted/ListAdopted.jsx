@@ -1,5 +1,5 @@
 import { getAdopted } from '../../services/AdoptedService'
-import { NavbarLayout } from "../../../layout/NavbarLayout";
+import { NavbarLayout } from '../../layout/NavbarLayout';
 import React, { useState, useEffect } from "react";
 
 function AdoptedList() {
@@ -13,6 +13,8 @@ function AdoptedList() {
                 setPets(adopted);
             });
 	}, []);
+
+    console.log(pets)
 
  
     return (
