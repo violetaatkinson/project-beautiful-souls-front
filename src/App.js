@@ -12,8 +12,8 @@ import AdoptionDetail from './screens/Adoptions/AdoptionDetail/AdoptionDetail';
 import ProtectedRoute from './components/misc/ProtectedRoute';
 import Search from './components/misc/Search/Search';
 import Edit from './screens/Profile/Edit/Edit';
-import NewAdopted from './screens/Adopted/NewAdopted'
-import ListAdopted from './screens/Adopted/ListAdopted'
+import NewAdopted from './screens/Adopted/NewAdopted/NewAdopted'
+import ListAdopted from './screens/Adopted/ListAdopted/ListAdopted'
 // import Navbar from './components/misc/Navbar/Navbar';
 
 

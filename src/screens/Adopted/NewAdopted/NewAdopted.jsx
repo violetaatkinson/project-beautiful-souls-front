@@ -1,9 +1,9 @@
-import { createAdopted  } from '../../services/AdoptedService'
+import { createAdopted  } from '../../../services/AdoptedService'
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom';
 import css from './NewAdopted.css'
-import backArrow from "../../assets/go-back.png";
+import backArrow from "../../../assets/go-back.png";
 
 const Adopted = () => {
     
@@ -57,6 +57,19 @@ const Adopted = () => {
                             onChange={handleOnChange}  
                         />
                         <label className="input-group-text" htmlFor="image">Upload</label>
+                    </div>
+                    <div className="mt-3">
+                        <label className="form-label" htmlFor="content">Owner & Pet name</label>
+                        <br></br>    
+                            <input
+                                className="form-control "
+                                value={data.petName}
+                                onChange={handleOnChange}
+                                name="petName"
+                                type="text"
+                                id="petName"
+                                placeholder="Owner - Pet name"
+                            />
                     </div>
                     <div className="mt-3">
                         <label className="form-label" htmlFor="content">Tell Your Story</label>

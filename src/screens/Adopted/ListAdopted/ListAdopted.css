@@ -1,0 +1,16 @@
+.adoption-img {
+    border-radius: 5px;
+    height: 310px;
+    width: 100%;
+}
+
+.info-adopted h5 {
+    color: #414141;
+    text-transform: capitalize;
+}
+
+.info-adopted p {
+    color:gray;
+    text-transform: capitalize;
+}
+
