@@ -4,7 +4,10 @@ import { Link } from "react-router-dom";
 import heart from '../../../assets/corazon.png'
 import no from '../../../assets/close.png'
 import back from '../../../assets/return.png'
+import corgi from '../../../assets/corgi.png'
 import { NavbarLayout } from '../../../layout/NavbarLayout';
+
+
 // eslint-disable-next-line
 import list from './AdoptionList.css'
 
@@ -54,13 +57,13 @@ function AdoptionList() {
             <div id="carouselExampleSlidesOnly" className="carousel slide" data-bs-ride="carousel">
                 {currentPet
                 ? <div className="carousel-inner">
-                <div className="carousel-item active" key={currentPet._id}>
+                <div className="carousel-item active mt-3" key={currentPet._id}>
                     <div style={{backgroundImage: 'url(' + currentPet.image + ')'}} className="item-img"></div>
                         <div className="item-content">
                             <Link className="link-unstyled" to={`/adoptions/${currentPet._id}`}>
                                 <h4>{currentPet.name}</h4>
                             </Link>
-                            <div className="carousel-card-buttons">
+                            <div className="carousel-card-buttons mt-3">
                                 <button className="btn btn-danger btn-sm">
                                     <img src={heart} alt="heart" height={20} onClick={handleLike}/>
                                 </button>
@@ -74,7 +77,15 @@ function AdoptionList() {
                         </div>
                     </div>
                 </div>
-                : <p>No quedan mas</p>}
+                :   <div className="not-found">
+                        <h4 className="mt-5">No adoptions were found</h4>
+                        <img src={corgi} alt="dog" width={200} className="mt-3 mb-5"/>
+                        {currentPetId === 1 &&
+                            <button className="btn btn-success btn-sm" onClick={handleGoBack}>Return to last</button>
+                        }
+                    </div>
+                
+                }
             </div>
         </NavbarLayout>
     )

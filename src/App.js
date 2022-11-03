@@ -101,7 +101,7 @@ export default App;
 
 
 
-// que se suba la imagen de los animales que ya han sido adoptados
+
 // en adopciones poner un contador de cuantas mascotas hay en adopcion
 // contador en cuantas mascotas se adoptaron
 

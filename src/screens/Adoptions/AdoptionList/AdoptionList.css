@@ -49,3 +49,15 @@
         width: 200px;
     }
 }
+
+.not-found {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.not-found img {
+    margin-left: 20px;
+}
+

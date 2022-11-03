@@ -5,6 +5,8 @@ import { getLikes } from "../../../services/UserService";
 import heart from '../../../assets/corazon.png'
 import trash from '../../../assets/trash.png'
 import pen from '../../../assets/boligrafo.png'
+import corgiHeart from '../../../assets/corgi-heart.png'
+import corgiPresent from '../../../assets/corgi-present.png'
 import { NavbarLayout } from "../../../layout/NavbarLayout";
 
 // eslint-disable-next-line 
@@ -14,8 +16,8 @@ import likedPets from './LikedPets.css'
 const LikedPets = () => {
     const [myPets, setMyPets] = useState([]);
     const [likes, setLikes] = useState([]);
-   
 
+   
     useEffect(() => {
 		getAllMyAdoptions()
       .then((res) => {
@@ -50,7 +52,7 @@ const LikedPets = () => {
     <NavbarLayout>
 	    <div>
             <section>
-                <h4 className="mt-3 mb-2 ">Created Adoptions</h4>	
+                {myPets.length > 0  ?
                 <div className="container">
                     <div className="row pet-info">
                         {myPets.map((myPet) =>(
@@ -68,15 +70,22 @@ const LikedPets = () => {
                             </div>
                         ))}
                     </div>
-                </div>				
+                </div>
+                :
+                <div className="m-4">
+                    <h4 className="mt-5">Create an adoption</h4>
+                    <img src={corgiPresent} alt="dog" width={200} className="mt-3 mb-5"/>
+                </div>
+                }
             </section>
 
             <hr/>
 
             <section>
-                <h4>Liked Adoptions</h4>
+               
+                {likes.length > 0 ? 
                 <div className="container">
-                    <div className="row">
+                      <div className="row">
                         {likes.map((like) =>(
                             <div key={like._id} className="col-12 col-md-6 col-lg-4">
                                 <img src={like.image} alt={like.name} width={200} height={260} className="mt-3"/>
@@ -85,12 +94,17 @@ const LikedPets = () => {
                                 </Link>
                                 <div className="del">
                                      <button className="btn btn-danger btn-sm "><img src={heart} alt="heart" width={17} onClick={() => handleLike(like._id)}/>  Like</button>
-                                </div>
-                                       
+                                </div>           
                             </div>
                         ))}
-                    </div>
+                      </div>
                 </div>
+                :
+                <div className="m-4">
+                    <h4 className="mt-5">Give us a like</h4>
+                    <img src={corgiHeart} alt="dog" width={200} className="mt-3 mb-5"/>
+                </div>
+                }
             </section>                        
 	    </div>
     </NavbarLayout>
@@ -98,6 +112,7 @@ const LikedPets = () => {
 };
 
 export default LikedPets;
+
 
 
 // si no hay mascotas creadas q no aparezca el cartel de create adoptions 
