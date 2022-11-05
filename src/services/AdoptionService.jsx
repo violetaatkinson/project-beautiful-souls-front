@@ -5,6 +5,8 @@ const unauthenticatedHttp = createHttp(false)
 
 export const getAdoptions = () => authenticatedHttp.get("/adoptions").then((res) => res);
 
+export const getAdoptionsCount = () => authenticatedHttp.get("/count").then((res) => res);
+
 export const getAllMyAdoptions = () => authenticatedHttp.get("/myadoptions").then((res) => res);
 
 export const getAdoptionsDetail = (id) => unauthenticatedHttp.get(`/adoptions/${id}`).then((res) => res);

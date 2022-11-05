@@ -1,12 +1,20 @@
-import { getAdopted } from '../../../services/AdoptedService'
+import { getAdopted , getAdoptedCount} from '../../../services/AdoptedService'
 import { NavbarLayout } from '../../../layout/NavbarLayout';
 import React, { useState, useEffect } from "react";
 import css from './ListAdopted.css'
 
+
 function AdoptedList() {
+    const [adoptedCount, setAdoptedCount] = useState();
     const [pets, setPets] = useState([]);
 
-  
+  useEffect(()=> {
+    getAdoptedCount()
+     .then((count) => setAdoptedCount(count))
+   }, [])
+   
+   console.log(adoptedCount)
+
     useEffect(() => {
 		getAdopted()
             .then((adopted) => {

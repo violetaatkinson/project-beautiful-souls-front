@@ -14,7 +14,8 @@ import Search from './components/misc/Search/Search';
 import Edit from './screens/Profile/Edit/Edit';
 import NewAdopted from './screens/Adopted/NewAdopted/NewAdopted'
 import ListAdopted from './screens/Adopted/ListAdopted/ListAdopted'
-// import Navbar from './components/misc/Navbar/Navbar';
+
+
 
 
 function App() {
@@ -64,8 +65,9 @@ function App() {
               
             }/>
             <Route path="/adoptions/edit/:id" element={
-              
+              <ProtectedRoute>
                 <NewAdoption edit/>
+              </ProtectedRoute>
             
             } />
             <Route path="/search" element={
@@ -74,13 +76,15 @@ function App() {
            
             }/>
             <Route path="/likedpets" element={
-              
+              <ProtectedRoute>
                  <LikedPets/>
+              </ProtectedRoute>
               
             }/>
             <Route path="/adopted/create" element={
-              
-              <NewAdopted/>
+              <ProtectedRoute>
+                <NewAdopted/>
+              </ProtectedRoute>
            
          }/>
            <Route path="/adopted" element={
@@ -88,6 +92,7 @@ function App() {
               <ListAdopted/>
            
          }/>
+          
           
             
         </Routes>
@@ -104,11 +109,6 @@ export default App;
 
 // en adopciones poner un contador de cuantas mascotas hay en adopcion
 // contador en cuantas mascotas se adoptaron
-
-// si no hay mascotas creadas q no aparezca el cartel de create adoptions 
-//sino algo como una imagen de crear una adopcion
-// si no hay mascotas likeadas q no aparezca el cartel de create adoptions 
-//sino algo como una imagen de crear una adopcion
 //chat de usuarios si like un pet que me aparezca la foto del perro y que pueda chatear con ese usuario
 //que creo la adopcion
 // notificaciones de likes, chat y de nuevas adopciones creadas y de nuevos duenos que han adoptado

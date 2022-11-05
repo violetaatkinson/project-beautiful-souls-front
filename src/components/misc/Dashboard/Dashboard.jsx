@@ -8,7 +8,7 @@ import dash from './Dashboard.css'
 
 function Dashboard () {
     return (
-        <div className='dashbord mt-4'>
+        <div className='dashbord mt-5 '>
             <Link className="link-unstyled" to={"/adoptions"}>
                 <img src={logo} alt="logo" width={53} height={53} />
             </Link>
