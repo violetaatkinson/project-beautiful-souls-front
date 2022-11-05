@@ -22,3 +22,9 @@ code {
 * {
   font-family: 'Readex Pro', sans-serif;
 }
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}

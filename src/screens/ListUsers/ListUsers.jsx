@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { NavbarLayout } from "../../layout/NavbarLayout";
 import { getUsers } from "../../services/UserService";
 
 const ListUsers = () => {
@@ -14,7 +15,7 @@ const ListUsers = () => {
 	}, []);
 
     return (
-        <div>
+        <NavbarLayout>
             {users.map((user) => {
                 return (
                     <Link key={user.id} to={`/chat/${user.id}`}>
@@ -26,7 +27,7 @@ const ListUsers = () => {
                     </Link>
                 )
             })}
-        </div>
+        </NavbarLayout>
     )
 }
 
