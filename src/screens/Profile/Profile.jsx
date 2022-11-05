@@ -27,7 +27,7 @@ const Profile = () => {
 			 	<img
 						src={user.image}
 						alt={user.userName}
-						class="rounded-circle border mt-2 mb-3 " width="150" height="150"
+						className="rounded-circle border mt-2 mb-3 " width="150" height="150"
 					/>
 				<h5 className="text-capitalize">{user.userName}</h5>
 			 </div>

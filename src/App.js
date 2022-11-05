@@ -14,6 +14,8 @@ import Search from './components/misc/Search/Search';
 import Edit from './screens/Profile/Edit/Edit';
 import NewAdopted from './screens/Adopted/NewAdopted/NewAdopted'
 import ListAdopted from './screens/Adopted/ListAdopted/ListAdopted'
+import Chat from './screens/Chat/Chat'
+import ListUsers from './screens/ListUsers/ListUsers';
 
 
 
@@ -90,6 +92,16 @@ function App() {
            <Route path="/adopted" element={
               
               <ListAdopted/>
+           
+         }/>
+          <Route path="/chat/:id" element={
+              
+              <Chat/>
+           
+         }/>
+         <Route path="/users" element={
+              
+              <ListUsers/>
            
          }/>
           

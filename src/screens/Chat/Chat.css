@@ -1,0 +1,50 @@
+.Chat {
+    padding: 8px;
+}
+
+.Chat p {
+    margin: 0;
+}
+
+.Chat-message {
+    display: flex;
+    padding: 8px;
+    background-color: lightblue;
+    border-radius: 4px;
+    align-items: center;
+}
+
+.Chat-message + .Chat-message {
+    margin-top: 1rem;
+}
+
+.Chat-message.own-sender {
+    flex-direction: row-reverse;
+}
+
+.Chat-message-avatar {
+    width: 60px;
+    height: 60px;
+    overflow: hidden;
+    border-radius: 50%;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.Chat-message-body {
+    flex-grow: 1;
+}
+
+.Chat-message-avatar img {
+    height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.Chat-send-box {
+    margin-top: 8px;
+    display: flex;
+    gap: 4px;
+}

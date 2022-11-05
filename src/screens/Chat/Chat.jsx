@@ -1,50 +1,77 @@
 import { useState, useEffect } from "react";
+import useInterval from 'use-interval'
 import { useParams } from "react-router-dom";
-import { createMessage , getMessages } from "../../../services/MessageService";
+import { createMessage , getMessages } from "../../services/MessageService";
+import './Chat.css'
 
 const MessageCreated = () => {
     const { id } = useParams();
+    const [messages, setMessages] = useState([]);
 
-    const [data, setMessage] = useState({
-		receiver: id,
-        msg: "",
-	})
+    const [text, setText] = useState('')
    
+    useEffect(() => {
+		getMessages(id).then((messages) => {
+			setMessages(messages);
+		});
+	}, [id]);
+
+    useInterval(() => {
+        getMessages(id).then((messages) => {
+			setMessages(messages);
+		});
+    }, 3000);
+
+
     const handleOnChange = (event) => {
-        const { name , value } = event.target
-        setMessage({
-          ...data,
-          [name]: value
-        })
+        const { value } = event.target
+        setText(value)
 	};
 
     const onSubmit = (event) => {
 		event.preventDefault();
 		
-        createMessage(data).then((response) => {
-            console.log(response);
+        createMessage({ receiver: id, msg: text }).then((response) => {
+           setMessages([...messages, response])
+            setText('')
         });
 	
 	};
    
     return (
-        <div>
-            <div>
-                Map lista de menssajes
-            </div>
+        <div className="Chat">
+            <section>
+                {messages.map((message)=>{
+                    const userIsSender = message.sender.id !== id
+                    return(
+                        <div
+                            className={`Chat-message ${userIsSender ? 'own-sender' : ''}`}
+                            key={message.id}
+                        >
+                            <div className="Chat-message-avatar">
+                                <img src={message.sender.image} alt={message.sender.userName} />
+                            </div>
+                            <div className="Chat-message-body">
+                                <p>{userIsSender ? 'Me' : message.sender.userName}</p>
+                                <p>{message.msg}</p>
+                            </div>
+                        </div>
+                    )
+                })}
+            </section>
             <form onSubmit={onSubmit}>
-                <div>
+                <div className="Chat-send-box">
                     <input
                         className="form-control"
-                        value={data.msg}
+                        value={text}
                         onChange={handleOnChange}
                         name="msg"
                         type="text"
                         id="msg"
                         placeholder="Your Message"
                     />
+                    <button type="submit">Send</button>
                 </div>
-                <button type="submit">Send</button>
             </form>
         </div>
         )
