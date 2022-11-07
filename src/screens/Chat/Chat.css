@@ -48,3 +48,7 @@
     display: flex;
     gap: 4px;
 }
+
+.Chat-message-body p {
+    color:rgb(102 86 86)
+}

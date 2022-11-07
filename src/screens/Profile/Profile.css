@@ -36,3 +36,10 @@
 .prof {
     margin-left:55px ;
 }
+
+.user img {
+    overflow: hidden;
+    border-radius: 50%;
+    position: relative;
+    flex-shrink: 0;
+}

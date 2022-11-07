@@ -3,14 +3,20 @@
     flex-direction: column;
 }
 
-.detail img {
-    border-radius: 5px;
+.detail-img button {
+    margin-top: -137px;
+    margin-left: 300px;
+    border-radius: 100%;
+
 }
 
 .detail h1 {
- color: #414141;
- text-transform: capitalize;
- font-weight: 600;
+    color: #f8f9fa;
+    text-transform: capitalize;
+    font-weight: 500;
+    margin-top: -120px;
+    letter-spacing: 2px;
+    font-size: 35px;
 
 }
 

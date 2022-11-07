@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import useInterval from 'use-interval'
 import { useParams } from "react-router-dom";
 import { createMessage , getMessages } from "../../services/MessageService";
+import { Link } from "react-router-dom";
+import backArrow from "../../assets/go-back.png";
 import './Chat.css'
 
 const MessageCreated = () => {
@@ -40,6 +42,9 @@ const MessageCreated = () => {
    
     return (
         <div className="Chat">
+            <Link className="link-unstyled" to={"/users"}>
+				<img src={backArrow} alt="back" width={20} className="mt-4 mb-3 search-arrow" />
+			</Link>
             <section>
                 {messages.map((message)=>{
                     const userIsSender = message.sender.id !== id
@@ -52,7 +57,7 @@ const MessageCreated = () => {
                                 <img src={message.sender.image} alt={message.sender.userName} />
                             </div>
                             <div className="Chat-message-body">
-                                <p>{userIsSender ? 'Me' : message.sender.userName}</p>
+                                <h6>{userIsSender ? 'Me' : message.sender.userName}</h6>
                                 <p>{message.msg}</p>
                             </div>
                         </div>
@@ -70,7 +75,7 @@ const MessageCreated = () => {
                         id="msg"
                         placeholder="Your Message"
                     />
-                    <button type="submit">Send</button>
+                    <button type="submit" className="btn btn-dark">Send</button>
                 </div>
             </form>
         </div>

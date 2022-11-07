@@ -1,0 +1,30 @@
+.list-user {
+    padding: 0px 10px;
+}
+
+.link-unstyled {
+    text-decoration: none;
+    
+}
+
+.like-name h5{
+    color: black;
+    font-size: 17px;
+    margin-top: 10px;
+    margin-left: 12px;
+}
+
+.like {
+    margin: -5px 10px;
+}
+
+.chat-user {
+    padding: 0px 20px;
+    color: black;
+    
+}
+
+.chat-user h6 {
+    margin: -5px 10px;
+  
+}

@@ -3,7 +3,8 @@ import { useParams } from "react-router-dom";
 import { getAdoptionsDetail } from "../../../services/AdoptionService"
 // eslint-disable-next-line 
 import adoptionDetail from './AdoptionDetail.css'
-import backArrow from '../../../assets/go-back.png'
+import heart from '../../../assets/corazon.png'
+
 import {Link} from "react-router-dom"
 
 
@@ -22,14 +23,13 @@ function AdoptionDetail() {
  
     return (
         <div>
-        <Link className="link-unstyled" to={"/adoptions"}>
-				<img src={backArrow} alt="back" width={20} className="mt-4 search-arrow" />
-		</Link>
+       
             {pet ? (
 				<>
 				    <div className="detail align-items-center">
-                        <div className="mt-5">
-                            <img src={pet.image} alt={pet.name} width={270} className="mt-3"/>
+                        <div className="detail-img">
+                            <img src={pet.image} alt={pet.name} width={380} />
+                            <button className="btn btn-danger  "><img src={heart} alt="heart" width={20} height={20} /></button>
                         </div>
                         <div className="mt-3 text-start card-title ">    
                             <span>
@@ -37,9 +37,9 @@ function AdoptionDetail() {
                                 <p>{pet.years}</p>
                             </span>
                             <div className="card-text">
-                                <p><strong>Size :</strong> {pet.size}</p> 
-                                <p><strong>Gender :</strong> {pet.gender}</p>
-                                <p><strong>Description :</strong> {pet.description} </p>
+                                <p><strong></strong> {pet.size}</p> 
+                                <p><strong></strong> {pet.gender}</p>
+                                <p><strong></strong> {pet.description} </p>
                             </div>  
                         </div> 
                            

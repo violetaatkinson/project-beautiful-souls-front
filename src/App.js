@@ -119,8 +119,8 @@ export default App;
 
 
 
-// en adopciones poner un contador de cuantas mascotas hay en adopcion
-// contador en cuantas mascotas se adoptaron
-//chat de usuarios si like un pet que me aparezca la foto del perro y que pueda chatear con ese usuario
-//que creo la adopcion
+// cuando entro con un nuevo usuario ya hay conversaciones que nunca tuvieron
 // notificaciones de likes, chat y de nuevas adopciones creadas y de nuevos duenos que han adoptado
+// se podria poner el la pag de usuarios la linea de solo el primer mesaje debajo del nombre del user?
+// que solo aparezca el owner de ese pet likeado 
+// como hacer q un mensaje sea de un color distinto al otro
