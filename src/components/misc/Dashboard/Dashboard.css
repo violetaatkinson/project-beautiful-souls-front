@@ -3,7 +3,7 @@
     align-items: center;
     justify-content: space-around;
     gap: 10%;
-    position:relative ;
+    position:sticky ;
     bottom: 0;
     left: 0;
     right: 0;

@@ -3,7 +3,8 @@ import { useParams } from "react-router-dom";
 import { getAdoptionsDetail } from "../../../services/AdoptionService"
 // eslint-disable-next-line 
 import adoptionDetail from './AdoptionDetail.css'
-import heart from '../../../assets/corazon.png'
+import like from '../../../assets/extralike.png'
+import back from '../../../assets/back.png'
 
 import {Link} from "react-router-dom"
 
@@ -12,7 +13,7 @@ import {Link} from "react-router-dom"
 function AdoptionDetail() {
     const [pet, setDetail] = useState()
     const { id } = useParams();
-      
+      console.log(pet);
     useEffect(() => {
         getAdoptionsDetail(id)
         .then((detail) => {
@@ -29,20 +30,24 @@ function AdoptionDetail() {
 				    <div className="detail align-items-center">
                         <div className="detail-img">
                             <img src={pet.image} alt={pet.name} width={380} />
-                            <button className="btn btn-danger  "><img src={heart} alt="heart" width={20} height={20} /></button>
                         </div>
-                        <div className="mt-3 text-start card-title ">    
-                            <span>
-                                <h1>{pet.name}</h1> 
-                                <p>{pet.years}</p>
-                            </span>
-                            <div className="card-text">
-                                <p><strong></strong> {pet.size}</p> 
-                                <p><strong></strong> {pet.gender}</p>
-                                <p><strong></strong> {pet.description} </p>
-                            </div>  
+                        <div className="mt-3 text-start  ">    
+                            <h1>{pet.name}</h1> 
                         </div> 
-                           
+                        <span>
+                            <img src={like} alt="like" className="extra"/>
+                        </span>
+                        <div className="detail-info mt-3">
+                            <p>{pet.gender}</p>
+                            <p>{pet.years} Years</p>
+                            <p>{pet.size}</p>
+                        </div>
+                        <h3 className="text-center mt-3 text-capitalize">{pet.description}</h3>
+                        <span className="detail-back mt-3">
+                           <Link className="link-unstyled" to={"/adoptions"}>
+                                <img src={back} alt="back" width={60}/>
+                           </Link>
+                        </span>
                     </div>	
 				</>
 			) : (

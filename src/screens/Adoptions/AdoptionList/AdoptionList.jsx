@@ -1,9 +1,10 @@
 import {dislikeAdoptions, getAdoptions, getAdoptionsCount, likeAdoptions} from "../../../services/AdoptionService";
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import heart from "../../../assets/corazon.png";
-import no from "../../../assets/close.png";
-import back from "../../../assets/return.png";
+import like from '../../../assets/like.png'
+import dislike from '../../../assets/dislike.png'
+import back from '../../../assets/back.png'
+
 import corgi from "../../../assets/corgi.png";
 import { NavbarLayout } from "../../../layout/NavbarLayout";
 
@@ -81,26 +82,9 @@ function AdoptionList() {
 									<h4>{currentPet.name}</h4>
 								</Link>
 								<div className="carousel-card-buttons mt-3">
-									<button className="btn btn-danger btn-sm">
-										<img
-											src={heart}
-											alt="heart"
-											height={20}
-											onClick={handleLike}
-										/>
-									</button>
-									<button
-										className="btn btn-success btn-sm"
-										onClick={handleGoBack}
-									>
-										<img src={back} alt="heart" />
-									</button>
-									<button
-										className="btn btn-dark btn-sm "
-										onClick={handleDislike}
-									>
-										<img src={no} alt="heart" />
-									</button>
+									<img src={like} alt="heart" height={50} onClick={handleLike}/>
+									<img src={back} alt="heart" height={50}  onClick={handleGoBack}/>
+									<img src={dislike} alt="heart" height={55} onClick={handleDislike}/>	
 								</div>
 							</div>
 						</div>

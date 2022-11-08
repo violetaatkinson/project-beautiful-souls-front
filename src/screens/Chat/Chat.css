@@ -20,6 +20,7 @@
 
 .Chat-message.own-sender {
     flex-direction: row-reverse;
+    background-color: rgb(247, 247, 247);
 }
 
 .Chat-message-avatar {

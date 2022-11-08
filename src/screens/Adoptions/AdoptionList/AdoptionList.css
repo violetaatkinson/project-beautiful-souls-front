@@ -9,8 +9,9 @@
 
 .carousel-card-buttons {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
+    
 }
 
 .item-content a {
@@ -27,7 +28,8 @@
 .item-content a h4 {
     margin: 0;
    color: white;
-   font-weight: 500;
+   font-weight: 600;
+   font-size: 35px;
 }
 
 .carousel-card-buttons {

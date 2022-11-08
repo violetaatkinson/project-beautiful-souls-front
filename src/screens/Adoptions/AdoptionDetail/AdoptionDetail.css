@@ -1,5 +1,5 @@
 .detail {
-    display: flex;
+    
     flex-direction: column;
 }
 
@@ -13,26 +13,37 @@
 .detail h1 {
     color: #f8f9fa;
     text-transform: capitalize;
-    font-weight: 500;
-    margin-top: -120px;
+    font-weight: 900;
+    margin-top: -90px;
     letter-spacing: 2px;
     font-size: 35px;
+    text-align: center;
 
 }
 
-.detail span {
+.extra {
+    margin-top: -75px;
+    margin-left: 290px;
+}
+
+
+.detail-info {
     display: flex;
     flex-direction: row;
-    gap: 7%;
-    font-size: 32px;
-    font-weight: 200;
+    justify-content: space-evenly;
+    align-items: center;
+
 }
 
-.buttons {
+.detail-info p {
+    background-color: #d6b3d687;
+    padding: 8px 15px;
+    border-radius: 8px;
+    font-weight: 500;
+}
+ 
+.detail-back {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 20%;
- }
-
- 
+}

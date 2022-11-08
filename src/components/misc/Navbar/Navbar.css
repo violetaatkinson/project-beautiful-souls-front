@@ -4,9 +4,18 @@
 }
 
 .bell {
-    margin-right: 15px;
+    margin-right: 12px;
 }
 
 .navbar {
     background-color:#fcfcfc
+}
+
+.title {
+    background: -webkit-linear-gradient(#2F80ED, #56CCF2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-top: 10px;
+    font-size: 25px;
+    font-weight: bolder;
 }

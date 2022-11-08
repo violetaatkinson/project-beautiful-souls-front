@@ -16,6 +16,7 @@ import NewAdopted from './screens/Adopted/NewAdopted/NewAdopted'
 import ListAdopted from './screens/Adopted/ListAdopted/ListAdopted'
 import Chat from './screens/Chat/Chat'
 import ListUsers from './screens/ListUsers/ListUsers';
+import Notification from './screens/Notifications/Notifications';
 
 
 
@@ -56,27 +57,14 @@ function App() {
                 <NewAdoption/>
               </ProtectedRoute>
             }/>
-            <Route path='/adoptions' element={
-              
-                <AdoptionList/>
-              
-            }/>
-            <Route path='/adoptions/:id' element={
-              
-                <AdoptionDetail/>
-              
-            }/>
+
             <Route path="/adoptions/edit/:id" element={
               <ProtectedRoute>
                 <NewAdoption edit/>
               </ProtectedRoute>
             
             } />
-            <Route path="/search" element={
-              
-                <Search/>
-           
-            }/>
+            <Route path="/search" element={<Search/>}/>
             <Route path="/likedpets" element={
               <ProtectedRoute>
                  <LikedPets/>
@@ -89,22 +77,12 @@ function App() {
               </ProtectedRoute>
            
          }/>
-           <Route path="/adopted" element={
-              
-              <ListAdopted/>
-           
-         }/>
-          <Route path="/chat/:id" element={
-              
-              <Chat/>
-           
-         }/>
-         <Route path="/users" element={
-              
-              <ListUsers/>
-           
-         }/>
-          
+           <Route path="/adopted" element={<ListAdopted/>}/>
+           <Route path="/chat/:id" element={<Chat/>}/>
+           <Route path="/users" element={<ListUsers/>}/>
+           <Route path='/adoptions' element={<AdoptionList/>}/>
+           <Route path='/adoptions/:id' element={<AdoptionDetail/>}/>
+           <Route path='/notifications' element={<Notification/>}/>
           
             
         </Routes>
@@ -119,8 +97,7 @@ export default App;
 
 
 
-// cuando entro con un nuevo usuario ya hay conversaciones que nunca tuvieron
-// notificaciones de likes, chat y de nuevas adopciones creadas y de nuevos duenos que han adoptado
+
 // se podria poner el la pag de usuarios la linea de solo el primer mesaje debajo del nombre del user?
 // que solo aparezca el owner de ese pet likeado 
-// como hacer q un mensaje sea de un color distinto al otro
+// el input para agregar cosas
