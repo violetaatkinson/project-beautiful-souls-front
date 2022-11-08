@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { NavbarLayout } from "../../layout/NavbarLayout";
 import { getUsers,  getLikes  } from "../../services/UserService";
+import superlike from '../../assets/extralike.png'
 
 import './ListUsers.css'
 const ListUsers = () => {
@@ -44,6 +45,7 @@ const ListUsers = () => {
                                     <img src={like.image} alt={like.name} width={110} height={145} className="mt-3"/>
                                     <Link className="link-unstyled like-name" to={`/adoptions/${like._id}`}>
                                         <h5>{like.name}</h5>
+                                        <img src={superlike} alt="like" className="dislke-pet" width={30}/>
                                     </Link>
                                 </div>
                             )
