@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { NavbarLayout } from "../../layout/NavbarLayout";
 import { getUsers,  getLikes  } from "../../services/UserService";
+import { likeAdoptions } from "../../services/AdoptionService";
 import superlike from '../../assets/extralike.png'
 
 import './ListUsers.css'
@@ -15,6 +16,13 @@ const ListUsers = () => {
        setLikes(dbLikes.filter((like) => like))); // Te quita los nulls y los undefined
 	}, []);
 
+    const handleLike = (id) => {
+		likeAdoptions(id).then((res) => {
+			const likedPet = likes.filter((pet) => pet._id !== id);
+			setLikes(likedPet);
+			// hacer un setPets, pero quitandome la pet que tiene este id
+		});
+	};
 
     useEffect(() => {
 		getUsers().then((users) => {
@@ -45,7 +53,7 @@ const ListUsers = () => {
                                     <img src={like.image} alt={like.name} width={110} height={145} className="mt-3"/>
                                     <Link className="link-unstyled like-name" to={`/adoptions/${like._id}`}>
                                         <h5>{like.name}</h5>
-                                        <img src={superlike} alt="like" className="dislke-pet" width={30}/>
+                                        <img src={superlike} alt="like" className="dislke-pet" width={30} onClick={() => handleLike(like._id)}/>
                                     </Link>
                                 </div>
                             )
