@@ -5,6 +5,9 @@ import { deleteUser } from "../../services/UserService";
 import { logout } from '../../token/AccessToken'
 import "./Profile.css";
 import back from '../../assets/go-back.png'
+import trash from '../../assets/basura.png'
+import logou from '../../assets/logout.png'
+import edit from '../../assets/editar.png'
 
 const Profile = () => {
 	const { user } = useContext(AuthContext);
@@ -22,7 +25,7 @@ const Profile = () => {
 			<Link className="link-unstyled" to={"/search"}>
 				<img src={back} alt="back" width={20} className="mt-4 arrow-pr" />
 			</Link>
-		 	<h3 className="mt-4 text-center mt-3">Profile</h3>
+		 	<h5 className=" text-center prof-prof">Profile</h5>
 			 <div className="user" >
 			 	<img
 						src={user.image}
@@ -44,16 +47,16 @@ const Profile = () => {
 								<p><strong>Age :</strong> {user.age}</p>
 							</span>
 						</div>
-						<div className="other-info ml-2 mb-2 mt-2 ">
+						
+						<div className="other-info-buttons ml-2 mb-2 mt-3 ">
 							<Link className="link-unstyled" to={"/edit/profile"}>
-								<button type="button" className="btn btn-outline-secondary">Edit</button>
+								<img src={edit} alt="edit" width={50} onClick={() => handleDelete(user.id)}/>
+								
 							</Link>
-								<button className="btn btn-outline-dark" onClick={() => logout(user.id)}>Logout</button>
-								<button 
-								type="button"
-								className="btn btn-outline-danger"
-								onClick={() => handleDelete(user.id)}
-								>Delete</button>
+								<img src={logou} alt="logou" width={50} onClick={() => logout(user.id)}/>
+								
+								<img src={trash} alt="trash" width={50} onClick={() => handleDelete(user.id)}/>
+								
 						</div>				
 				</div>	
 		</div>

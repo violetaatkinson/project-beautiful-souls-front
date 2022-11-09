@@ -67,7 +67,7 @@ const MessageCreated = () => {
 				<form onSubmit={onSubmit}>
 					<div className="Chat-send-box">
 						<input
-							className="form-control"
+							className="form-control mb-2 mt-1 chat-form"
 							value={text}
 							onChange={handleOnChange}
 							name="msg"
@@ -75,7 +75,7 @@ const MessageCreated = () => {
 							id="msg"
 							placeholder="Your Message"
 						/>
-						<button type="submit" className="btn btn-dark">
+						<button type="submit" className="btn btn-primary mt-1 mb-2">
 							Send
 						</button>
 					</div>

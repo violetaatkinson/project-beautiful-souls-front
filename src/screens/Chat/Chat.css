@@ -34,6 +34,7 @@
 
 .Chat-message-body {
     flex-grow: 1;
+    margin-left:10px;
 }
 
 .Chat-message-avatar img {
@@ -51,5 +52,10 @@
 }
 
 .Chat-message-body p {
-    color:rgb(102 86 86)
+    color:rgb(102 86 86);
+    margin-left:3px;
+}
+
+.chat-form {
+    height: 50px;
 }

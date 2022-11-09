@@ -44,13 +44,13 @@ const ListUsers = () => {
 
             <section>
                 <hr></hr>
-                <h4 className="mt-1">New Matches</h4>
+                <h4 className="mt-1 new-matches">New Matches</h4>
                 <div className="container">
                     <div className="row">
                         {likes.map((like) => {
                             return(
-                                <div key={like._id} className="col-12 col-md-6 col-lg-4 like">
-                                    <img src={like.image} alt={like.name} width={110} height={145} className="mt-3"/>
+                                <div key={like._id} className="col-4 like">
+                                    <img src={like.image} alt={like.name} width={110} height={145} className="mt-3 matches-img"/>
                                     <Link className="link-unstyled like-name" to={`/adoptions/${like._id}`}>
                                         <h5>{like.name}</h5>
                                         <img src={superlike} alt="like" className="dislke-pet" width={30} onClick={() => handleLike(like._id)}/>
@@ -64,7 +64,7 @@ const ListUsers = () => {
 
             <section>
                 <hr></hr>
-                <h4 className="mt-1">Messages</h4>
+                <h4 className="mt-1 new-matches">Messages</h4>
                     {users.map((user) => {
                         return (
                             <Link key={user.id} to={`/chat/${user.id}`} className="link-unstyled">

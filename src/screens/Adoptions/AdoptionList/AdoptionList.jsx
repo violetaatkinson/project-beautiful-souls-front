@@ -91,10 +91,10 @@ function AdoptionList() {
 					</div>
 				) : (
 					<div className="not-found">
-						<h4 className="mt-5">No adoptions were found</h4>
-						<img src={corgi} alt="dog" width={200} className="mt-3 mb-5" />
+						<h5 className="mt-5 text-center text-secondary">Adoptions not found</h5>
+							<span class="loadr"></span>
 						{currentPetId === 1 && (
-							<button className="btn btn-success btn-sm" onClick={handleGoBack}>
+							<button className="btn btn-primary btn-md mt-4" onClick={handleGoBack}>
 								Return to last
 							</button>
 						)}

@@ -17,7 +17,7 @@ function Search() {
 					<div className="search-info text-center">
 						<h3>Edit your profile</h3>
 						<Link className="link-unstyled" to={"/edit/profile"}>
-							<button className="btn btn-secondary mt-3">
+							<button className="btn btn-primary mt-3">
 								Fill Information
 							</button>
 						</Link>
@@ -28,7 +28,7 @@ function Search() {
 					<div className="search-info text-center">
 						<h3>Find your partner</h3>
 						<Link className="link-unstyled" to={"/adoptions"}>
-							<button className="btn btn-secondary mt-3">
+							<button className="btn btn-primary mt-3">
 								Find Pets
 							</button>
 						</Link>
@@ -39,7 +39,7 @@ function Search() {
 					<div className="search-info text-center">
 						<h3>Find them a home</h3>
 						<Link className="link-unstyled" to={"/adoptions/create"}>
-							<button className="btn btn-secondary mt-3">
+							<button className="btn btn-primary mt-3">
 								Create Adoption
 							</button>
 						</Link>
@@ -50,7 +50,7 @@ function Search() {
 					<div className="search-info text-center">
 						<h3>Share Your Story</h3>
 						<Link className="link-unstyled" to={"/adopted/create"}>
-							<button className="btn btn-secondary mt-3">
+							<button className="btn btn-primary mt-3">
 								Upload Picture
 							</button>
 						</Link>
@@ -61,7 +61,7 @@ function Search() {
 					<div className="search-info text-center">
 						<h3>They Found Their Home</h3>
 						<Link className="link-unstyled" to={"/adopted"}>
-							<button className="btn btn-secondary mt-3">
+							<button className="btn btn-primary mt-3">
 								
 								Already Adopted
 							</button>

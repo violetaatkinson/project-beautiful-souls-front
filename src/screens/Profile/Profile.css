@@ -25,6 +25,22 @@
     gap:6%
 }
 
+.other-info-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:20%;
+    margin-top:10px
+}
+
+.other-info-buttons  img{
+    background-color: #f1f1f1;
+    padding: 10px;
+    margin-left: 10px;
+}
+
+
+
 .logout button{
     letter-spacing: 2px;
 }
@@ -42,4 +58,8 @@
     border-radius: 50%;
     position: relative;
     flex-shrink: 0;
+}
+
+.prof-prof {
+    margin-top: -20px;
 }
