@@ -63,10 +63,10 @@ const DoAdoption = ({ edit }) => {
 					src={backArrow}
 					alt="back"
 					width={20}
-					className="mt-4 search-arrow"
+					className="mt-5 search-arrow"
 				/>
 			</Link>
-			<h1 className="text-center mb-4">Create adoption</h1>
+			<h1 className="text-center mb-4 create-tt">Create adoption</h1>
 			<div className="Create">
 				<form onSubmit={onSubmit} className=" mt-3">
 					<div>

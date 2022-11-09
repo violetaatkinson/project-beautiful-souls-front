@@ -42,10 +42,10 @@ const Adopted = () => {
 	return (
 		<div>
         <Link className="link-unstyled" to={"/search"}>
-			<img src={backArrow} alt="back" width={20} className="mt-4 search-arrow " />
+			<img src={backArrow} alt="back" width={20} className="mt-5 search-arrow " />
 		</Link>
         <div className='new-adopted'>
-		 	<h1 className="text-center mt-3">Already Adopted</h1>
+		 	<h1 className="text-center alreday-tt">Already Adopted</h1>
                 <form onSubmit={onSubmit} className=" mt-3 ">
                     <div className=" input-group mb-3 mt-4">
                         <input

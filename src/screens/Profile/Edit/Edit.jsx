@@ -4,6 +4,7 @@ import { useAuthContext } from "../../../contexts/AuthContext";
 import { updateUser, getCurrentUser } from "../../../services/UserService";
 import backArrow from "../../../assets/go-back.png";
 import { Link } from "react-router-dom";
+import './Edit.css'
 
 const Edit = ({ edit }) => {
 	const { user, getUser } = useAuthContext();
@@ -60,9 +61,9 @@ const Edit = ({ edit }) => {
 	return (
 		<div>
 			<Link className="link-unstyled" to={"/search"}>
-				<img src={backArrow} alt="back" width={20} className="mt-4 search-arrow" />
+				<img src={backArrow} alt="back" width={20} className="mt-5 search-arrow" />
 			</Link>
-			<h1 className="text-center mb-4">Edit Your Profile</h1>
+			<h1 className="text-center mb-2 edit-tt">Edit Your Profile</h1>
 			<div className="Create">
 				<form onSubmit={onSubmit} className=" mt-3  g-3">
 					<div className="row align-items-center">
@@ -126,7 +127,7 @@ const Edit = ({ edit }) => {
 						</div>
 					</div>
 					<div className="row d-flex justify-content-around  ">
-						<div className="col-md-5 mt-2">
+						<div className="col-3 mt-2">
 							<label className="form-label" htmlFor="gender">
 								Gender
 							</label>
@@ -140,7 +141,7 @@ const Edit = ({ edit }) => {
 								placeholder="Gender"
 							/>
 						</div>
-						<div className="col-md-2 mt-2 ">
+						<div className="col-3 mt-2 ">
 							<label className="form-label" htmlFor="age">
 								Age
 							</label>
@@ -154,7 +155,7 @@ const Edit = ({ edit }) => {
 								placeholder="Age"
 							/>
 						</div>
-						<div className="col-md-5 mt-2">
+						<div className="col-5 mt-2">
 							<label className="form-label" htmlFor="phonenumber">
 								Phone Number
 							</label>
