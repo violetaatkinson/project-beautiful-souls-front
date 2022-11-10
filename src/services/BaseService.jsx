@@ -3,7 +3,7 @@ import { getAccessToken, logout } from "../token/AccessToken";
 
 const createHttp = (useAccessToken = false) => {
   const http = axios.create({
-    baseURL: "http://localhost:3001/api",
+    baseURL: process.env.REACT_APP_API_URL || "http://localhost:3001/api",
   });
 
   // interceptors response / request

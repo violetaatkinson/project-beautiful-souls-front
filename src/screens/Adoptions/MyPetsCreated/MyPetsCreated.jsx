@@ -10,13 +10,13 @@ import { NavbarLayout } from "../../../layout/NavbarLayout";
 import './MyPetsCreated.css'
 
 
-const LikedPets = () => {
+const CreatedPets = () => {
     const [myPets, setMyPets] = useState([]);
     
 
    
     useEffect(() => {
-		getAllMyAdoptions()
+    getAllMyAdoptions()
       .then((res) => {
 			setMyPets(res);
 		});
@@ -64,6 +64,6 @@ const LikedPets = () => {
 	);
 };
 
-export default LikedPets;
+export default CreatedPets;
 
 

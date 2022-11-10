@@ -64,7 +64,7 @@ function App() {
               </ProtectedRoute>
             
             } />
-            <Route path="/likedpets" element={
+            <Route path="/myadoptions" element={
               <ProtectedRoute>
                  <MyPetsCreated/>
               </ProtectedRoute>
@@ -97,11 +97,8 @@ export default App;
 
 
 
-// cuando este en el chat aparezca el icono del chat en color no en gris y una linea de conversacion
-// se podria poner el la pag de usuarios la linea de solo el primer mesaje debajo del nombre del user?
-// que solo aparezca el owner de ese pet likeado 
-// el input para agregar cosas
-// que el search funcione y filre x ese pet y el owner de ese pet
-// en new matches que tenga una barra q vaya como un carrousel
+// cuando este en el chat aparezca el icono del chat en color no en gris 
+
+
 // query q solo se vea el en el cel
 // desplearlo en cel

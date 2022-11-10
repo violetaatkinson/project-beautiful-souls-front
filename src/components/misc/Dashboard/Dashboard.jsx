@@ -18,7 +18,7 @@ function Dashboard () {
             <NavLink className="link-unstyled" to={"/adoptions"}>
                 <img src={logo} alt="logo" width={53} height={53} />
             </NavLink>
-            <NavLink className="link-unstyled" to={"/likedpets"}>
+            <NavLink className="link-unstyled" to={"/myadoptions"}>
                 {
                     ({ isActive }) => (
                             <img src={isActive ? starC : star} alt="star" width={45}/>

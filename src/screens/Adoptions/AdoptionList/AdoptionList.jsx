@@ -14,18 +14,10 @@ import list from "./AdoptionList.css";
 function AdoptionList() {
 	const [pets, setPets] = useState([]);
 	const [currentPetId, setCurrentPetId] = useState(0);
-    const [adoptionsCount, setAdoptionsCount] = useState();
+    
 
 	const currentPet = pets?.[currentPetId];
     
-
-    useEffect(() => {
-        getAdoptionsCount()
-            .then((count) => setAdoptionsCount(count))
-    }, [])
-
-    console.log(adoptionsCount)
-
 
 	useEffect(() => {
 		getAdoptions().then((adoptions) => {
