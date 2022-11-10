@@ -50,7 +50,7 @@ const Profile = () => {
 						
 						<div className="other-info-buttons ml-2 mb-2 mt-3 ">
 							<Link className="link-unstyled" to={"/edit/profile"}>
-								<img src={edit} alt="edit" width={50} onClick={() => handleDelete(user.id)}/>
+								<img src={edit} alt="edit" width={50}/>
 								
 							</Link>
 								<img src={logou} alt="logou" width={50} onClick={() => logout(user.id)}/>
