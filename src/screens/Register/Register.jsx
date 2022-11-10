@@ -63,7 +63,7 @@ const INITIAL_VALUES = {
                         <div className="Register-form-group">
                             <Input className="Register-form-group-1"
                               
-                              placeholder="Your name"
+                              placeholder="Your Username"
                               name="userName"
                               id="userName"
                               value={values.userName}

@@ -97,10 +97,11 @@ export default App;
 
 
 
-// cuando voy a subir una foto en los adoptados no me deja y antes si podia
 // cuando este en el chat aparezca el icono del chat en color no en gris y una linea de conversacion
 // se podria poner el la pag de usuarios la linea de solo el primer mesaje debajo del nombre del user?
 // que solo aparezca el owner de ese pet likeado 
 // el input para agregar cosas
 // que el search funcione y filre x ese pet y el owner de ese pet
 // en new matches que tenga una barra q vaya como un carrousel
+// query q solo se vea el en el cel
+// desplearlo en cel

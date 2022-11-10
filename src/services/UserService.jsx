@@ -18,7 +18,7 @@ authenticatedHttp.put(`/users/${id}`, body, {
     }}).then((res) => res);
 
 export const deleteUser = (id) =>
-authenticatedHttp.delete(`/users/${id}`).then((res) => res);
+authenticatedHttp.delete(`/users/${id}/delete`).then((res) => res);
 
 export const getLikes = () => authenticatedHttp.get('/like')
 

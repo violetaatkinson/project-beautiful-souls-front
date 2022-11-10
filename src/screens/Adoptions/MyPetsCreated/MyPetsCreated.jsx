@@ -56,7 +56,7 @@ const LikedPets = () => {
                     </div>
                     
                     :<div className="created-buttons">
-                        <span class="loader mt-5"></span>
+                        <span className="loader mt-5"></span>
                     </div>
                 } 
 	    </div>
