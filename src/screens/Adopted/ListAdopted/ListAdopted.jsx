@@ -32,7 +32,7 @@ function AdoptedList() {
                 <div className="row mt-4">
                     {pets.map((pet) => {
                             return (
-                                <div key={pet._id} className="col-12 col-md-6 col-lg-4 m-3" style={{ width: '21rem' }} >
+                                <div key={pet._id} className="col-12 col-md-6 col-lg-4 m-3" style={{ width: '22rem' }} >
                                     <div className='card  p-3 mb-5 bg-body rounded adopted-card' >
                                         <img src={pet.image} className="card-img-top adoption-img" alt="petImage" />
                                         <div className="card-body info-adopted text-center">

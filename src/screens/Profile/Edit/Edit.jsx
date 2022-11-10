@@ -68,16 +68,16 @@ const Edit = ({ edit }) => {
 				<form onSubmit={onSubmit} className=" mt-3  g-3">
 					<div className="row align-items-center">
 						<div className="col-md-6">
-							<label className="form-label" htmlFor="username">
+							<label className="form-label" htmlFor="userName">
 								User Name
 							</label>
 							<input
 								className="form-control"
 								value={userState.userName}
 								onChange={handleOnChange}
-								name="username"
+								name="userName"
 								type="text"
-								id="username"
+								id="userName"
 								placeholder="user name"
 							/>
 						</div>

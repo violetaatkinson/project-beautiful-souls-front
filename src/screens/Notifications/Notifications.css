@@ -1,0 +1,16 @@
+.notification-img {
+    width: 45px;
+    height: 50px;
+    overflow: hidden;
+    border-radius: 50%;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.notification {
+    display: flex;
+    margin-left: 20px;
+    flex-direction: row;
+    gap:3%
+    
+}

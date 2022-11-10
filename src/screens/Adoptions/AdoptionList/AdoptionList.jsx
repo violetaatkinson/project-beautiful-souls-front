@@ -5,7 +5,7 @@ import like from '../../../assets/like.png'
 import dislike from '../../../assets/dislike.png'
 import back from '../../../assets/back.png'
 
-import corgi from "../../../assets/corgi.png";
+
 import { NavbarLayout } from "../../../layout/NavbarLayout";
 
 // eslint-disable-next-line

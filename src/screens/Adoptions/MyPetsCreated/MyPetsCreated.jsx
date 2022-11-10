@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { getAllMyAdoptions, deleteAdoption } from "../../../services/AdoptionService";
 import trash from '../../../assets/basura.png'
 import edit from '../../../assets/editar.png'
-import corgiPresent from '../../../assets/corgi-present.png'
+
 import { NavbarLayout } from "../../../layout/NavbarLayout";
 
 // eslint-disable-next-line 
