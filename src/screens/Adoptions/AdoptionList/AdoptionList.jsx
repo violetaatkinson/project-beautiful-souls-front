@@ -1,4 +1,4 @@
-import {dislikeAdoptions, getAdoptions, getAdoptionsCount, likeAdoptions} from "../../../services/AdoptionService";
+import {dislikeAdoptions, getAdoptions, likeAdoptions} from "../../../services/AdoptionService";
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import like from '../../../assets/like.png'
@@ -84,7 +84,7 @@ function AdoptionList() {
 				) : (
 					<div className="not-found">
 						<h5 className="mt-5 text-center text-secondary">Adoptions not found</h5>
-							<span class="loadr"></span>
+							<span className="loadr"></span>
 						{currentPetId === 1 && (
 							<button className="btn btn-primary btn-md mt-4" onClick={handleGoBack}>
 								Return to last

@@ -56,7 +56,7 @@ const CreatedPets = () => {
                     </div>
                     
                     :<div className="created-buttons">
-                        <span className="loader mt-5"></span>
+                        <p className="text-center text-secondary mt-3"> No adoptions were created</p>
                     </div>
                 } 
 	    </div>

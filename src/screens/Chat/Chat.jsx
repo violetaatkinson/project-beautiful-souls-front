@@ -10,6 +10,7 @@ import "./Chat.css";
 const MessageCreated = () => {
 	const { id } = useParams();
 	const [messages, setMessages] = useState([]);
+	
 
 	const [text, setText] = useState("");
 
@@ -48,7 +49,7 @@ const MessageCreated = () => {
 						return (
 							<div
 								className={`Chat-message ${userIsSender ? "own-sender" : ""}`}
-								key={message.id}
+								key={message._id}
 							>
 								<div className="Chat-message-avatar">
 									<img

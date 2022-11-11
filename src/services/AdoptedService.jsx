@@ -7,4 +7,3 @@ export const createAdopted = (body) => authenticatedHttp.post("/adopted/create",
 
 export const getAdopted = () => unauthenticatedHttp.get("/adopted").then((res) => res);
 
-export const getAdoptedCount = () => authenticatedHttp.get("/countadopted").then((res) => res);

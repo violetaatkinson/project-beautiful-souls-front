@@ -56,25 +56,25 @@
     margin-bottom: 25px;
 }
 
-.load {
-    width: 48px;
-    height: 48px;
-    border: 5px solid #eae1e1;
-    border-bottom-color: #2F80ED;
-    border-radius: 50%;
-    display: inline-block;
-    box-sizing: border-box;
-    animation: rotation 1s linear infinite;
-    margin-left: 50px;
-    }
+.no-matches {
+    margin-left: 25px;
+}
 
-    @keyframes rotation {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
-    } 
+.container-likes {
+    display: flex;
+    overflow-x: scroll;
+    width: 100%;
+    margin-left: 20px;
+  
+}
 
-   
+.container-card {
+    flex-shrink: 0;
+    width: 120px;
+    height: 200px;
+    border-radius: 10px;
+    margin-left: 10px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}

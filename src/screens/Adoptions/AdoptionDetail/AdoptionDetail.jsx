@@ -38,7 +38,7 @@ function AdoptionDetail() {
                             <p>{pet.years} Years</p>
                             <p>{pet.size}</p>
                         </div>
-                        <h3 className="text-center mt-3 mb-3 text-capitalize">{pet.description}</h3>
+                        <h3 className="text-center mt-3 mb-3">{pet.description}</h3>
                         <span className="detail-back mt-3">
                            <Link className="link-unstyled" to={"/adoptions"}>
                                 <img src={back} alt="back" width={60}/>

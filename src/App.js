@@ -78,7 +78,7 @@ function App() {
          }/>
             <Route path="/search" element={<Search/>}/>
            <Route path="/adopted" element={<ListAdopted/>}/>
-           <Route path="/chat/:id" element={<Chat/>}/>
+           <Route path="users/chat/:id" element={<Chat/>}/>
            <Route path="/users" element={<ListUsers/>}/>
            <Route path='/adoptions' element={<AdoptionList/>}/>
            <Route path='/adoptions/:id' element={<AdoptionDetail/>}/>
@@ -96,8 +96,6 @@ export default App;
 
 
 
-
-// cuando este en el chat aparezca el icono del chat en color no en gris 
 
 
 // query q solo se vea el en el cel

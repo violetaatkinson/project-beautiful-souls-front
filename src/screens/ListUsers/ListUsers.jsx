@@ -31,13 +31,7 @@ const ListUsers = () => {
         setLikesFiltered(likesFiltered)
     }
 
-    const handleOnChange = (event) => {
-		const {  name , value  } = event.target;
-        setSearchField({[name]: value })
-
-	};
-
-   
+ 
 
     useEffect(() => {
 		getUsers().then((users) => {
@@ -62,11 +56,11 @@ const ListUsers = () => {
                 <h4 className="mt-1  new-matches">New Matches</h4>
                     { likes.length > 0  ?
                     
-                    <div className="container">
-                        <div className="row">
+                    <div className="container-likes">
+                       
                             {likes.map((like) => {
                                 return(
-                                    <div key={like._id} className="col-4 like">
+                                    <div key={like._id} className="container-card">
                                         <img src={like.image} alt={like.name} width={110} height={145} className="mt-3 matches-img"/>
                                         <Link className="link-unstyled like-name" to={`/adoptions/${like._id}`}>
                                             <h5>{like.name}</h5>
@@ -75,11 +69,11 @@ const ListUsers = () => {
                                     </div>
                                 )
                             })}
-                        </div>
+                        
                     </div>
                     
                     : <div>
-                        <span className="load"></span>
+                        <p className="text-secondary no-matches mt-4 ">No matches yet ....</p>
                       </div>
                     }
             </section>
@@ -89,7 +83,7 @@ const ListUsers = () => {
                 <h4 className="mt-1 new-matches">Messages</h4>
                     {users.map((user) => {
                         return (
-                            <Link key={user.id} to={`/chat/${user.id}`} className="link-unstyled">
+                            <Link key={user.id} to={`/users/chat/${user.id}`} className="link-unstyled">
                                 <div className="mt-3 chat-user">
                                     <span className="users-list">
                                         <img src={user.image} alt={user.name} className="rounded-circle border mt-2 mb-3" width="70" height="70"/>
@@ -107,3 +101,5 @@ const ListUsers = () => {
 }
 
 export default ListUsers
+
+
