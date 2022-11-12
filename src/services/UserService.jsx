@@ -23,3 +23,4 @@ authenticatedHttp.delete(`/users/${id}/delete`).then((res) => res);
 export const getLikes = () => authenticatedHttp.get('/like')
 
 export const getUsers = () => authenticatedHttp.get('/users')
+export const getUsersLiked = () => authenticatedHttp.get('/users/liked')

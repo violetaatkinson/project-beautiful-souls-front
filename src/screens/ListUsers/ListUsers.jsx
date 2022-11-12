@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { NavbarLayout } from "../../layout/NavbarLayout";
-import { getUsers,  getLikes  } from "../../services/UserService";
+import { getUsers,  getLikes, getUsersLiked  } from "../../services/UserService";
 import { likeAdoptions } from "../../services/AdoptionService";
 import superlike from '../../assets/extralike.png'
 
@@ -12,6 +12,7 @@ const ListUsers = () => {
     const [searchField, setSearchField] = useState("");
     const [likesFiltered, setLikesFiltered] = useState("");
 
+  
     useEffect(() => {
 		getLikes()
       .then((dbLikes) =>
@@ -22,21 +23,22 @@ const ListUsers = () => {
 		likeAdoptions(id).then((res) => {
 			const likedPet = likes.filter((pet) => pet._id !== id);
 			setLikes(likedPet);
-			// hacer un setPets, pero quitandome la pet que tiene este id
+            // hacer un setPets, pero quitandome la pet que tiene este id
 		});
 	};
 
+    // filtrar solo los usuarios con los que haya hecho match de su pet
+
+    // search del pet.name y que tambien me devuelva el owner de ese pet
     const search = () => {
         const likesFiltered = likes.filter((like) => like.name.toLowerCase().startsWith(searchField.toLowerCase()))
         setLikesFiltered(likesFiltered)
     }
 
  
-
     useEffect(() => {
-		getUsers().then((users) => {
+		getUsersLiked().then((users) => {
 			setUsers(users);
-            console.log(users)
 		});
 	}, []);
 
@@ -101,5 +103,6 @@ const ListUsers = () => {
 }
 
 export default ListUsers
+
 
 
