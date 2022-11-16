@@ -6,12 +6,21 @@ import { likeAdoptions } from "../../services/AdoptionService";
 import superlike from '../../assets/extralike.png'
 
 import './ListUsers.css'
+import { listMessages } from "../../services/MessageService";
 const ListUsers = () => {
     const [likes, setLikes] = useState([]);
     const [users, setUsers] = useState([]);
     const [searchField, setSearchField] = useState("");
     const [likesFiltered, setLikesFiltered] = useState("");
+    const [chats, setChats] = useState([])
 
+    useEffect(() => {
+        listMessages()
+            .then(chats => {
+                console.log(chats)
+                setChats(chats)
+            })
+    })
   
     useEffect(() => {
 		getLikes()
@@ -82,7 +91,7 @@ const ListUsers = () => {
 
             <section>
                 <hr></hr>
-                <h4 className="mt-1 new-matches">Messages</h4>
+                <h4 className="mt-1 new-matches">User matches</h4>
                     {users.map((user) => {
                         return (
                             <Link key={user.id} to={`/users/chat/${user.id}`} className="link-unstyled">
@@ -97,6 +106,24 @@ const ListUsers = () => {
                             </Link>
                         )
                     })}
+
+                    <h4 className="mt-1 new-matches">Messages</h4>
+
+                    {chats.map((user) => {
+                        return (
+                            <Link key={user.id} to={`/users/chat/${user.id}`} className="link-unstyled">
+                                <div className="mt-3 chat-user">
+                                    <span className="users-list">
+                                        <img src={user.image} alt={user.name} className="rounded-circle border mt-2 mb-3" width="70" height="70"/>
+                                        <h6>{user.userName}</h6>
+                                    </span>
+                                        <p className="text-secondary chat-w">Chat with me ...</p>
+                                    <hr></hr>
+                                </div>
+                            </Link>
+                        )
+                    })}
+
             </section>
         </NavbarLayout>
     )
