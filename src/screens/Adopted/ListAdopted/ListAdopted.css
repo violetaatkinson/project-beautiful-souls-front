@@ -2,6 +2,7 @@
     border-radius: 5px;
     height: 310px;
     width: 100%;
+    object-fit: cover;
 }
 
 .info-adopted h5 {
