@@ -90,7 +90,8 @@ const ListUsers = () => {
 
 
             <section>
-                <h4>Start a conversation</h4>
+                <hr></hr>
+                <h4 className="new-matches">Start a conversation</h4>
                 {users.length > 0  ?
                     <div className="container-user-matches">  
                         {users.map((user) => {
