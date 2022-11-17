@@ -36,7 +36,15 @@
 
 .new-matches {
     margin-left: 20px;
+    font-weight: 400;
 }
+
+.better {
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+   
+
 
 .matches-img {
     border-radius: 5px;

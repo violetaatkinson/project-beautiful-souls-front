@@ -34,7 +34,7 @@ const CreatedPets = () => {
 	return (
     <NavbarLayout>
 	    <div>
-             <h2 className="text-center mt-3">Pets Created</h2>
+             <h2 className="text-center mt-3 pets-title">Pets Created</h2>
                 {myPets.length > 0  ?
                     <div className="container mt-4">
                         {myPets.map((myPet) => (

@@ -14,7 +14,7 @@ import dash from './Dashboard.css'
 
 function Dashboard () {
     return (
-        <div className='dashbord mt-auto '>
+        <div className='dashbord mt-auto bg-light '>
             <NavLink className="link-unstyled" to={"/adoptions"}>
                 <img src={logo} alt="logo" width={53} height={53} />
             </NavLink>

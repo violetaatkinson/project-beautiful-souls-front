@@ -70,10 +70,10 @@ const ListUsers = () => {
                        
                             {likes.map((like) => {
                                 return(
-                                    <div key={like._id} className="container-card">
+                                    <div key={like._id} className="container-card ">
                                         <img src={like.image} alt={like.name} width={110} height={145} className="mt-3 matches-img"/>
                                         <Link className="link-unstyled like-name" to={`/adoptions/${like._id}`}>
-                                            <h5>{like.name}</h5>
+                                            <h5 className="text-capitalize">{like.name}</h5>
                                             <img src={superlike} alt="like" className="dislke-pet" width={30} onClick={() => handleLike(like._id)}/>
                                         </Link>
                                     </div>
@@ -100,7 +100,7 @@ const ListUsers = () => {
                                     <div className="mt-3 container-card-matches ">
                                         <span className="container-match">
                                             <img src={user.image} alt={user.name} className="rounded-circle border mt-2 mb-3" width="70" height="70"/>
-                                            <p className="text-secondary">{user.userName}</p>
+                                            <p className="text-secondary better text-capitalize">{user.userName}</p>
                                         </span>
                                     </div>
                                 </Link>
@@ -108,7 +108,7 @@ const ListUsers = () => {
                         })}
                     </div>
                 :   <div className="text-secondary mt-2">
-                        <p>First create an adoption ...</p>
+                        <p className="new-matches">First create an adoption ...</p>
                     </div>
                 }
             </section>
@@ -124,9 +124,9 @@ const ListUsers = () => {
                                 <div className="mt-3 chat-user">
                                     <span className="users-list">
                                         <img src={user.image} alt={user.name} className="rounded-circle border mt-2 mb-3" width="70" height="70"/>
-                                        <h6>{user.userName}</h6>
+                                        <h6 className="text-capitalize">{user.userName}</h6>
                                     </span>
-                                        <p className="text-secondary chat-w">Chat with me ...</p>
+                                        <p className="text-secondary chat-w better">Chat with me ...</p>
                                     <hr></hr>
                                 </div>
                             </Link>

@@ -13,7 +13,7 @@ function Navbar () {
     const { user } = useContext(AuthContext);
 
     return (
-        <div className='navbar '>
+        <div className='navbar bg-light'>
             <Link className="link-unstyled" to={"/profile"}>
                 <img src={user.image} alt="user" className="rounded-circle m-2 user-img" width={60} height={60}/>
             </Link>

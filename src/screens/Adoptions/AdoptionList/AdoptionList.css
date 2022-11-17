@@ -63,6 +63,12 @@
     margin-left: 20px;
 }
 
+.not-found h5 {
+  letter-spacing: 1.5px;
+  margin-left: 25px;
+  font-weight: 400;
+}
+
 .loadr {
     width: 48px;
     height: 48px;
