@@ -83,5 +83,23 @@
     display: flex;
     overflow-x: scroll;
     width: 100%;
-    margin-left: 20px;
+   
+}
+
+.container-card-matches {
+    flex-shrink: 0;
+    width: 120px;
+    height: 150px;
+    border-radius: 10px;
+    margin-left: 10px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.container-match {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }

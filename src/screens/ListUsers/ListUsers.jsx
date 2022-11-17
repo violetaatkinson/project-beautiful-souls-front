@@ -63,7 +63,7 @@ const ListUsers = () => {
 
             <section>
                 <hr></hr>
-                <h4 className="mt-1  new-matches">New Matches</h4>
+                <h4 className="mt-1  new-matches">New matches</h4>
                     { likes.length > 0  ?
                     
                     <div className="container-likes">
@@ -90,13 +90,14 @@ const ListUsers = () => {
 
 
             <section>
+                <h4>Start a conversation</h4>
                 {users.length > 0  ?
                     <div className="container-user-matches">  
                         {users.map((user) => {
                             return (
                                 <Link key={user.id} to={`/users/chat/${user.id}`} className="link-unstyled">
-                                    <div className="mt-3 container-card ">
-                                        <span className="">
+                                    <div className="mt-3 container-card-matches ">
+                                        <span className="container-match">
                                             <img src={user.image} alt={user.name} className="rounded-circle border mt-2 mb-3" width="70" height="70"/>
                                             <p className="text-secondary">{user.userName}</p>
                                         </span>
@@ -114,7 +115,7 @@ const ListUsers = () => {
             <section>
             
                     <hr></hr>    
-                    <h4 className="mt-1 new-matches">Messages With Your Matches</h4>
+                    <h4 className="mt-1 new-matches">Messages</h4>
 
                     {chats.map((user) => {
                         return (
