@@ -94,7 +94,7 @@ const ListUsers = () => {
                         {users.map((user) => {
                             return (
                                 <Link key={user.id} to={`/users/chat/${user.id}`} className="link-unstyled">
-                                    <div className="mt-3 ">
+                                    <div className="mt-3 container-card ">
                                         <span className="">
                                             <img src={user.image} alt={user.name} className="rounded-circle border mt-2 mb-3" width="70" height="70"/>
                                             <p className="text-secondary">{user.userName}</p>
