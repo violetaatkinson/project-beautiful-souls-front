@@ -17,6 +17,7 @@ const ListUsers = () => {
     useEffect(() => {
         listMessages()
             .then(chats => {
+                console.log(chats);
                 setChats(chats)
             })
     })
@@ -87,6 +88,29 @@ const ListUsers = () => {
                     }
             </section>
 
+
+            <section>
+                {users.length > 0  ?
+                    <div className="container-user-matches">  
+                        {users.map((user) => {
+                            return (
+                                <Link key={user.id} to={`/users/chat/${user.id}`} className="link-unstyled">
+                                    <div className="mt-3 container-card ">
+                                        <span className="">
+                                            <img src={user.image} alt={user.name} className="rounded-circle border mt-2 mb-3" width="70" height="70"/>
+                                            <p className="text-secondary">{user.userName}</p>
+                                        </span>
+                                    </div>
+                                </Link>
+                            )
+                        })}
+                    </div>
+                :   <div className="text-secondary mt-2">
+                        <p>First create an adoption ...</p>
+                    </div>
+                }
+            </section>
+            
             <section>
             
                     <hr></hr>    
@@ -116,3 +140,22 @@ export default ListUsers
 
 
 
+{users.length > 0  ?
+    <div className="container-user-matches">  
+        {users.map((user) => {
+            return (
+                <Link key={user.id} to={`/users/chat/${user.id}`} className="link-unstyled">
+                    <div className="mt-3 container-card ">
+                        <span className="">
+                            <img src={user.image} alt={user.name} className="rounded-circle border mt-2 mb-3" width="70" height="70"/>
+                            <p className="text-secondary">{user.userName}</p>
+                        </span>
+                    </div>
+                </Link>
+            )
+        })}
+    </div>
+:   <div className="text-secondary mt-2">
+        <p>First create an adoption ...</p>
+    </div>
+    }
