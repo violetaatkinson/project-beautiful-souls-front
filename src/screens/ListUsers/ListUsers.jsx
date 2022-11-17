@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { NavbarLayout } from "../../layout/NavbarLayout";
-import { getUsers,  getLikes, getUsersLiked  } from "../../services/UserService";
+import {  getLikes, getUsersLiked  } from "../../services/UserService";
 import { likeAdoptions } from "../../services/AdoptionService";
 import superlike from '../../assets/extralike.png'
 
@@ -10,22 +10,21 @@ import { listMessages } from "../../services/MessageService";
 const ListUsers = () => {
     const [likes, setLikes] = useState([]);
     const [users, setUsers] = useState([]);
-    const [searchField, setSearchField] = useState("");
-    const [likesFiltered, setLikesFiltered] = useState("");
+    // const [searchField, setSearchField] = useState("");
+    // const [likesFiltered, setLikesFiltered] = useState("");
     const [chats, setChats] = useState([])
 
     useEffect(() => {
         listMessages()
             .then(chats => {
-                console.log(chats)
                 setChats(chats)
             })
     })
   
     useEffect(() => {
 		getLikes()
-      .then((dbLikes) =>
-       setLikes(dbLikes.filter((like) => like))); // Te quita los nulls y los undefined
+            .then((dbLikes) =>
+            setLikes(dbLikes.filter((like) => like))); // Te quita los nulls y los undefined
 	}, []);
 
     const handleLike = (id) => {
@@ -39,10 +38,10 @@ const ListUsers = () => {
     // filtrar solo los usuarios con los que haya hecho match de su pet
 
     // search del pet.name y que tambien me devuelva el owner de ese pet
-    const search = () => {
-        const likesFiltered = likes.filter((like) => like.name.toLowerCase().startsWith(searchField.toLowerCase()))
-        setLikesFiltered(likesFiltered)
-    }
+    // const search = () => {
+    //     const likesFiltered = likes.filter((like) => like.name.toLowerCase().startsWith(searchField.toLowerCase()))
+    //     setLikesFiltered(likesFiltered)
+    // }
 
  
     useEffect(() => {
@@ -55,10 +54,9 @@ const ListUsers = () => {
         <NavbarLayout>
 
             <section>
-                <hr></hr>
-                <form className="d-flex list-user">
-                    <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-                    <button className="btn btn-dark" onClick={search}>Search</button>
+                
+                <form className="d-flex list-user mt-2">
+                    <input className="form-control me-2 bg-light" type="search" placeholder="Search" aria-label="Search"/>    
                 </form>
             </section>
 
@@ -91,21 +89,21 @@ const ListUsers = () => {
 
             <section>
                 <hr></hr>
-                <h4 className="mt-1 new-matches">User matches</h4>
-                    {users.map((user) => {
-                        return (
-                            <Link key={user.id} to={`/users/chat/${user.id}`} className="link-unstyled">
-                                <div className="mt-3 chat-user">
-                                    <span className="users-list">
-                                        <img src={user.image} alt={user.name} className="rounded-circle border mt-2 mb-3" width="70" height="70"/>
-                                        <h6>{user.userName}</h6>
-                                    </span>
-                                        <p className="text-secondary chat-w">Chat with me ...</p>
-                                    <hr></hr>
-                                </div>
-                            </Link>
-                        )
-                    })}
+                <h4 className="mt-1 new-matches">User Matches</h4>
+                    <div className="container-user-matches">  
+                        {users.map((user) => {
+                            return (
+                                <Link key={user.id} to={`/users/chat/${user.id}`} className="link-unstyled">
+                                    <div className="mt-3 ">
+                                        <span className="">
+                                            <img src={user.image} alt={user.name} className="rounded-circle border mt-2 mb-3" width="70" height="70"/>
+                                            <p className="text-secondary">{user.userName}</p>
+                                        </span>
+                                    </div>
+                                </Link>
+                            )
+                        })}
+                    </div>
 
                     <h4 className="mt-1 new-matches">Messages</h4>
 
