@@ -88,29 +88,9 @@ const ListUsers = () => {
             </section>
 
             <section>
-                <hr></hr>
-                <h4 className="mt-1 new-matches">User Matches</h4>
-                    {users.length > 0  ?
-                        <div className="container-user-matches">  
-                            {users.map((user) => {
-                                return (
-                                    <Link key={user.id} to={`/users/chat/${user.id}`} className="link-unstyled">
-                                        <div className="mt-3 container-card ">
-                                            <span className="">
-                                                <img src={user.image} alt={user.name} className="rounded-circle border mt-2 mb-3" width="70" height="70"/>
-                                                <p className="text-secondary">{user.userName}</p>
-                                            </span>
-                                        </div>
-                                    </Link>
-                                )
-                            })}
-                        </div>
-                    :   <div className="text-secondary mt-2">
-                            <p>First create an adoption ...</p>
-                        </div>
-                        }
+            
                     <hr></hr>    
-                    <h4 className="mt-1 new-matches">Messages</h4>
+                    <h4 className="mt-1 new-matches">Messages With Your Matches</h4>
 
                     {chats.map((user) => {
                         return (
