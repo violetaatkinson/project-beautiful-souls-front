@@ -4,9 +4,7 @@ import { createUser } from '../../services/UserService';
 import Input from '../../components/misc/Input/Input'
 import RegisterSchema from './RegisterSchema'
 import Cat from "../../assets/cat.png";
-
-
-import register from "./Register.css";
+import './Register.css';
 
 
 const INITIAL_VALUES = {

@@ -1,7 +1,7 @@
 import { getAdopted } from '../../../services/AdoptedService'
 import { NavbarLayout } from '../../../layout/NavbarLayout';
 import React, { useState, useEffect } from "react";
-import css from './ListAdopted.css'
+import './ListAdopted.css'
 
 
 function AdoptedList() {
@@ -47,6 +47,3 @@ function AdoptedList() {
 }
 
 export default AdoptedList
-
-
-

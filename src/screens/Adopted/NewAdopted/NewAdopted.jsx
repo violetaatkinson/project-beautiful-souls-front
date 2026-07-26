@@ -2,7 +2,7 @@ import { createAdopted  } from '../../../services/AdoptedService'
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom';
-import css from './NewAdopted.css'
+import './NewAdopted.css'
 import backArrow from "../../../assets/go-back.png";
 
 const Adopted = () => {
@@ -19,7 +19,7 @@ const Adopted = () => {
 		if (type === 'file') {
             setAdopted({ ...data, [name]: files[0] })
 		} else {
-            setAdopted({ ...data, [name]: value }) // C://djakldjalksjd
+            setAdopted({ ...data, [name]: value })
 		}
 
 	};
@@ -95,4 +95,3 @@ const Adopted = () => {
 }
 
 export default Adopted;
-

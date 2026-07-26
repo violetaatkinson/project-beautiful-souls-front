@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import useInterval from "use-interval";
 import { useParams } from "react-router-dom";
 import { createMessage, getMessages } from "../../services/MessageService";
-import { Link } from "react-router-dom";
 
 import { NavbarLayout } from "../../layout/NavbarLayout";
 import "./Chat.css";
