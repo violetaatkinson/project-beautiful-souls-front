@@ -26,6 +26,13 @@ code {
   flex-direction: column;
 }
 
+.page-content {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
 .desktop-block {
   display: none;
 }
