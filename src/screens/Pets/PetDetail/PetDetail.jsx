@@ -19,7 +19,7 @@ import { useGeolocation } from "../../../hooks/useGeolocation";
 import { getPetBadges, formatPetAge } from "../../../utils/petBadges";
 import "./PetDetail.css";
 
-const COMPAT_LABEL = { yes: "Sí", no: "No", unknown: "No especificado" };
+const COMPAT_LABEL = { yes: "Yes", no: "No", unknown: "Not specified" };
 
 function PetDetail() {
 	const [pet, setPet] = useState();
@@ -33,11 +33,12 @@ function PetDetail() {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [id]);
 
-	if (!pet) return <p className="text-center mt-5">Cargando...</p>;
+	if (!pet) return <p className="text-center mt-5">Loading...</p>;
 
 	const badges = getPetBadges(pet);
 	const age = formatPetAge(pet);
 	const isShelter = pet.owner?.accountType === "shelter";
+	const hasPhotos = pet.images?.length > 0;
 
 	const onGalleryScroll = (event) => {
 		const { scrollLeft, clientWidth } = event.target;
@@ -48,12 +49,16 @@ function PetDetail() {
 		<div className="pet-detail">
 			<div className="pet-carousel">
 				<div className="pet-carousel-track" onScroll={onGalleryScroll}>
-					{(pet.images?.length ? pet.images : [null]).map((url, i) => (
+					{(hasPhotos ? pet.images : [null]).map((url, i) => (
 						<div
 							key={i}
 							className="pet-carousel-slide"
-							style={{ backgroundImage: url ? `url(${url})` : undefined }}
-						/>
+							style={url ? { backgroundImage: `url(${url})` } : undefined}
+						>
+							{!url && (
+								<PawPrint size={64} className="carousel-fallback-icon" />
+							)}
+						</div>
 					))}
 				</div>
 
@@ -71,7 +76,7 @@ function PetDetail() {
 				<button
 					className="pet-back-btn"
 					onClick={() => navigate(-1)}
-					aria-label="Volver"
+					aria-label="Back"
 				>
 					<ArrowLeft size={20} />
 				</button>
@@ -102,7 +107,7 @@ function PetDetail() {
 					<p className="pet-location-line">
 						<MapPin size={16} />
 						{pet.distanceKm != null
-							? `A ${pet.distanceKm} km de vos`
+							? `${pet.distanceKm} km away`
 							: [pet.location?.city, pet.location?.province]
 									.filter(Boolean)
 									.join(", ")}
@@ -112,55 +117,52 @@ function PetDetail() {
 				<p className="pet-description">{pet.description}</p>
 
 				{pet.backstory && (
-					<Section icon={<PawPrint size={18} />} title="Su historia">
+					<Section icon={<PawPrint size={18} />} title="Their story">
 						<p>{pet.backstory}</p>
 					</Section>
 				)}
 
-				<Section icon={<Syringe size={18} />} title="Salud">
-					<Fact label="Vacunado" value={pet.health?.vaccinated} />
-					<Fact label="Castrado" value={pet.health?.sterilized} />
-					<Fact label="Desparasitado" value={pet.health?.dewormed} />
+				<Section icon={<Syringe size={18} />} title="Health">
+					<Fact label="Vaccinated" value={pet.health?.vaccinated} />
+					<Fact label="Spayed/Neutered" value={pet.health?.sterilized} />
+					<Fact label="Dewormed" value={pet.health?.dewormed} />
 					{pet.medicalNotes && <p className="fact-note">{pet.medicalNotes}</p>}
 				</Section>
 
-				<Section icon={<Home size={18} />} title="Convivencia">
-					<Fact label="Entrenado en casa" value={pet.houseTrained} />
+				<Section icon={<Home size={18} />} title="Living with others">
+					<Fact label="House trained" value={pet.houseTrained} />
 					<Fact
-						label="Con niños"
+						label="With kids"
 						value={COMPAT_LABEL[pet.compatibility?.withKids]}
 						raw
 					/>
 					<Fact
-						label="Con perros"
+						label="With dogs"
 						value={COMPAT_LABEL[pet.compatibility?.withDogs]}
 						raw
 					/>
 					<Fact
-						label="Con gatos"
+						label="With cats"
 						value={COMPAT_LABEL[pet.compatibility?.withCats]}
 						raw
 					/>
 				</Section>
 
 				{pet.energyLevel && (
-					<Section icon={<Zap size={18} />} title="Energía">
+					<Section icon={<Zap size={18} />} title="Energy level">
 						<p>{pet.energyLevel}</p>
 					</Section>
 				)}
 
 				{pet.weight && (
-					<Section icon={<Users size={18} />} title="Datos físicos">
-						<Fact label="Peso" value={`${pet.weight} kg`} raw />
+					<Section icon={<Users size={18} />} title="Physical details">
+						<Fact label="Weight" value={`${pet.weight} kg`} raw />
 						{pet.color && <Fact label="Color" value={pet.color} raw />}
 					</Section>
 				)}
 
 				{pet.adoptionRequirements?.length > 0 && (
-					<Section
-						icon={<PawPrint size={18} />}
-						title="Requisitos para adoptar"
-					>
+					<Section icon={<PawPrint size={18} />} title="Adoption requirements">
 						<ul>
 							{pet.adoptionRequirements.map((r) => (
 								<li key={r}>{r}</li>
@@ -169,13 +171,13 @@ function PetDetail() {
 					</Section>
 				)}
 
-				<Section icon={<Coins size={18} />} title="Fee de adopción">
-					<p>{pet.adoptionFee > 0 ? `$${pet.adoptionFee}` : "Sin cargo"}</p>
+				<Section icon={<Coins size={18} />} title="Adoption fee">
+					<p>{pet.adoptionFee > 0 ? `$${pet.adoptionFee}` : "Free"}</p>
 				</Section>
 
 				{pet.rescueDate && (
-					<Section icon={<Calendar size={18} />} title="Fecha de rescate">
-						<p>{new Date(pet.rescueDate).toLocaleDateString("es-AR")}</p>
+					<Section icon={<Calendar size={18} />} title="Rescue date">
+						<p>{new Date(pet.rescueDate).toLocaleDateString("en-US")}</p>
 					</Section>
 				)}
 
@@ -191,7 +193,7 @@ function PetDetail() {
 									)}
 								</p>
 								<p className="owner-type">
-									{isShelter ? "Refugio" : "Adoptante particular"}
+									{isShelter ? "Shelter" : "Individual owner"}
 								</p>
 							</div>
 						</div>
@@ -221,7 +223,7 @@ function PetDetail() {
 const Fact = ({ label, value, raw }) => (
 	<div className="fact-row">
 		<span>{label}</span>
-		<span>{raw ? value : value ? "Sí" : "No"}</span>
+		<span>{raw ? value : value ? "Yes" : "No"}</span>
 	</div>
 );
 

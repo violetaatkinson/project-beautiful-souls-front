@@ -1,187 +1,198 @@
 .pet-detail {
-    padding-bottom: 32px;
+  padding-bottom: 32px;
 }
 
 .pet-carousel {
-    position: relative;
-    height: 60vh;
+  position: relative;
+  height: 60vh;
 }
 
 .pet-carousel-track {
-    display: flex;
-    height: 100%;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: none;
+  display: flex;
+  height: 100%;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
 }
 
 .pet-carousel-track::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 
 .pet-carousel-slide {
-    flex: 0 0 100%;
-    scroll-snap-align: start;
-    background-size: cover;
-    background-position: center;
-    background-color: #eee;
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+  background-size: cover;
+  background-position: center;
+  background-color: #eee;
 }
 
 .pet-carousel-dots {
-    position: absolute;
-    top: 16px;
-    left: 0;
-    right: 0;
-    display: flex;
-    justify-content: center;
-    gap: 6px;
+  position: absolute;
+  top: 16px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 6px;
 }
 
 .pet-carousel-dots .dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.5);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
 }
 
 .pet-carousel-dots .dot.active {
-    background: #fff;
-    width: 18px;
-    border-radius: 4px;
-    transition: width 0.2s ease;
+  background: #fff;
+  width: 18px;
+  border-radius: 4px;
+  transition: width 0.2s ease;
 }
 
 .pet-back-btn {
-    position: absolute;
-    top: 16px;
-    left: 16px;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    border: none;
-    background: rgba(0, 0, 0, 0.4);
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .pet-carousel-overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 24px;
-    color: #fff;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.7) 100%);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 24px;
+  color: #fff;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.7) 100%);
 }
 
 .pet-body {
-    padding: 16px 20px 0;
+  padding: 16px 20px 0;
 }
 
 .pet-chips {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
 }
 
 .chip {
-    background: #f0f4ff;
-    color: #2f80ed;
-    border-radius: 999px;
-    padding: 4px 12px;
-    font-size: 0.75rem;
-    font-weight: 600;
+  background: #f0f4ff;
+  color: #2f80ed;
+  border-radius: 999px;
+  padding: 4px 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
 }
 
 .pet-location-line {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    color: #8a94a6;
-    font-size: 0.85rem;
-    margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #8a94a6;
+  font-size: 0.85rem;
+  margin-bottom: 12px;
 }
 
 .pet-description {
-    font-size: 0.95rem;
-    line-height: 1.5;
+  font-size: 0.95rem;
+  line-height: 1.5;
 }
 
 .pet-section {
-    margin-top: 20px;
-    padding-top: 16px;
-    border-top: 1px solid #f0f0f0;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid #f0f0f0;
 }
 
 .pet-section h5 {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 0.95rem;
-    margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+  margin-bottom: 8px;
 }
 
 .fact-row {
-    display: flex;
-    justify-content: space-between;
-    padding: 4px 0;
-    font-size: 0.9rem;
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 0;
+  font-size: 0.9rem;
 }
 
 .fact-note {
-    color: #8a94a6;
-    font-size: 0.85rem;
-    margin-top: 6px;
+  color: #8a94a6;
+  font-size: 0.85rem;
+  margin-top: 6px;
 }
 
 .owner-card {
-    margin-top: 24px;
-    padding: 16px;
-    border-radius: 20px;
-    background: #f7f9fc;
+  margin-top: 24px;
+  padding: 16px;
+  border-radius: 20px;
+  background: #f7f9fc;
 }
 
 .owner-card-header {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
 }
 
 .owner-card-header img {
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    object-fit: cover;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .owner-name {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    font-weight: 600;
-    margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 600;
+  margin: 0;
 }
 
 .verified-icon {
-    color: #2f80ed;
+  color: #2f80ed;
 }
 
 .owner-type {
-    margin: 0;
-    font-size: 0.8rem;
-    color: #8a94a6;
+  margin: 0;
+  font-size: 0.8rem;
+  color: #8a94a6;
 }
 
 .owner-contact-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 0;
+  color: #2f80ed;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.pet-carousel-slide {
     display: flex;
     align-items: center;
-    gap: 8px;
-    padding: 6px 0;
-    color: #2f80ed;
-    text-decoration: none;
-    font-size: 0.9rem;
+    justify-content: center;
+    color: rgba(47, 128, 237, 0.3);
+}
+
+.carousel-fallback-icon {
+    opacity: 0.5;
 }
