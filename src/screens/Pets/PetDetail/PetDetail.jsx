@@ -52,7 +52,7 @@ function PetDetail() {
                 {!showFallback && (
                   <img
                     src={url}
-                    alt={`${pet.name} photo ${i + 1}`}
+                    alt={`${pet.name} ${i + 1}`}
                     className="pet-carousel-img"
                     onError={() => markBroken(i)}
                   />
