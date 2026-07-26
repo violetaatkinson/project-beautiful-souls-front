@@ -3,58 +3,84 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: #56CCF2;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #2F80ED, #56CCF2);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to left, #2F80ED, #56CCF2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    height: 100vh;
-    color: white ;
-    letter-spacing: 1.5px;
+    gap: 14px;
+    background: linear-gradient(135deg, #2F80ED 0%, #56CCF2 100%);
+    min-height: 100vh;
+    padding: 24px;
+    box-sizing: border-box;
+    color: white;
+    letter-spacing: 0.4px;
+    text-align: center;
+}
+
+.home > img {
+    filter: drop-shadow(0 10px 16px rgba(0, 0, 0, 0.2));
+    animation: home-float 3.5s ease-in-out infinite;
+}
+
+@keyframes home-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
 }
 
 .home > h1 {
     font-family: 'Noto Serif Telugu', serif;
-    font-size: 38px;
-    letter-spacing: 1.5px;
+    font-size: 40px;
+    letter-spacing: 1px;
     font-weight: 300;
-    margin-top: 10px;
-
+    margin: 6px 0 0;
+    text-shadow: 0 4px 18px rgba(0, 0, 0, 0.15);
 }
 
 .home > p {
-    font-size: 14px;  
-    
+    font-size: 14px;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.85);
 }
 
 .home-p {
-    margin-top: -5px;
+    margin-top: 10px !important;
 }
 
 .home-pa {
-    margin-top: 10px;
+    margin-top: 18px !important;
 }
 
-.link {
-    color: white;
-    text-decoration: none;
-    border: 1.5px solid white;
-    padding: 10px 70px;
-    border-radius: 10px;
-    text-transform: uppercase;
-   
-    
-}
-
+.link,
 .link-1 {
     color: white;
     text-decoration: none;
-    border: 1.5px solid white;
-    padding: 10px 85px;
-    border-radius: 10px;
+    border: 1.5px solid rgba(255, 255, 255, 0.7);
+    padding: 12px 64px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
     text-transform: uppercase;
-    
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
 }
 
-.Login > img {
-    margin-top: -50px;
+.link:hover,
+.link-1:hover {
+    background-color: white;
+    color: #2F80ED;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
 }
 
+.link:active,
+.link-1:active {
+    transform: translateY(0);
+}
+
+@media (max-width: 420px) {
+    .link,
+    .link-1 {
+        padding: 12px 48px;
+        width: 200px;
+    }
+
+    .home > h1 {
+        font-size: 32px;
+    }
+}

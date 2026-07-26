@@ -6,7 +6,6 @@ import edit from '../../../assets/editar.png'
 
 import { NavbarLayout } from "../../../layout/NavbarLayout";
 
-// eslint-disable-next-line 
 import './MyPetsCreated.css'
 
 
@@ -65,5 +64,3 @@ const CreatedPets = () => {
 };
 
 export default CreatedPets;
-
-

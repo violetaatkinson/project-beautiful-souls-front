@@ -1,5 +1,4 @@
-// eslint-disable-next-line 
-import input from './Input.css'
+import './Input.css'
 
 function Input({
     type = "text", label, placeholder,

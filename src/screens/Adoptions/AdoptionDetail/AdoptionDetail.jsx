@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getAdoptionsDetail } from "../../../services/AdoptionService"
-// eslint-disable-next-line 
-import adoptionDetail from './AdoptionDetail.css'
+import './AdoptionDetail.css'
 import back from '../../../assets/back.png'
 
 import {Link} from "react-router-dom"
@@ -54,4 +53,3 @@ function AdoptionDetail() {
 }
 
 export default AdoptionDetail
-

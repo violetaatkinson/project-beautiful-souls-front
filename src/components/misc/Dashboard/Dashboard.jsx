@@ -7,8 +7,7 @@ import chat from '../../../assets/chat-gray.png'
 import chatC from '../../../assets/chat.png'
 
 import { NavLink } from 'react-router-dom'
-// eslint-disable-next-line 
-import dash from './Dashboard.css'
+import './Dashboard.css'
 
 
 
@@ -44,5 +43,3 @@ function Dashboard () {
 }
 
 export default Dashboard
-
-

@@ -3,8 +3,7 @@ import find from "../../../assets/find.avif";
 import adoption from "../../../assets/adoption.avif";
 import owner from "../../../assets/owner.jpg";
 import dogs from "../../../assets/dogs.jpg";
-// eslint-disable-next-line
-import search from "./Search.css";
+import "./Search.css";
 import { Link } from "react-router-dom";
 import { NavbarLayout } from "../../../layout/NavbarLayout";
 

@@ -5,8 +5,7 @@ import { NavLink } from 'react-router-dom'
 
 import notification from '../../../assets/notificacion-gray.png'
 import notificationC from '../../../assets/notificacion.png'
-// eslint-disable-next-line 
-import nabvar from './Navbar.css'
+import './Navbar.css'
 
 
 function Navbar () {
@@ -30,4 +29,3 @@ function Navbar () {
 }
 
 export default Navbar
-

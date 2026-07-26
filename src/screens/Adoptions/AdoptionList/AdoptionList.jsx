@@ -8,8 +8,7 @@ import back from '../../../assets/back.png'
 
 import { NavbarLayout } from "../../../layout/NavbarLayout";
 
-// eslint-disable-next-line
-import list from "./AdoptionList.css";
+import "./AdoptionList.css";
 
 function AdoptionList() {
 	const [pets, setPets] = useState([]);

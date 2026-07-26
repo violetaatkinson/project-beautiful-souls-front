@@ -5,8 +5,7 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import backArrow from "../../../assets/go-back.png";
 
-// eslint-disable-next-line
-import NewAdoption from "./NewAdoption.css";
+import "./NewAdoption.css";
 
 // si edit es true, necesito un useEffect donde traerme el adoption actual, pera rellenar los campos
 
