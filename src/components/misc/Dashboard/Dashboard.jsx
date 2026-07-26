@@ -1,13 +1,12 @@
-import { Home, Compass, Heart, MessageCircle, User } from 'lucide-react'
+import { Home, PawPrint, Heart, MessageCircle } from 'lucide-react'
 import { NavLink } from 'react-router-dom'
 import './Dashboard.css'
 
 const NAV_ITEMS = [
-    { to: '/search', icon: Home, label: 'Home' },
-    { to: '/adoptions', icon: Compass, label: 'Explore' },
-    { to: '/likes', icon: Heart, label: 'Likes' },
-    { to: '/users', icon: MessageCircle, label: 'Chats' },
-    { to: '/profile', icon: User, label: 'Profile' },
+    { to: '/search', icon: Home },
+    { to: '/adoptions', icon: PawPrint },
+    { to: '/likes', icon: Heart },
+    { to: '/users', icon: MessageCircle },
 ]
 
 function Dashboard () {

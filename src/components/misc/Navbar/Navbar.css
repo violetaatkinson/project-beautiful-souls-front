@@ -1,13 +1,53 @@
 .navbar {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: space-between;
     background-color: #ffffff !important;
-    padding: 12px 18px;
+    padding: 10px 18px;
     position: sticky;
     top: 0;
     z-index: 20;
     box-shadow: 0 2px 10px rgba(20, 55, 120, 0.06);
+}
+
+.brand-mark {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.brand-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    color: white;
+    background: linear-gradient(135deg, #2F80ED 0%, #56CCF2 100%);
+    box-shadow: 0 3px 8px rgba(47, 128, 237, 0.35);
+}
+
+.brand-text {
+    font-family: 'Noto Serif Telugu', serif;
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 0.3px;
+    background: linear-gradient(90deg, #2F80ED, #56CCF2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.navbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.user-img {
+    border: 2px solid #2F80ED;
+    object-fit: cover;
 }
 
 .bell {

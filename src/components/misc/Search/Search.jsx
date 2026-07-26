@@ -1,73 +1,50 @@
-import profile from "../../../assets/pro.avif";
-import find from "../../../assets/find.avif";
-import adoption from "../../../assets/adoption.avif";
-import owner from "../../../assets/owner.jpg";
-import dogs from "../../../assets/dogs.jpg";
-import "./Search.css";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { PawPrint, PlusCircle, Camera, CheckCircle2, UserRound } from 'lucide-react'
+import AuthContext from "../../../contexts/AuthContext";
+import "./Search.css";
 import { NavbarLayout } from "../../../layout/NavbarLayout";
 
+const ACTIONS = [
+	{ to: "/adoptions", icon: PawPrint, title: "Descubrir", subtitle: "Buscá tu compañero ideal" },
+	{ to: "/adoptions/create", icon: PlusCircle, title: "Publicar", subtitle: "Dá en adopción una mascota" },
+	{ to: "/adopted/create", icon: Camera, title: "Tu historia", subtitle: "Contá cómo fue tu adopción" },
+	{ to: "/adopted", icon: CheckCircle2, title: "Ya adoptados", subtitle: "Historias con final feliz" },
+]
+
 function Search() {
+	const { user } = useContext(AuthContext);
+	const profileIncomplete = user && (!user.firstName || !user.phoneNumber);
+
 	return (
 		<NavbarLayout>
-			<div className="search">
-				<section className="carousel-inner mt-4 mb-3 search">
-					<img src={profile} alt="profile" />
-					<div className="search-info text-center">
-						<h3>Edit your profile</h3>
-						<Link className="link-unstyled" to={"/edit/profile"}>
-							<button className="btn btn-primary mt-3 search-info-btn">
-								Fill Information
-							</button>
+			<div className="home-hub">
+				<h2 className="hub-greeting">
+					Hola{user?.userName ? `, ${user.userName}` : ''} 👋
+				</h2>
+				<p className="hub-subgreeting">¿Qué querés hacer hoy?</p>
+
+				{profileIncomplete && (
+					<Link to="/edit/profile" className="link-unstyled profile-banner">
+						<UserRound size={22} />
+						<div>
+							<p className="profile-banner-title">Completá tu perfil</p>
+							<p className="profile-banner-sub">Así quien adopte tu mascota puede contactarte</p>
+						</div>
+					</Link>
+				)}
+
+				<div className="hub-grid">
+					{ACTIONS.map(({ to, icon: Icon, title, subtitle }) => (
+						<Link key={to} to={to} className="link-unstyled hub-card">
+							<span className="hub-icon">
+								<Icon size={24} strokeWidth={2} />
+							</span>
+							<span className="hub-card-title">{title}</span>
+							<span className="hub-card-subtitle">{subtitle}</span>
 						</Link>
-					</div>
-				</section>
-				<section className="carousel-inner search mt-4 mb-3">
-					<img src={find} alt="find" />
-					<div className="search-info text-center">
-						<h3>Find your partner</h3>
-						<Link className="link-unstyled" to={"/adoptions"}>
-							<button className="btn btn-primary mt-3 search-info-btn">
-								Find Pets
-							</button>
-						</Link>
-					</div>
-				</section>
-				<section className="carousel-inner  search mt-4 mb-3">
-					<img src={adoption} alt="search" />
-					<div className="search-info text-center">
-						<h3>Find them a home</h3>
-						<Link className="link-unstyled" to={"/adoptions/create"}>
-							<button className="btn btn-primary mt-3 search-info-btn">
-								Create Adoption
-							</button>
-						</Link>
-					</div>
-				</section>
-				<section className="carousel-inner search mt-4 mb-3">
-					<img src={owner} alt="search" className="search-img" />
-					<div className="search-info text-center">
-						<h3>Share Your Story</h3>
-						<Link className="link-unstyled" to={"/adopted/create"}>
-							<button className="btn btn-primary mt-3 search-info-btn">
-								Upload Picture
-							</button>
-						</Link>
-					</div>
-				</section>
-				<section className="carousel-inner search mt-4 mb-3">
-					<img src={dogs} alt="search" className="search-img"/>
-					<div className="search-info text-center">
-						<h3>They Found Their Home</h3>
-						<Link className="link-unstyled" to={"/adopted"}>
-							<button className="btn btn-primary mt-3 search-info-btn">
-								
-								Already Adopted
-							</button>
-						</Link>
-					</div>
-				</section>
-				
+					))}
+				</div>
 			</div>
 		</NavbarLayout>
 	);
