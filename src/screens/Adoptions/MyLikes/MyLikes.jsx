@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Heart } from 'lucide-react'
 import { getLikedAdoptions, likeAdoptions } from "../../../services/AdoptionService";
 import { NavbarLayout } from "../../../layout/NavbarLayout";
-import './MyLikes.css'
+import './MyLikes'
 
 const MyLikes = () => {
     const [likedPets, setLikedPets] = useState([]);
