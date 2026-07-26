@@ -1,18 +1,18 @@
 import { useState, useEffect } from "react";
-import { useNavigate, useParams, Link } from "react-router-dom";
-import { ArrowLeft, ArrowRight, X, Check } from "lucide-react";
+import { useNavigate, useParams } from "react-router-dom";
+import { ArrowLeft, ArrowRight, X, Check, Zap } from "lucide-react";
 import {
 	createPet,
 	updatePet,
 	getPetDetail,
 } from "../../../services/PetService";
-import backArrow from "../../../assets/go-back.png";
 import "./NewAdoption.css";
 
 const SPECIES = ["Dog", "Cat", "Reptile", "Bird", "Other"];
 const SIZES = ["Small", "Medium", "Large", "ExtraLarge"];
 const SEX = ["Female", "Male"];
 const ENERGY_LEVELS = ["Low", "Medium", "High"];
+const MAX_PHOTOS = 4;
 const PERSONALITY_TAGS = [
 	"Playful",
 	"Calm",
@@ -24,12 +24,12 @@ const PERSONALITY_TAGS = [
 	"Sociable",
 ];
 const COMPATIBILITY_OPTIONS = [
-	{ value: "unknown", label: "No sé" },
-	{ value: "yes", label: "Sí" },
+	{ value: "unknown", label: "Not sure" },
+	{ value: "yes", label: "Yes" },
 	{ value: "no", label: "No" },
 ];
 
-const STEPS = ["Datos básicos", "Fotos", "Salud y personalidad", "Requisitos"];
+const STEPS = ["Basic info", "Photos", "Health & personality", "Requirements"];
 
 const INITIAL_STATE = {
 	name: "",
@@ -64,8 +64,8 @@ const NewAdoption = ({ edit }) => {
 
 	const [step, setStep] = useState(0);
 	const [data, setData] = useState(INITIAL_STATE);
-	const [photos, setPhotos] = useState([]); // File[] nuevos, solo si el usuario elige fotos
-	const [existingImages, setExistingImages] = useState([]); // URLs que ya tenía (modo edición)
+	const [photos, setPhotos] = useState([]);
+	const [existingImages, setExistingImages] = useState([]);
 	const [requirementDraft, setRequirementDraft] = useState("");
 	const [submitting, setSubmitting] = useState(false);
 	const [error, setError] = useState("");
@@ -106,8 +106,11 @@ const NewAdoption = ({ edit }) => {
 	};
 
 	const handlePhotosSelected = (event) => {
-		const files = Array.from(event.target.files).slice(0, 8 - photos.length);
-		setPhotos((prev) => [...prev, ...files].slice(0, 8));
+		const files = Array.from(event.target.files).slice(
+			0,
+			MAX_PHOTOS - photos.length,
+		);
+		setPhotos((prev) => [...prev, ...files].slice(0, MAX_PHOTOS));
 	};
 
 	const removePhoto = (index) => {
@@ -135,15 +138,15 @@ const NewAdoption = ({ edit }) => {
 
 	const stepIsValid = () => {
 		if (step === 0) return data.name && data.species && data.sex && data.size;
-		if (step === 1) return edit ? true : photos.length > 0; // al crear, pedimos al menos 1 foto
-		if (step === 2) return true; // salud/personalidad son opcionales
+		if (step === 1) return edit ? true : photos.length > 0;
+		if (step === 2) return true;
 		if (step === 3) return data.description.trim().length >= 10;
 		return true;
 	};
 
 	const goNext = () => {
 		if (!stepIsValid()) {
-			setError("Completá los campos requeridos antes de continuar.");
+			setError("Please fill in the required fields to continue.");
 			return;
 		}
 		setError("");
@@ -189,7 +192,13 @@ const NewAdoption = ({ edit }) => {
 
 	const onSubmit = async (event) => {
 		event.preventDefault();
-		if (!stepIsValid()) return;
+
+		if (!stepIsValid()) {
+			setError(
+				"Please write a description (at least 10 characters) before publishing.",
+			);
+			return;
+		}
 
 		setSubmitting(true);
 		setError("");
@@ -204,7 +213,8 @@ const NewAdoption = ({ edit }) => {
 			navigate("/myadoptions");
 		} catch (err) {
 			setError(
-				err?.response?.data?.message || "Algo salió mal, probá de nuevo.",
+				err?.response?.data?.message ||
+					"Something went wrong, please try again.",
 			);
 		} finally {
 			setSubmitting(false);
@@ -213,17 +223,17 @@ const NewAdoption = ({ edit }) => {
 
 	return (
 		<div className="wizard-screen">
-			<Link className="link-unstyled" to="/search">
-				<img
-					src={backArrow}
-					alt="back"
-					width={20}
-					className="mt-4 search-arrow"
-				/>
-			</Link>
+			<button
+				type="button"
+				className="wizard-back-btn"
+				onClick={() => navigate(-1)}
+				aria-label="Back"
+			>
+				<ArrowLeft size={20} />
+			</button>
 
 			<h1 className="text-center wizard-title">
-				{edit ? "Editar mascota" : "Publicar mascota"}
+				{edit ? "Edit Pet" : "Publish a Pet"}
 			</h1>
 
 			<div className="wizard-progress">
@@ -241,21 +251,21 @@ const NewAdoption = ({ edit }) => {
 			<form onSubmit={onSubmit} className="wizard-form">
 				{step === 0 && (
 					<div className="wizard-panel">
-						<label>Nombre</label>
+						<label>Name</label>
 						<input
 							className="form-control"
 							value={data.name}
 							onChange={(e) => updateField("name", e.target.value)}
-							placeholder="Nombre de la mascota"
+							placeholder="Pet's name"
 						/>
 
-						<label>Especie</label>
+						<label>Species</label>
 						<select
 							className="form-select"
 							value={data.species}
 							onChange={(e) => updateField("species", e.target.value)}
 						>
-							<option value="">Elegí una especie</option>
+							<option value="">Select a species</option>
 							{SPECIES.map((s) => (
 								<option key={s} value={s}>
 									{s}
@@ -263,17 +273,17 @@ const NewAdoption = ({ edit }) => {
 							))}
 						</select>
 
-						<label>Raza (opcional)</label>
+						<label>Breed (optional)</label>
 						<input
 							className="form-control"
 							value={data.breed}
 							onChange={(e) => updateField("breed", e.target.value)}
-							placeholder="Mestizo, Labrador, etc."
+							placeholder="Mixed breed, Labrador, etc."
 						/>
 
 						<div className="row-fields">
 							<div>
-								<label>Años</label>
+								<label>Years</label>
 								<input
 									type="number"
 									min="0"
@@ -283,7 +293,7 @@ const NewAdoption = ({ edit }) => {
 								/>
 							</div>
 							<div>
-								<label>Meses</label>
+								<label>Months</label>
 								<input
 									type="number"
 									min="0"
@@ -295,13 +305,13 @@ const NewAdoption = ({ edit }) => {
 							</div>
 						</div>
 
-						<label>Sexo</label>
+						<label>Sex</label>
 						<select
 							className="form-select"
 							value={data.sex}
 							onChange={(e) => updateField("sex", e.target.value)}
 						>
-							<option value="">Elegí una opción</option>
+							<option value="">Select an option</option>
 							{SEX.map((s) => (
 								<option key={s} value={s}>
 									{s}
@@ -309,13 +319,13 @@ const NewAdoption = ({ edit }) => {
 							))}
 						</select>
 
-						<label>Tamaño</label>
+						<label>Size</label>
 						<select
 							className="form-select"
 							value={data.size}
 							onChange={(e) => updateField("size", e.target.value)}
 						>
-							<option value="">Elegí un tamaño</option>
+							<option value="">Select a size</option>
 							{SIZES.map((s) => (
 								<option key={s} value={s}>
 									{s}
@@ -329,24 +339,24 @@ const NewAdoption = ({ edit }) => {
 					<div className="wizard-panel">
 						{existingImages.length > 0 && (
 							<>
-								<label>Fotos actuales</label>
+								<label>Current photos</label>
 								<div className="photo-grid">
 									{existingImages.map((url) => (
 										<div key={url} className="photo-thumb">
-											<img src={url} alt="foto actual" />
+											<img src={url} alt="Current" />
 										</div>
 									))}
 								</div>
 								<p className="hint-text">
-									Si subís fotos nuevas, van a reemplazar a estas.
+									Uploading new photos will replace these.
 								</p>
 							</>
 						)}
 
 						<label>
 							{existingImages.length > 0
-								? "Reemplazar fotos"
-								: "Fotos (hasta 8)"}
+								? "Replace photos"
+								: `Photos (up to ${MAX_PHOTOS})`}
 						</label>
 						<input
 							type="file"
@@ -354,13 +364,16 @@ const NewAdoption = ({ edit }) => {
 							multiple
 							className="form-control"
 							onChange={handlePhotosSelected}
-							disabled={photos.length >= 8}
+							disabled={photos.length >= MAX_PHOTOS}
 						/>
 
 						<div className="photo-grid">
 							{photos.map((file, i) => (
 								<div key={i} className="photo-thumb">
-									<img src={URL.createObjectURL(file)} alt={`foto ${i + 1}`} />
+									<img
+										src={URL.createObjectURL(file)}
+										alt={`Upload ${i + 1}`}
+									/>
 									<button
 										type="button"
 										className="photo-remove"
@@ -376,7 +389,7 @@ const NewAdoption = ({ edit }) => {
 
 				{step === 2 && (
 					<div className="wizard-panel">
-						<label>Personalidad</label>
+						<label>Personality</label>
 						<div className="chip-select">
 							{PERSONALITY_TAGS.map((tag) => (
 								<button
@@ -385,19 +398,21 @@ const NewAdoption = ({ edit }) => {
 									className={`chip-option ${data.personalityTags.includes(tag) ? "selected" : ""}`}
 									onClick={() => togglePersonalityTag(tag)}
 								>
-									{data.personalityTags.includes(tag) && <Check size={12} />}{" "}
-									{tag}
+									{data.personalityTags.includes(tag) && <Check size={12} />}
+									<span>{tag}</span>
 								</button>
 							))}
 						</div>
 
-						<label>Nivel de energía</label>
+						<label className="label-with-icon">
+							<Zap size={14} /> Energy level
+						</label>
 						<select
 							className="form-select"
 							value={data.energyLevel}
 							onChange={(e) => updateField("energyLevel", e.target.value)}
 						>
-							<option value="">No especificado</option>
+							<option value="">Not specified</option>
 							{ENERGY_LEVELS.map((l) => (
 								<option key={l} value={l}>
 									{l}
@@ -405,7 +420,7 @@ const NewAdoption = ({ edit }) => {
 							))}
 						</select>
 
-						<label>Salud</label>
+						<label>Health</label>
 						<div className="check-list">
 							<label className="check-item">
 								<input
@@ -415,7 +430,7 @@ const NewAdoption = ({ edit }) => {
 										updateNested("health", "vaccinated", e.target.checked)
 									}
 								/>
-								Vacunado
+								Vaccinated
 							</label>
 							<label className="check-item">
 								<input
@@ -425,7 +440,7 @@ const NewAdoption = ({ edit }) => {
 										updateNested("health", "sterilized", e.target.checked)
 									}
 								/>
-								Castrado
+								Neutered/Spayed
 							</label>
 							<label className="check-item">
 								<input
@@ -435,7 +450,7 @@ const NewAdoption = ({ edit }) => {
 										updateNested("health", "dewormed", e.target.checked)
 									}
 								/>
-								Desparasitado
+								Dewormed
 							</label>
 							<label className="check-item">
 								<input
@@ -449,14 +464,14 @@ const NewAdoption = ({ edit }) => {
 										)
 									}
 								/>
-								Tiene alguna condición de salud
+								Has a known health condition
 							</label>
 						</div>
 
 						{data.health.hasKnownConditions && (
 							<input
 								className="form-control mt-2"
-								placeholder="Contanos cuál"
+								placeholder="Tell us more"
 								value={data.health.conditionsDetails}
 								onChange={(e) =>
 									updateNested("health", "conditionsDetails", e.target.value)
@@ -464,15 +479,15 @@ const NewAdoption = ({ edit }) => {
 							/>
 						)}
 
-						<label className="mt-3">Convivencia</label>
+						<label className="mt-3">Living with others</label>
 						{["withKids", "withDogs", "withCats"].map((field) => (
 							<div key={field} className="compatibility-row">
 								<span>
 									{
 										{
-											withKids: "Con niños",
-											withDogs: "Con perros",
-											withCats: "Con gatos",
+											withKids: "With kids",
+											withDogs: "With dogs",
+											withCats: "With cats",
 										}[field]
 									}
 								</span>
@@ -496,22 +511,22 @@ const NewAdoption = ({ edit }) => {
 
 				{step === 3 && (
 					<div className="wizard-panel">
-						<label>Descripción</label>
+						<label>Description</label>
 						<textarea
 							className="form-control"
 							rows={4}
 							value={data.description}
 							onChange={(e) => updateField("description", e.target.value)}
-							placeholder="Contá cómo es, su historia, qué la hace especial..."
+							placeholder="Tell us about their personality, story, what makes them special..."
 						/>
 
-						<label>Requisitos para adoptar (opcional)</label>
+						<label>Adoption requirements (optional)</label>
 						<div className="requirement-input">
 							<input
 								className="form-control"
 								value={requirementDraft}
 								onChange={(e) => setRequirementDraft(e.target.value)}
-								placeholder="Ej: Vivienda con patio"
+								placeholder="e.g. Home with a yard"
 								onKeyDown={(e) =>
 									e.key === "Enter" && (e.preventDefault(), addRequirement())
 								}
@@ -521,7 +536,7 @@ const NewAdoption = ({ edit }) => {
 								className="btn btn-outline-secondary"
 								onClick={addRequirement}
 							>
-								Agregar
+								Add
 							</button>
 						</div>
 						<ul className="requirement-list">
@@ -535,11 +550,11 @@ const NewAdoption = ({ edit }) => {
 							))}
 						</ul>
 
-						<label>Ubicación (opcional)</label>
+						<label>Location (optional)</label>
 						<div className="row-fields">
 							<input
 								className="form-control"
-								placeholder="Ciudad"
+								placeholder="City"
 								value={data.location.city}
 								onChange={(e) =>
 									updateNested("location", "city", e.target.value)
@@ -547,7 +562,7 @@ const NewAdoption = ({ edit }) => {
 							/>
 							<input
 								className="form-control"
-								placeholder="Provincia"
+								placeholder="Province/State"
 								value={data.location.province}
 								onChange={(e) =>
 									updateNested("location", "province", e.target.value)
@@ -566,13 +581,13 @@ const NewAdoption = ({ edit }) => {
 							className="btn btn-outline-secondary"
 							onClick={goBack}
 						>
-							<ArrowLeft size={16} /> Atrás
+							<ArrowLeft size={16} /> Back
 						</button>
 					)}
 
 					{step < STEPS.length - 1 ? (
 						<button type="button" className="btn btn-primary" onClick={goNext}>
-							Siguiente <ArrowRight size={16} />
+							Next <ArrowRight size={16} />
 						</button>
 					) : (
 						<button
@@ -580,11 +595,7 @@ const NewAdoption = ({ edit }) => {
 							className="btn btn-primary"
 							disabled={submitting}
 						>
-							{submitting
-								? "Guardando..."
-								: edit
-									? "Guardar cambios"
-									: "Publicar"}
+							{submitting ? "Saving..." : edit ? "Save changes" : "Publish"}
 						</button>
 					)}
 				</div>

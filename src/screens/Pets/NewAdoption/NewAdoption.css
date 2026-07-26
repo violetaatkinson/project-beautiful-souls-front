@@ -4,6 +4,19 @@
   padding: 0 1rem 2rem;
 }
 
+.wizard-back-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #f5f8fc;
+  color: #1b2430;
+  border: none;
+  margin-top: 1rem;
+}
+
 .wizard-title {
   margin-top: 1rem;
   font-size: 1.4rem;
@@ -37,7 +50,7 @@
 }
 
 .wizard-step-dot.active span {
-  background: #ff5a5f;
+  background: linear-gradient(135deg, #2F80ED 0%, #56CCF2 100%);
   color: #fff;
 }
 
@@ -52,6 +65,12 @@
   margin-bottom: 0.3rem;
   font-weight: 600;
   font-size: 0.9rem;
+}
+
+.label-with-icon {
+  display: flex !important;
+  align-items: center;
+  gap: 6px;
 }
 
 .row-fields {
@@ -102,6 +121,9 @@
 }
 
 .chip-option {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   border: 1px solid #ddd;
   border-radius: 999px;
   padding: 6px 14px;
@@ -110,8 +132,8 @@
 }
 
 .chip-option.selected {
-  background: #ff5a5f;
-  border-color: #ff5a5f;
+  background: linear-gradient(135deg, #2F80ED 0%, #56CCF2 100%);
+  border-color: transparent;
   color: #fff;
 }
 
