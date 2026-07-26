@@ -2,6 +2,7 @@
     max-width: 480px;
     margin: 0 auto;
     padding: 24px 20px 16px;
+    text-align: center;
 }
 
 .hub-greeting {
@@ -27,6 +28,12 @@
     padding: 16px 18px;
     margin-bottom: 20px;
     box-shadow: 0 8px 20px rgba(47, 128, 237, 0.25);
+    text-align: left;
+    transition: transform 0.1s ease;
+}
+
+.profile-banner:active {
+    transform: scale(0.98);
 }
 
 .profile-banner-title {
@@ -50,20 +57,20 @@
 .hub-card {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    text-align: center;
     gap: 4px;
     background-color: #ffffff;
     border: 1.5px solid #eef1f6;
     border-radius: 18px;
     padding: 18px;
     box-shadow: 0 4px 14px rgba(20, 55, 120, 0.06);
-    transition: transform 0.15s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    transition: transform 0.1s ease, box-shadow 0.15s ease;
 }
 
-.hub-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 22px rgba(20, 55, 120, 0.12);
-    border-color: #cfe0fb;
+.hub-card:active {
+    transform: scale(0.97);
+    box-shadow: 0 2px 8px rgba(20, 55, 120, 0.1);
 }
 
 .hub-icon {

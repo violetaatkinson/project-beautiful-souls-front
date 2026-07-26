@@ -26,6 +26,12 @@ function App() {
   const { isAuthenticationFetched } = useAuthContext()
   
   return (
+    <>
+    <div className="desktop-block">
+      <span className="desktop-block-badge">🐾</span>
+      <h2>Beautiful Souls es solo para celular</h2>
+      <p>Abrí esta página desde tu teléfono para poder usarla.</p>
+    </div>
     <div className="App">
       {isAuthenticationFetched ? (
         <Routes>
@@ -94,6 +100,7 @@ function App() {
         </Routes>
       ) : <p>Loading...</p>}
     </div>
+    </>
   );
 }
 

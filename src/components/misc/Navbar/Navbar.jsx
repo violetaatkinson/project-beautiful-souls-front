@@ -10,6 +10,10 @@ function Navbar () {
 
     return (
         <div className='navbar bg-light'>
+            <Link className="link-unstyled nav-profile" to={"/profile"}>
+                <img src={user.image} alt="user" className="rounded-circle user-img" width={32} height={32}/>
+            </Link>
+
             <Link to="/search" className="link-unstyled brand-mark">
                 <span className="brand-badge">
                     <PawPrint size={14} strokeWidth={2.6} />
@@ -17,16 +21,11 @@ function Navbar () {
                 <span className="brand-text">Beautiful Souls</span>
             </Link>
 
-            <div className="navbar-actions">
-                <Link className="link-unstyled" to={"/profile"}>
-                    <img src={user.image} alt="user" className="rounded-circle user-img" width={32} height={32}/>
-                </Link>
-                <NavLink className="link-unstyled bell" to={"/notifications"}>
-                    {({ isActive }) => (
-                        <Bell size={21} strokeWidth={2} fill={isActive ? 'currentColor' : 'none'} />
-                    )}
-                </NavLink>
-            </div>
+            <NavLink className="link-unstyled bell" to={"/notifications"}>
+                {({ isActive }) => (
+                    <Bell size={21} strokeWidth={2} fill={isActive ? 'currentColor' : 'none'} />
+                )}
+            </NavLink>
         </div>
     )
 }

@@ -25,3 +25,43 @@ code {
   display: flex;
   flex-direction: column;
 }
+
+.desktop-block {
+  display: none;
+}
+
+/* A partir de este ancho (tablets/desktop) ocultamos la app y mostramos el aviso */
+@media (min-width: 601px) {
+  .App {
+    display: none;
+  }
+
+  .desktop-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100vh;
+    gap: 10px;
+    padding: 24px;
+    background: linear-gradient(135deg, #2F80ED 0%, #56CCF2 100%);
+    color: white;
+  }
+
+  .desktop-block-badge {
+    font-size: 48px;
+  }
+
+  .desktop-block h2 {
+    margin: 0;
+    font-family: 'Noto Serif Telugu', serif;
+    font-weight: 700;
+  }
+
+  .desktop-block p {
+    margin: 0;
+    opacity: 0.9;
+    max-width: 320px;
+  }
+}
