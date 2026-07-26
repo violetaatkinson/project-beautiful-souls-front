@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { NavbarLayout } from "../../layout/NavbarLayout";
 import {  getLikes, getUsersLiked  } from "../../services/UserService";
 import { likeAdoptions } from "../../services/AdoptionService";
-import superlike from '../../assets/extralike.png'
+
 
 import './ListUsers.css'
 import { listMessages } from "../../services/MessageService";
@@ -26,6 +26,7 @@ const ListUsers = () => {
             setLikes(dbLikes.filter((like) => like))); // Te quita los nulls y los undefined
 	}, []);
 
+    // eslint-disable-next-line no-unused-vars
     const handleLike = (id) => {
 		likeAdoptions(id).then((res) => {
 			const likedPet = likes.filter((pet) => pet._id !== id);
@@ -65,7 +66,7 @@ const ListUsers = () => {
                                         <img src={like.image} alt={like.name} width={110} height={145} className="mt-3 matches-img"/>
                                         <Link className="link-unstyled like-name" to={`/adoptions/${like._id}`}>
                                             <h5 className="text-capitalize">{like.name}</h5>
-                                            <img src={superlike} alt="like" className="dislke-pet" width={30} onClick={() => handleLike(like._id)}/>
+                                            
                                         </Link>
                                     </div>
                                 )
