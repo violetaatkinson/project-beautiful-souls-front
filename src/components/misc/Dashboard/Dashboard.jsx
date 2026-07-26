@@ -1,43 +1,30 @@
-import menu from '../../../assets/menu-gray.png'
-import menuC from '../../../assets/menu.png'
-import logo from '../../../assets/cat.png'
-import star from '../../../assets/star-gray.png'
-import starC from '../../../assets/star.png'
-import chat from '../../../assets/chat-gray.png'
-import chatC from '../../../assets/chat.png'
-
+import { PawPrint, Star, Home, MessageCircle } from 'lucide-react'
 import { NavLink } from 'react-router-dom'
 import './Dashboard.css'
 
-
+const NAV_ITEMS = [
+    { to: '/adoptions', icon: PawPrint, label: 'Descubrir' },
+    { to: '/myadoptions', icon: Star, label: 'Favoritos' },
+    { to: '/search', icon: Home, label: 'Inicio' },
+    { to: '/users', icon: MessageCircle, label: 'Chats' },
+]
 
 function Dashboard () {
     return (
-        <div className='dashbord mt-auto bg-light '>
-            <NavLink className="link-unstyled" to={"/adoptions"}>
-                <img src={logo} alt="logo" width={53} height={53} />
-            </NavLink>
-            <NavLink className="link-unstyled" to={"/myadoptions"}>
-                {
-                    ({ isActive }) => (
-                            <img src={isActive ? starC : star} alt="star" width={45}/>
-                    )
-                }
-            </NavLink>
-            <NavLink className="link-unstyled" to={"/search"}>
-                {
-                    ({ isActive }) => (
-                        <img src={isActive ? menuC : menu} alt="menu" width={45}/>
-                    )
-                }
-            </NavLink>
-            <NavLink className="link-unstyled" to={"/users"}>
-                {
-                    ({ isActive }) => (
-                        <img src={isActive ? chatC : chat} alt="chat" width={45}/>
-                    )
-                }
-            </NavLink>
+        <div className='dashbord bg-light'>
+            {NAV_ITEMS.map(({ to, icon: Icon, label }) => (
+                <NavLink key={to} className="dash-item link-unstyled" to={to}>
+                    {({ isActive }) => (
+                        <span className={`dash-pill ${isActive ? 'active' : ''}`}>
+                            <Icon
+                                size={24}
+                                strokeWidth={2}
+                                fill={isActive ? 'currentColor' : 'none'}
+                            />
+                        </span>
+                    )}
+                </NavLink>
+            ))}
         </div>
     )
 }

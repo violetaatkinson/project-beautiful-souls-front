@@ -15,53 +15,66 @@ const Profile = () => {
 	const handleDelete = (id) => {
         deleteUser(id)
             .then(() => {
-				console.log('Eliminado')
+				logout()
           })
     }
 
-	
+	// Solo mostramos los datos que el usuario realmente cargó
+	const infoFields = [
+		{ label: 'Email', value: user.email },
+		{ label: 'Teléfono', value: user.phoneNumber },
+		{ label: 'Nombre', value: user.firstName },
+		{ label: 'Apellido', value: user.lastName },
+		{ label: 'Género', value: user.gender },
+		{ label: 'Edad', value: user.age },
+	].filter(field => field.value)
+
 	return (
-		<div>
+		<div className="profile-screen">
 			<Link className="link-unstyled" to={"/search"}>
 				<img src={back} alt="back" width={20} className="mt-4 arrow-pr" />
 			</Link>
-		 	<h5 className=" text-center prof-prof">Profile</h5>
+		 	<h5 className="text-center prof-prof">Perfil</h5>
 			 <div className="user" >
 			 	<img
 						src={user.image}
 						alt={user.userName}
-						className="rounded-circle border mt-2 mb-3 prof-img " width="150" height="150"
+						className="rounded-circle border mt-2 mb-3 prof-img "
 					/>
-				<h5 className="text-capitalize">{user.userName}</h5>
+				<h5 className="text-capitalize">{user.userName || 'Sin nombre de usuario'}</h5>
 			 </div>
-				<hr></hr>
-				<div className="card-body user">
-					<h4 className="card-title mb-3 ">Other Information</h4>
-						<div className="card-text prof">
-							<p><strong>Email :</strong> {user.email}</p>
-							<p><strong>Phone number :</strong> {user.phoneNumber}</p>
-							<p><strong>First name :</strong> {user.firstName}</p>
-							<p><strong>Last name :</strong> {user.lastName}</p>
-							<span className="other-info">
-								<p><strong>Gender :</strong> {user.gender}</p>
-								<p><strong>Age :</strong> {user.age}</p>
-							</span>
-						</div>
-						
-						<div className="other-info-buttons ml-2 mb-2 mt-3 ">
-							<Link className="link-unstyled" to={"/edit/profile"}>
-								<img src={edit} alt="edit" width={50}/>
-								
-							</Link>
-								<img src={logou} alt="logou" width={50} onClick={() => logout(user.id)}/>
-								
-								<img src={trash} alt="trash" width={50} onClick={() => handleDelete(user.id)}/>
-								
-						</div>				
-				</div>	
+
+				<div className="profile-card">
+					{infoFields.length > 0 ? (
+						<ul className="info-list">
+							{infoFields.map(field => (
+								<li key={field.label}>
+									<span className="info-label">{field.label}</span>
+									<span className="info-value">{field.value}</span>
+								</li>
+							))}
+						</ul>
+					) : (
+						<p className="info-empty">Todavía no completaste tu información. Tocá el lápiz para agregarla.</p>
+					)}
+
+					<div className="other-info-buttons">
+						<Link className="link-unstyled action-btn" to={"/edit/profile"}>
+							<img src={edit} alt="edit" width={26}/>
+							<span>Editar</span>
+						</Link>
+						<button className="link-unstyled action-btn" onClick={() => logout(user.id)}>
+							<img src={logou} alt="logout" width={26}/>
+							<span>Salir</span>
+						</button>
+						<button className="link-unstyled action-btn danger" onClick={() => handleDelete(user.id)}>
+							<img src={trash} alt="trash" width={26}/>
+							<span>Eliminar</span>
+						</button>
+					</div>
+				</div>
 		</div>
 	);
 };
 
 export default Profile;
-

@@ -1,10 +1,7 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import { Bell, PawPrint } from 'lucide-react'
 import AuthContext from "../../../contexts/AuthContext";
-import { NavLink } from 'react-router-dom'
-
-import notification from '../../../assets/notificacion-gray.png'
-import notificationC from '../../../assets/notificacion.png'
 import './Navbar.css'
 
 
@@ -14,15 +11,17 @@ function Navbar () {
     return (
         <div className='navbar bg-light'>
             <Link className="link-unstyled" to={"/profile"}>
-                <img src={user.image} alt="user" className="rounded-circle m-2 user-img" width={60} height={60}/>
+                <img src={user.image} alt="user" className="rounded-circle user-img" width={38} height={38}/>
             </Link>
-                <h3 className="title">Beautiful Souls</h3>
+
+            <Link className="link-unstyled brand" to={"/search"}>
+                <PawPrint size={22} strokeWidth={2.4} />
+            </Link>
+
             <NavLink className="link-unstyled bell" to={"/notifications"}>
-                {
-                    ({ isActive }) => (
-                        <img src={isActive ? notificationC : notification} alt="notification" width={40}/>
-                    )
-                }
+                {({ isActive }) => (
+                    <Bell size={22} strokeWidth={2} fill={isActive ? 'currentColor' : 'none'} />
+                )}
             </NavLink>
         </div>
     )
