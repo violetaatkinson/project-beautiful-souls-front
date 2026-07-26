@@ -6,7 +6,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    padding: 10px 8px;
+    padding: 8px 4px;
     background-color: #ffffff !important;
     box-shadow: 0 -2px 14px rgba(20, 55, 120, 0.08);
     z-index: 20;
@@ -14,13 +14,22 @@
 
 .dash-item {
     display: flex;
+    flex: 1;
+    justify-content: center;
+}
+
+.dash-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
 }
 
 .dash-pill {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 48px;
+    width: 46px;
     height: 40px;
     border-radius: 999px;
     color: #a7b0be;
@@ -30,5 +39,5 @@
 .dash-pill.active {
     color: #2F80ED;
     background-color: rgba(47, 128, 237, 0.12);
-    transform: translateY(-2px);
+    transform: translateY(-1px);
 }

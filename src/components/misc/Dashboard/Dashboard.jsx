@@ -13,18 +13,15 @@ const NAV_ITEMS = [
 function Dashboard () {
     return (
         <div className='dashbord bg-light'>
-            {NAV_ITEMS.map(({ to, icon: Icon, label }) => (
+            {NAV_ITEMS.map(({ to, icon: Icon }) => (
                 <NavLink key={to} className="dash-item link-unstyled" to={to}>
                     {({ isActive }) => (
-                        <span className="dash-content">
-                            <span className={`dash-pill ${isActive ? 'active' : ''}`}>
-                                <Icon
-                                    size={22}
-                                    strokeWidth={2}
-                                    fill={isActive ? 'currentColor' : 'none'}
-                                />
-                            </span>
-                            <span className={`dash-label ${isActive ? 'active' : ''}`}>{label}</span>
+                        <span className={`dash-pill ${isActive ? 'active' : ''}`}>
+                            <Icon
+                                size={24}
+                                strokeWidth={2}
+                                fill={isActive ? 'currentColor' : 'none'}
+                            />
                         </span>
                     )}
                 </NavLink>
