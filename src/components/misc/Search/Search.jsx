@@ -1,16 +1,42 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
-import { PawPrint, PlusCircle, Camera, CheckCircle2, UserRound } from 'lucide-react'
+import {
+	PawPrint,
+	PlusCircle,
+	Camera,
+	CheckCircle2,
+	UserRound,
+} from "lucide-react";
 import AuthContext from "../../../contexts/AuthContext";
 import "./Search.css";
 import { NavbarLayout } from "../../../layout/NavbarLayout";
 
 const ACTIONS = [
-	{ to: "/adoptions", icon: PawPrint, title: "Descubrir", subtitle: "Buscá tu compañero ideal" },
-	{ to: "/adoptions/create", icon: PlusCircle, title: "Publicar", subtitle: "Dá en adopción una mascota" },
-	{ to: "/adopted/create", icon: Camera, title: "Tu historia", subtitle: "Contá cómo fue tu adopción" },
-	{ to: "/adopted", icon: CheckCircle2, title: "Ya adoptados", subtitle: "Historias con final feliz" },
-]
+	{
+		to: "/adoptions",
+		icon: PawPrint,
+		title: "Discover",
+		subtitle: "Find your match",
+	},
+	{
+		to: "/adoptions/create",
+		icon: PlusCircle,
+		title: "Publish",
+		subtitle: "List a pet",
+	},
+	{
+		to: "/adopted/create",
+		icon: Camera,
+		title: "Your story",
+		subtitle: "Share it",
+	},
+	{
+		to: "/adopted",
+		icon: CheckCircle2,
+		title: "Adopted",
+		subtitle: "Happy endings",
+	},
+];
 
 function Search() {
 	const { user } = useContext(AuthContext);
@@ -20,16 +46,16 @@ function Search() {
 		<NavbarLayout>
 			<div className="home-hub">
 				<h2 className="hub-greeting">
-					Hola{user?.userName ? `, ${user.userName}` : ''} 👋
+					Hi{user?.userName ? `, ${user.userName}` : ""} 👋
 				</h2>
-				<p className="hub-subgreeting">¿Qué querés hacer hoy?</p>
+				<p className="hub-subgreeting">What's next?</p>
 
 				{profileIncomplete && (
 					<Link to="/edit/profile" className="link-unstyled profile-banner">
 						<UserRound size={22} />
 						<div>
-							<p className="profile-banner-title">Completá tu perfil</p>
-							<p className="profile-banner-sub">Así quien adopte tu mascota puede contactarte</p>
+							<p className="profile-banner-title">Complete your profile</p>
+							<p className="profile-banner-sub">So adopters can reach you</p>
 						</div>
 					</Link>
 				)}
