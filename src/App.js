@@ -5,11 +5,11 @@ import Register from './screens/Register/Register';
 import Login from './screens/Login/Login';
 import UnprotectedRoute from './components/misc/UnprotectedRoute';
 import Profile from './screens/Profile/Profile'
-import MyPetsCreated from './screens/Adoptions/MyPetsCreated/MyPetsCreated';
-import MyLikes from './screens/Adoptions/MyLikes/MyLikes';
-import NewAdoption from './screens/Adoptions/NewAdoption/NewAdoption'
-import AdoptionList from './screens/Adoptions/AdoptionList/AdoptionList'
-import PetDetail from './screens/Adoptions/PetDetail/PetDetail';
+import MyPetsCreated from './screens/Pets/MyPetsCreated/MyPetsCreated';
+import MyLikes from './screens/Pets/MyLikes/MyLikes';
+import NewAdoption from './screens/Pets/NewAdoption/NewAdoption'
+import AdoptionList from './screens/Pets/AdoptionList/AdoptionList'
+import PetDetail from './screens/Pets/PetDetail/PetDetail';
 import ProtectedRoute from './components/misc/ProtectedRoute';
 import Search from './components/misc/Search/Search';
 import Edit from './screens/Profile/Edit/Edit';
@@ -105,6 +105,3 @@ function App() {
 }
 
 export default App;
-
-
-
