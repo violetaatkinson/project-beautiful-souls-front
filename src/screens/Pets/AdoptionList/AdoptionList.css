@@ -1,6 +1,7 @@
 .swipe-screen {
     position: relative;
-    height: calc(100vh - 130px);
+    height: calc(100dvh - 150px);
+    min-height: 420px;
     padding: 8px 16px 0;
     display: flex;
     flex-direction: column;
@@ -13,12 +14,13 @@
     max-width: 420px;
     height: 100%;
     flex: 1;
+    min-height: 0;
 }
 
 .swipe-card {
     position: absolute;
     inset: 0;
-    height: 88%;
+    height: 82%;
     border-radius: 28px;
     overflow: hidden;
     box-shadow: 0 16px 40px rgba(20, 30, 60, 0.18);
@@ -34,6 +36,19 @@
     position: relative;
     display: flex;
     align-items: flex-end;
+}
+
+.card-image.no-photo {
+    background: linear-gradient(135deg, #dbe7fb, #c3d6f2);
+}
+
+.card-image-fallback {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(47, 128, 237, 0.35);
 }
 
 .card-gradient {
@@ -89,7 +104,7 @@
     align-items: center;
     justify-content: center;
     gap: 24px;
-    padding: 16px 0 8px;
+    margin: 16px 0 20px;
 }
 
 .swipe-btn {
@@ -135,9 +150,32 @@
 .not-found {
     text-align: center;
     color: #8a94a6;
-    margin-top: 40%;
+    margin-top: 35%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
+
+.empty-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    color: #fff;
+    background: linear-gradient(135deg, #2F80ED 0%, #56CCF2 100%);
+    box-shadow: 0 6px 16px rgba(47, 128, 237, 0.3);
+    margin-bottom: 4px;
+}
+
+.not-found h5 {
+    margin: 0;
+    color: #4a5568;
 }
 
 .swipe-empty-sub {
     font-size: 0.85rem;
+    margin: 0;
 }
