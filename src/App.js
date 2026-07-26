@@ -29,8 +29,8 @@ function App() {
     <>
     <div className="desktop-block">
       <span className="desktop-block-badge">🐾</span>
-      <h2>Beautiful Souls es solo para celular</h2>
-      <p>Abrí esta página desde tu teléfono para poder usarla.</p>
+      <h2>Mobile only</h2>
+      <p>Please open this page on your phone.</p>
     </div>
     <div className="App">
       {isAuthenticationFetched ? (
