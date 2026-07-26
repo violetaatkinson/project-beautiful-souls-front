@@ -1,88 +1,238 @@
-import {dislikeAdoptions, getAdoptions, likeAdoptions} from "../../../services/AdoptionService";
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { Heart, X, RotateCcw } from 'lucide-react'
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useSprings, animated, to as interpolate } from "@react-spring/web";
+import { useDrag } from "@use-gesture/react";
+import { Heart, X, RotateCcw } from "lucide-react";
 
+import { getPets, likePet, dislikePet } from "../../../services/PetService";
+import { useGeolocation } from "../../../hooks/useGeolocation";
+import { getPetBadges, formatPetAge } from "../../../utils/petBadges";
 import { NavbarLayout } from "../../../layout/NavbarLayout";
-
 import "./AdoptionList.css";
 
-function AdoptionList() {
-	const [pets, setPets] = useState([]);
-	const [currentPetId, setCurrentPetId] = useState(0);
-    
+const SWIPE_THRESHOLD = 120;
+const ROTATION_FACTOR = 14;
 
-	const currentPet = pets?.[currentPetId];
-    
+const cardStyle = (x, y, rot, scale) => ({
+	transform: interpolate(
+		[x, y, rot, scale],
+		(x, y, rot, s) =>
+			`translate3d(${x}px, ${y}px, 0) rotate(${rot}deg) scale(${s})`,
+	),
+});
+
+function AdoptionList() {
+	const navigate = useNavigate();
+	const { coords } = useGeolocation();
+	const [pets, setPets] = useState([]);
+	const [loading, setLoading] = useState(true);
+	const [lastRemoved, setLastRemoved] = useState(null);
 
 	useEffect(() => {
-		getAdoptions().then((adoptions) => {
-			setPets(adoptions);
+		getPets(coords).then((data) => {
+			// El backend manda "el más cercano primero"; como el tope visual de
+			// la pila es el ÚLTIMO elemento del array, invertimos el orden acá.
+			setPets(data.slice().reverse());
+			setLoading(false);
 		});
+		// Solo al montar: no queremos re-pedir la lista cada vez que llega la
+		// ubicación un segundo más tarde.
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
-	const handleLike = () => {
-		likeAdoptions(currentPet._id).then(() => {
-			const likedPet = pets.filter((pet) => pet._id !== currentPet._id);
-			setPets(likedPet);
-			// hacer un setPets, pero quitandome la pet que tiene este id
+	const [springs, api] = useSprings(pets.length, () => ({
+		x: 0,
+		y: 0,
+		rot: 0,
+		scale: 1,
+	}));
+
+	// Reacomoda la pila (efecto de tarjetas apiladas) cada vez que cambia
+	// la cantidad de mascotas restantes.
+	useEffect(() => {
+		api.start((i) => {
+			const offsetFromTop = pets.length - 1 - i;
+			return {
+				x: 0,
+				y: Math.min(offsetFromTop, 2) * 8,
+				rot: 0,
+				scale: 1 - Math.min(offsetFromTop, 2) * 0.04,
+			};
+		});
+	}, [pets.length, api]);
+
+	const removeTopCard = (pet, action) => {
+		setLastRemoved({ pet, action });
+		setPets((prev) => prev.filter((p) => p._id !== pet._id));
+	};
+
+	const animateAway = (index, direction) => {
+		api.start((i) => {
+			if (i !== index) return;
+			const x = direction === "right" ? 600 : -600;
+			const rot = direction === "right" ? 20 : -20;
+			return { x, rot, config: { friction: 50, tension: 220 } };
 		});
 	};
 
-	const handleDislike = () => {
-		dislikeAdoptions(currentPet._id).then(() => {
-			if (currentPetId === 0) {
-				setCurrentPetId(1);
-			} else {
-				const updatedPets = pets.filter((pet) => pet._id !== pets[0]._id);
-				setPets(updatedPets);
+	const handleLike = (pet) => {
+		if (!pet) return;
+		likePet(pet._id);
+		animateAway(pets.length - 1, "right");
+		setTimeout(() => removeTopCard(pet, "like"), 220);
+	};
+
+	const handleDislike = (pet) => {
+		if (!pet) return;
+		dislikePet(pet._id);
+		animateAway(pets.length - 1, "left");
+		setTimeout(() => removeTopCard(pet, "dislike"), 220);
+	};
+
+	const handleUndo = () => {
+		if (!lastRemoved) return;
+		setPets((prev) => [...prev, lastRemoved.pet]);
+		setLastRemoved(null);
+		// Nota: esto vuelve a mostrar la tarjeta en pantalla, pero si la
+		// acción había sido "dislike", el registro sigue en la base. Si el
+		// usuario la likea ahora, el backend ya limpia el dislike solo.
+	};
+
+	const bind = useDrag(
+		({
+			args: [index],
+			down,
+			movement: [mx],
+			direction: [xDir],
+			velocity: [vx],
+			tap,
+		}) => {
+			if (tap) {
+				navigate(`/adoptions/${pets[index]._id}`);
+				return;
 			}
-		});
-	};
 
-	const handleGoBack = () => {
-		if (currentPetId === 1) {
-			setCurrentPetId(0);
-		}
-	};
+			const trigger = Math.abs(mx) > SWIPE_THRESHOLD || vx > 0.6;
+
+			if (!down && trigger) {
+				const pet = pets[index];
+				xDir < 0 ? handleDislike(pet) : handleLike(pet);
+				return;
+			}
+
+			const offsetFromTop = pets.length - 1 - index;
+
+			api.start((i) => {
+				if (i !== index) return;
+				const x = down ? mx : 0;
+				const rot = down ? mx / ROTATION_FACTOR : 0;
+				return {
+					x,
+					y: down ? 0 : Math.min(offsetFromTop, 2) * 8,
+					rot,
+					scale: down ? 1.05 : 1 - Math.min(offsetFromTop, 2) * 0.04,
+					immediate: down,
+				};
+			});
+		},
+		{ filterTaps: true },
+	);
+
+	const topPet = pets[pets.length - 1];
 
 	return (
 		<NavbarLayout>
 			<div className="swipe-screen">
-				{currentPet ? (
-					<div className="swipe-card" key={currentPet._id}>
-						<Link to={`/adoptions/${currentPet._id}`} className="link-unstyled">
-							<div
-								style={{ backgroundImage: "url(" + currentPet.image + ")" }}
-								className="item-img"
-							>
-								<div className="item-overlay">
-									<h4>{currentPet.name}</h4>
-									{currentPet.specie && <p>{currentPet.specie}</p>}
-								</div>
-							</div>
-						</Link>
-						<div className="carousel-card-buttons mt-3">
-							<button className="swipe-btn swipe-btn-back" onClick={handleGoBack} aria-label="Volver">
-								<RotateCcw size={22} />
-							</button>
-							<button className="swipe-btn swipe-btn-dislike" onClick={handleDislike} aria-label="No me gusta">
-								<X size={28} />
-							</button>
-							<button className="swipe-btn swipe-btn-like" onClick={handleLike} aria-label="Me gusta">
-								<Heart size={24} fill="currentColor" strokeWidth={0} />
-							</button>
-						</div>
-					</div>
-				) : (
+				{loading && <p className="swipe-loading">Buscando compañeros...</p>}
+
+				{!loading && pets.length === 0 && (
 					<div className="not-found">
-						<h5 className="mt-5 text-center text-secondary">No hay más mascotas por ahora</h5>
-						<span className="loadr"></span>
-						{currentPetId === 1 && (
-							<button className="btn btn-primary btn-md mt-4" onClick={handleGoBack}>
-								Volver a la anterior
-							</button>
-						)}
+						<h5>No hay más mascotas por ahora</h5>
+						<p className="swipe-empty-sub">
+							Volvé más tarde, seguimos sumando publicaciones nuevas.
+						</p>
+					</div>
+				)}
+
+				<div className="card-stack">
+					{springs.map(({ x, y, rot, scale }, i) => {
+						const pet = pets[i];
+						if (!pet) return null;
+
+						const isTop = i === pets.length - 1;
+						const badges = getPetBadges(pet);
+						const age = formatPetAge(pet);
+
+						return (
+							<animated.div
+								className="swipe-card"
+								key={pet._id}
+								style={{ ...cardStyle(x, y, rot, scale), zIndex: i }}
+								{...(isTop ? bind(i) : {})}
+							>
+								<div
+									className="card-image"
+									style={{ backgroundImage: `url(${pet.images?.[0]})` }}
+								>
+									<div className="card-gradient" />
+									<div className="card-info">
+										<h2>
+											{pet.name}
+											{age && `, ${age}`}
+										</h2>
+										<p className="card-subline">
+											{pet.breed || pet.species}
+											{pet.sex &&
+												` · ${pet.sex === "Female" ? "Hembra" : "Macho"}`}
+										</p>
+										{(pet.distanceKm != null || pet.location?.city) && (
+											<p className="card-location">
+												📍{" "}
+												{pet.distanceKm != null
+													? `A ${pet.distanceKm} km`
+													: pet.location.city}
+											</p>
+										)}
+										{badges.length > 0 && (
+											<div className="card-badges">
+												{badges.slice(0, 4).map((b) => (
+													<span key={b.key} className="card-badge">
+														{b.label}
+													</span>
+												))}
+											</div>
+										)}
+									</div>
+								</div>
+							</animated.div>
+						);
+					})}
+				</div>
+
+				{topPet && (
+					<div className="swipe-actions">
+						<button
+							className="swipe-btn swipe-btn-back"
+							onClick={handleUndo}
+							disabled={!lastRemoved}
+							aria-label="Deshacer"
+						>
+							<RotateCcw size={20} />
+						</button>
+						<button
+							className="swipe-btn swipe-btn-dislike"
+							onClick={() => handleDislike(topPet)}
+							aria-label="No me gusta"
+						>
+							<X size={26} />
+						</button>
+						<button
+							className="swipe-btn swipe-btn-like"
+							onClick={() => handleLike(topPet)}
+							aria-label="Me gusta"
+						>
+							<Heart size={28} fill="currentColor" strokeWidth={0} />
+						</button>
 					</div>
 				)}
 			</div>
