@@ -8,6 +8,7 @@ import back from '../../assets/go-back.png'
 import trash from '../../assets/basura.png'
 import logou from '../../assets/logout.png'
 import edit from '../../assets/editar.png'
+import { PawPrint } from 'lucide-react'
 
 const Profile = () => {
 	const { user } = useContext(AuthContext);
@@ -57,6 +58,11 @@ const Profile = () => {
 					) : (
 						<p className="info-empty">Todavía no completaste tu información. Tocá el lápiz para agregarla.</p>
 					)}
+
+					<Link className="link-unstyled my-pets-link" to={"/myadoptions"}>
+						<PawPrint size={18} />
+						<span>Mis mascotas publicadas</span>
+					</Link>
 
 					<div className="other-info-buttons">
 						<Link className="link-unstyled action-btn" to={"/edit/profile"}>

@@ -1,10 +1,7 @@
 import {dislikeAdoptions, getAdoptions, likeAdoptions} from "../../../services/AdoptionService";
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import like from '../../../assets/like.png'
-import dislike from '../../../assets/dislike.png'
-import back from '../../../assets/back.png'
-
+import { Heart, X, RotateCcw } from 'lucide-react'
 
 import { NavbarLayout } from "../../../layout/NavbarLayout";
 
@@ -51,42 +48,39 @@ function AdoptionList() {
 
 	return (
 		<NavbarLayout>
-       
-			<div
-				id="carouselExampleSlidesOnly"
-				className="carousel slide"
-				data-bs-ride="carousel"
-			>
+			<div className="swipe-screen">
 				{currentPet ? (
-                    
-					<div className="carousel-inner">
-						<div className="carousel-item active mt-3" key={currentPet._id}>
+					<div className="swipe-card" key={currentPet._id}>
+						<Link to={`/adoptions/${currentPet._id}`} className="link-unstyled">
 							<div
 								style={{ backgroundImage: "url(" + currentPet.image + ")" }}
 								className="item-img"
-							></div>
-							<div className="item-content">
-								<Link
-									className="link-unstyled"
-									to={`/adoptions/${currentPet._id}`}
-								>
+							>
+								<div className="item-overlay">
 									<h4>{currentPet.name}</h4>
-								</Link>
-								<div className="carousel-card-buttons mt-3">
-									<img src={like} alt="heart" height={50} onClick={handleLike}/>
-									<img src={back} alt="heart" height={50}  onClick={handleGoBack}/>
-									<img src={dislike} alt="heart" height={55} onClick={handleDislike}/>	
+									{currentPet.specie && <p>{currentPet.specie}</p>}
 								</div>
 							</div>
+						</Link>
+						<div className="carousel-card-buttons mt-3">
+							<button className="swipe-btn swipe-btn-back" onClick={handleGoBack} aria-label="Volver">
+								<RotateCcw size={22} />
+							</button>
+							<button className="swipe-btn swipe-btn-dislike" onClick={handleDislike} aria-label="No me gusta">
+								<X size={28} />
+							</button>
+							<button className="swipe-btn swipe-btn-like" onClick={handleLike} aria-label="Me gusta">
+								<Heart size={24} fill="currentColor" strokeWidth={0} />
+							</button>
 						</div>
 					</div>
 				) : (
 					<div className="not-found">
-						<h5 className="mt-5 text-center text-secondary">Adoptions not found</h5>
-							<span className="loadr"></span>
+						<h5 className="mt-5 text-center text-secondary">No hay más mascotas por ahora</h5>
+						<span className="loadr"></span>
 						{currentPetId === 1 && (
 							<button className="btn btn-primary btn-md mt-4" onClick={handleGoBack}>
-								Return to last
+								Volver a la anterior
 							</button>
 						)}
 					</div>

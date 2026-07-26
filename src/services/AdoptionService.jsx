@@ -11,7 +11,7 @@ export const getAllMyAdoptions = () => authenticatedHttp.get("/myadoptions").the
 
 export const getAdoptionsDetail = (id) => unauthenticatedHttp.get(`/adoptions/${id}`).then((res) => res);
 
-export const getLikedAdoptions = (id) => unauthenticatedHttp.get(`/like/${id}`).then((res) => res);
+export const getLikedAdoptions = () => authenticatedHttp.get(`/like`).then((res) => res);
 
 export const createAdoption = (body) =>
 authenticatedHttp.post("adoptions/create", body).then((res) => res);
@@ -27,6 +27,3 @@ authenticatedHttp.post(`/like/${id}`).then((res) => res);
 
 export const dislikeAdoptions = (id) =>
 authenticatedHttp.post(`/dislike/${id}`).then((res) => res);
-
-
-

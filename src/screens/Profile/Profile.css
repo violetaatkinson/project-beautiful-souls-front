@@ -103,3 +103,18 @@
     border-color: #e0665a;
     color: #c0392b;
 }
+
+.my-pets-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 18px;
+    color: #2F80ED;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.my-pets-link:hover {
+    text-decoration: underline;
+}

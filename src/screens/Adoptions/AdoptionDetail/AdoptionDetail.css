@@ -1,49 +1,113 @@
-.detail {
-    
-    flex-direction: column;
+.detail-screen {
+    max-width: 480px;
+    margin: 0 auto;
 }
 
-.detail-img button {
-    margin-top: -137px;
-    margin-left: 300px;
-    border-radius: 100%;
-
-}
-
-.detail h1 {
-    color: #f8f9fa;
-    text-transform: capitalize;
-    font-weight: 900;
-    margin-top: -90px;
-    letter-spacing: 2px;
-    font-size: 35px;
-    text-align: center;
-
-}
-
-.extra {
-    margin-top: -75px;
-    margin-left: 290px;
-}
-
-
-.detail-info {
+.detail-hero {
+    position: relative;
+    height: 55vh;
+    min-height: 320px;
+    background-size: cover;
+    background-position: center;
+    background-color: #e8edf4;
     display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
-
+    flex-direction: column;
+    justify-content: flex-end;
 }
 
-.detail-info p {
-    background-color: #d6b3d687;
-    padding: 8px 15px;
-    border-radius: 8px;
-    font-weight: 500;
-}
- 
-.detail-back {
+.detail-back-btn {
+    position: absolute;
+    top: 18px;
+    left: 18px;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.9);
     display: flex;
     align-items: center;
     justify-content: center;
+    color: #1b2430;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.detail-hero-overlay {
+    padding: 24px 20px;
+    background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+    color: white;
+}
+
+.detail-hero-overlay h1 {
+    margin: 0;
+    font-weight: 800;
+    text-transform: capitalize;
+    letter-spacing: 0.5px;
+}
+
+.detail-specie {
+    margin: 2px 0 0;
+    opacity: 0.9;
+    text-transform: capitalize;
+}
+
+.detail-body {
+    padding: 20px;
+}
+
+.detail-chips {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+}
+
+.chip {
+    background-color: #f5f8fc;
+    color: #2F80ED;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 999px;
+    text-transform: capitalize;
+}
+
+.detail-description {
+    color: #4a5568;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.owner-card {
+    background-color: #f5f8fc;
+    border-radius: 16px;
+    padding: 18px;
+}
+
+.owner-card h5 {
+    margin: 0 0 8px;
+    font-size: 13px;
+    color: #6b7686;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.owner-name {
+    font-weight: 700;
+    color: #1b2430;
+    margin-bottom: 10px;
+}
+
+.owner-contact-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #2F80ED;
+    font-weight: 600;
+    font-size: 14px;
+    text-decoration: none;
+    margin-bottom: 6px;
+}
+
+.owner-contact-row:hover {
+    text-decoration: underline;
 }

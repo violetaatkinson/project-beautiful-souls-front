@@ -1,0 +1,69 @@
+.likes-title {
+    letter-spacing: 0.5px;
+    font-weight: 700;
+    color: #1b2430;
+    font-size: 20px;
+}
+
+.likes-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    color: #d16b78;
+    padding: 60px 32px 0;
+}
+
+.likes-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    padding: 16px;
+    max-width: 480px;
+    margin: 0 auto;
+}
+
+.like-card {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 6px 16px rgba(20, 55, 120, 0.12);
+}
+
+.like-card-img {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    background-size: cover;
+    background-position: center;
+    background-color: #e8edf4;
+}
+
+.like-card-name {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+    padding: 10px 12px;
+    color: white;
+    font-weight: 700;
+    text-transform: capitalize;
+    background: linear-gradient(to top, rgba(0,0,0,0.65), transparent);
+}
+
+.like-remove-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #e0665a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}

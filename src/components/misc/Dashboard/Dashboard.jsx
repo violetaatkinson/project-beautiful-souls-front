@@ -1,12 +1,13 @@
-import { PawPrint, Star, Home, MessageCircle } from 'lucide-react'
+import { Home, Compass, Heart, MessageCircle, User } from 'lucide-react'
 import { NavLink } from 'react-router-dom'
 import './Dashboard.css'
 
 const NAV_ITEMS = [
-    { to: '/adoptions', icon: PawPrint, label: 'Descubrir' },
-    { to: '/myadoptions', icon: Star, label: 'Favoritos' },
-    { to: '/search', icon: Home, label: 'Inicio' },
+    { to: '/search', icon: Home, label: 'Home' },
+    { to: '/adoptions', icon: Compass, label: 'Explore' },
+    { to: '/likes', icon: Heart, label: 'Likes' },
     { to: '/users', icon: MessageCircle, label: 'Chats' },
+    { to: '/profile', icon: User, label: 'Profile' },
 ]
 
 function Dashboard () {
@@ -15,12 +16,15 @@ function Dashboard () {
             {NAV_ITEMS.map(({ to, icon: Icon, label }) => (
                 <NavLink key={to} className="dash-item link-unstyled" to={to}>
                     {({ isActive }) => (
-                        <span className={`dash-pill ${isActive ? 'active' : ''}`}>
-                            <Icon
-                                size={24}
-                                strokeWidth={2}
-                                fill={isActive ? 'currentColor' : 'none'}
-                            />
+                        <span className="dash-content">
+                            <span className={`dash-pill ${isActive ? 'active' : ''}`}>
+                                <Icon
+                                    size={22}
+                                    strokeWidth={2}
+                                    fill={isActive ? 'currentColor' : 'none'}
+                                />
+                            </span>
+                            <span className={`dash-label ${isActive ? 'active' : ''}`}>{label}</span>
                         </span>
                     )}
                 </NavLink>

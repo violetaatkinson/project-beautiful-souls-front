@@ -1,55 +1,91 @@
+.swipe-screen {
+    max-width: 420px;
+    margin: 0 auto;
+    padding: 16px;
+}
+
+.swipe-card {
+    display: flex;
+    flex-direction: column;
+}
+
 .item-img {
-    height: 400px;
-    width: 90vw;
-    margin: auto;
+    height: 60vh;
+    min-height: 380px;
+    width: 100%;
     background-position: center;
     background-size: cover;
-    border-radius: 5px;
+    background-color: #e8edf4;
+    border-radius: 22px;
+    box-shadow: 0 12px 30px rgba(20, 55, 120, 0.18);
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+}
+
+.item-overlay {
+    width: 100%;
+    padding: 20px;
+    background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+    color: white;
+}
+
+.item-overlay h4 {
+    margin: 0;
+    text-transform: capitalize;
+    font-weight: 800;
+    font-size: 28px;
+}
+
+.item-overlay p {
+    margin: 2px 0 0;
+    text-transform: capitalize;
+    opacity: 0.9;
 }
 
 .carousel-card-buttons {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
-    
+    gap: 20px;
+    margin: 18px 0;
 }
 
-.item-content a {
-    position: absolute;
-    text-transform: capitalize;
-    top: 70%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 5px 10px;
-    border-radius: 4px;
-    
+.swipe-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 6px 16px rgba(20, 55, 120, 0.15);
+    transition: transform 0.15s ease;
 }
 
-.item-content a h4 {
-    margin: 0;
-   color: white;
-   font-weight: 600;
-   font-size: 35px;
+.swipe-btn:hover {
+    transform: translateY(-2px) scale(1.05);
 }
 
-.carousel-card-buttons {
-    margin: 10px 0;
+.swipe-btn-back {
+    width: 44px;
+    height: 44px;
+    background-color: white;
+    color: #e0b23a;
 }
 
-.carousel-card-buttons button {
-    margin: 0 5px;
+.swipe-btn-dislike {
+    width: 58px;
+    height: 58px;
+    background-color: white;
+    color: #e0665a;
 }
 
-.carousel-card-buttons button img {
-    width: 17px;
-    height: 17px !important;
-}
-
-@media screen and (min-width: 700px) {
-    .item-img {
-        height: 300px;
-        width: 200px;
-    }
+.swipe-btn-like {
+    width: 58px;
+    height: 58px;
+    background-color: #2F80ED;
+    color: white;
 }
 
 .not-found {
@@ -59,16 +95,6 @@
     justify-content: center;
 }
 
-.not-found img {
-    margin-left: 20px;
-}
-
-.not-found h5 {
-  letter-spacing: 1.5px;
-  margin-left: 25px;
-  font-weight: 400;
-}
-
 .loadr {
     width: 48px;
     height: 48px;
@@ -76,9 +102,9 @@
     margin: 20px auto;
     box-sizing: border-box;
     position: relative;
-  }
-  .loadr::after {
-    content: '';  
+}
+.loadr::after {
+    content: '';
     box-sizing: border-box;
     width: 48px;
     height: 48px;
@@ -88,11 +114,10 @@
     border-radius: 50% 50% 0;
     border: 15px solid #2F80ED;
     transform: rotate(45deg) translate(0, 0);
-    box-sizing: border-box;
     animation: animMarker 0.4s ease-in-out infinite alternate;
-  }
-  .loadr::before {
-    content: '';  
+}
+.loadr::before {
+    content: '';
     box-sizing: border-box;
     position: absolute;
     left: 0;
@@ -104,23 +129,14 @@
     border-radius: 50%;
     background: rgba(0, 0, 0, 0.2);
     animation: animShadow 0.4s ease-in-out infinite alternate;
-  }
-  
-  @keyframes animMarker {
-    0% {
-      transform: rotate(45deg) translate(5px, 5px);
-    }
-    100% {
-      transform: rotate(45deg) translate(-5px, -5px);
-    }
-  }
-  
-  @keyframes animShadow {
-    0% {
-      transform: scale(0.5);
-    }
-    100% {
-      transform: scale(1);
-    }
-  }
-      
+}
+
+@keyframes animMarker {
+    0% { transform: rotate(45deg) translate(5px, 5px); }
+    100% { transform: rotate(45deg) translate(-5px, -5px); }
+}
+
+@keyframes animShadow {
+    0% { transform: scale(0.5); }
+    100% { transform: scale(1); }
+}

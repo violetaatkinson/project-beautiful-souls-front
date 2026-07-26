@@ -6,6 +6,7 @@ import Login from './screens/Login/Login';
 import UnprotectedRoute from './components/misc/UnprotectedRoute';
 import Profile from './screens/Profile/Profile'
 import MyPetsCreated from './screens/Adoptions/MyPetsCreated/MyPetsCreated';
+import MyLikes from './screens/Adoptions/MyLikes/MyLikes';
 import NewAdoption from './screens/Adoptions/NewAdoption/NewAdoption'
 import AdoptionList from './screens/Adoptions/AdoptionList/AdoptionList'
 import AdoptionDetail from './screens/Adoptions/AdoptionDetail/AdoptionDetail';
@@ -70,6 +71,11 @@ function App() {
               </ProtectedRoute>
               
             }/>
+            <Route path="/likes" element={
+              <ProtectedRoute>
+                 <MyLikes/>
+              </ProtectedRoute>
+            }/>
             <Route path="/adopted/create" element={
              
                 <NewAdopted/>
@@ -95,8 +101,3 @@ export default App;
 
 
 
-
-
-
-// query q solo se vea el en el cel
-// desplearlo en cel

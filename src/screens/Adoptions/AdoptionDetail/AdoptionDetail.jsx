@@ -1,52 +1,73 @@
-import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useParams, Link } from "react-router-dom";
+import { ArrowLeft, Mail, Phone } from 'lucide-react'
 import { getAdoptionsDetail } from "../../../services/AdoptionService"
+import { useAuthContext } from "../../../contexts/AuthContext";
 import './AdoptionDetail.css'
-import back from '../../../assets/back.png'
-
-import {Link} from "react-router-dom"
-
 
 
 function AdoptionDetail() {
     const [pet, setDetail] = useState()
     const { id } = useParams();
-      console.log(pet);
+    const { user } = useAuthContext();
+
     useEffect(() => {
         getAdoptionsDetail(id)
         .then((detail) => {
             setDetail(detail);
         });
 	}, [id]);
-    
- 
+
+    const isOwnPet = pet?.owner && user?._id === (pet.owner._id || pet.owner);
+
     return (
-        <div>
-       
+        <div className="detail-screen">
             {pet ? (
 				<>
-				    <div className="detail align-items-center">
-                        <div className="detail-img">
-                            <img src={pet.image} alt={pet.name} width={380} />
+                    <div
+                        className="detail-hero"
+                        style={{ backgroundImage: `url(${pet.image})` }}
+                    >
+                        <Link className="link-unstyled detail-back-btn" to={"/adoptions"}>
+                            <ArrowLeft size={20} />
+                        </Link>
+                        <div className="detail-hero-overlay">
+                            <h1>{pet.name}</h1>
+                            <p className="detail-specie">{pet.specie}</p>
                         </div>
-                        <div className="mt-3 text-start  ">    
-                            <h1>{pet.name}</h1> 
-                        </div> 
-                        <div className="detail-info mt-5">
-                            <p>{pet.gender}</p>
-                            <p>{pet.years} Years</p>
-                            <p>{pet.size}</p>
+                    </div>
+
+                    <div className="detail-body">
+                        <div className="detail-chips">
+                            {pet.gender && <span className="chip">{pet.gender}</span>}
+                            {pet.years != null && <span className="chip">{pet.years} años</span>}
+                            {pet.size && <span className="chip">{pet.size}</span>}
                         </div>
-                        <h3 className="text-center mt-3 mb-3">{pet.description}</h3>
-                        <span className="detail-back mt-3">
-                           <Link className="link-unstyled" to={"/adoptions"}>
-                                <img src={back} alt="back" width={60}/>
-                           </Link>
-                        </span>
-                    </div>	
+
+                        {pet.description && (
+                            <p className="detail-description">{pet.description}</p>
+                        )}
+
+                        {!isOwnPet && pet.owner && (pet.owner.email || pet.owner.phoneNumber) && (
+                            <div className="owner-card">
+                                <h5>Contactar al dueño</h5>
+                                <p className="owner-name text-capitalize">{pet.owner.userName}</p>
+                                {pet.owner.phoneNumber && (
+                                    <a className="owner-contact-row" href={`tel:${pet.owner.phoneNumber}`}>
+                                        <Phone size={16} /> {pet.owner.phoneNumber}
+                                    </a>
+                                )}
+                                {pet.owner.email && (
+                                    <a className="owner-contact-row" href={`mailto:${pet.owner.email}`}>
+                                        <Mail size={16} /> {pet.owner.email}
+                                    </a>
+                                )}
+                            </div>
+                        )}
+                    </div>
 				</>
 			) : (
-				<p>Loading details...</p>
+				<p className="text-center mt-5">Cargando detalle...</p>
 			)}
         </div>
     )
