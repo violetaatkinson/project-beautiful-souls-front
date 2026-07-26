@@ -1,10 +1,14 @@
 .pet-detail {
-  padding-bottom: 32px;
+  padding-bottom: 110px;
 }
 
 .pet-carousel {
   position: relative;
-  height: 60vh;
+  height: 52vh;
+  margin: 16px 16px 0;
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(20, 30, 60, 0.12);
 }
 
 .pet-carousel-track {
@@ -22,9 +26,25 @@
 .pet-carousel-slide {
   flex: 0 0 100%;
   scroll-snap-align: start;
-  background-size: cover;
-  background-position: center;
-  background-color: #eee;
+  position: relative;
+  height: 100%;
+}
+
+.pet-carousel-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.pet-carousel-fallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #dbe7fb, #c3d6f2);
+  color: rgba(47, 128, 237, 0.35);
 }
 
 .pet-carousel-dots {
@@ -53,7 +73,7 @@
 
 .pet-back-btn {
   position: absolute;
-  top: 16px;
+  top: max(16px, env(safe-area-inset-top));
   left: 16px;
   width: 36px;
   height: 36px;
@@ -64,6 +84,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 2;
 }
 
 .pet-carousel-overlay {
@@ -76,8 +97,18 @@
   background: linear-gradient(180deg, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.7) 100%);
 }
 
+.pet-carousel-overlay h1 {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.pet-carousel-overlay p {
+  margin: 4px 0 0;
+  opacity: 0.9;
+}
+
 .pet-body {
-  padding: 16px 20px 0;
+  padding: 20px 20px 0;
 }
 
 .pet-chips {
@@ -186,13 +217,44 @@
   font-size: 0.9rem;
 }
 
-.pet-carousel-slide {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: rgba(47, 128, 237, 0.3);
+.pet-actions {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 16px 0 max(16px, env(safe-area-inset-bottom));
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #fff 45%);
 }
 
-.carousel-fallback-icon {
-    opacity: 0.5;
+.pet-action-btn {
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  box-shadow: 0 6px 16px rgba(20, 30, 60, 0.15);
+  transition: transform 0.12s ease;
+}
+
+.pet-action-btn:active {
+  transform: scale(0.88);
+}
+
+.pet-action-dislike {
+  width: 54px;
+  height: 54px;
+  color: #ff5a5f;
+}
+
+.pet-action-like {
+  width: 62px;
+  height: 62px;
+  color: #fff;
+  background: linear-gradient(135deg, #2f80ed, #56ccf2);
+  box-shadow: 0 8px 22px rgba(47, 128, 237, 0.4);
 }
