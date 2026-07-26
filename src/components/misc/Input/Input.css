@@ -1,3 +1,19 @@
+.f-group {
+    text-align: left;
+}
+
+.f-label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: #4a5568;
+    margin-bottom: 6px;
+}
+
+.f-input-wrap {
+    position: relative;
+}
+
 .f-control {
     width: 100%;
     display: block;
@@ -9,6 +25,10 @@
     font-size: 15px;
     color: #1b2430;
     transition: border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.f-input-wrap.has-toggle .f-control {
+    padding-right: 42px;
 }
 
 .f-control::placeholder {
@@ -25,6 +45,24 @@
 .f-control.is-invalid {
     border-color: #e0665a;
     background-color: #fdf3f2;
+}
+
+.f-toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background: none;
+    color: #98a3b3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+}
+
+.f-toggle-password:active {
+    color: #2F80ED;
 }
 
 .invalid-feedback {
