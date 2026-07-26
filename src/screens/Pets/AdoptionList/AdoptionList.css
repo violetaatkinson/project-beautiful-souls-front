@@ -2,7 +2,7 @@
     position: relative;
     height: calc(100dvh - 150px);
     min-height: 420px;
-    padding: 8px 16px 0;
+    padding: 20px 16px 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -20,7 +20,7 @@
 .swipe-card {
     position: absolute;
     inset: 0;
-    height: 82%;
+    height: 100%;
     border-radius: 28px;
     overflow: hidden;
     box-shadow: 0 16px 40px rgba(20, 30, 60, 0.18);
@@ -104,7 +104,7 @@
     align-items: center;
     justify-content: center;
     gap: 24px;
-    margin: 16px 0 20px;
+    margin: 16px 0 28px;
 }
 
 .swipe-btn {
