@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { Bell, PawPrint } from 'lucide-react'
+import { Bell } from 'lucide-react'
 import AuthContext from "../../../contexts/AuthContext";
 import './Navbar.css'
 
@@ -15,9 +15,6 @@ function Navbar () {
             </Link>
 
             <Link to="/search" className="link-unstyled brand-mark">
-                <span className="brand-badge">
-                    <PawPrint size={14} strokeWidth={2.6} />
-                </span>
                 <span className="brand-text">Beautiful Souls</span>
             </Link>
 

@@ -18,26 +18,13 @@
 .brand-mark {
     display: flex;
     align-items: center;
-    gap: 8px;
     justify-self: center;
-}
-
-.brand-badge {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    color: white;
-    background: linear-gradient(135deg, #2F80ED 0%, #56CCF2 100%);
-    box-shadow: 0 4px 10px rgba(47, 128, 237, 0.35);
 }
 
 .brand-text {
     font-family: 'Noto Serif Telugu', serif;
     font-weight: 700;
-    font-size: 15px;
+    font-size: 19px;
     letter-spacing: 0.3px;
     background: linear-gradient(90deg, #2F80ED, #56CCF2);
     -webkit-background-clip: text;
