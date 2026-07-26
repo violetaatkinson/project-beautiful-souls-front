@@ -1,6 +1,6 @@
 .swipe-screen {
     position: relative;
-    height: calc(100dvh - 150px);
+    height: 100%;
     min-height: 420px;
     padding: 20px 16px 0;
     display: flex;
