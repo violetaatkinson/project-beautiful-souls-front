@@ -1,8 +1,7 @@
 import { useState , useEffect  } from "react";
 import { Link } from "react-router-dom";
 import { getAllMyAdoptions, deleteAdoption } from "../../../services/AdoptionService";
-import trash from '../../../assets/basura.png'
-import edit from '../../../assets/editar.png'
+
 
 import { NavbarLayout } from "../../../layout/NavbarLayout";
 
@@ -22,6 +21,7 @@ const CreatedPets = () => {
 	}, []);
 
    
+    // eslint-disable-next-line no-unused-vars
     const handleDelete = (_id) => {
         deleteAdoption(_id)
           .then(() => {
@@ -45,9 +45,9 @@ const CreatedPets = () => {
                                     </Link>
                                 </span>
                                 <div className="mt-3 created-buttons mb-4">
-                                    <img src={trash} alt="trash" width={50} onClick={() => handleDelete(myPet._id)}/>
+                                   
                                     <Link className="link-unstyled" to={`/adoptions/edit/${myPet._id}`}>
-                                        <img src={edit} alt="edit" width={50}/>
+                                        
                                     </Link>
                                 </div>
                             </div>
