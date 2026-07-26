@@ -1,84 +1,105 @@
 import { useContext } from "react";
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
+import {
+	ArrowLeft,
+	MapPin,
+	Phone,
+	Mail,
+	ShieldCheck,
+	PawPrint,
+	SquarePen,
+	LogOut,
+	Trash2,
+	Building2,
+	Home,
+} from "lucide-react";
 import AuthContext from "../../contexts/AuthContext";
 import { deleteUser } from "../../services/UserService";
-import { logout } from '../../token/AccessToken'
+import { logout } from "../../token/AccessToken";
 import "./Profile.css";
-import back from '../../assets/go-back.png'
-import trash from '../../assets/basura.png'
-import logou from '../../assets/logout.png'
-import edit from '../../assets/editar.png'
-import { PawPrint } from 'lucide-react'
 
 const Profile = () => {
 	const { user } = useContext(AuthContext);
 
-	const handleDelete = (id) => {
-        deleteUser(id)
-            .then(() => {
-				logout()
-          })
-    }
+	const handleDelete = () => {
+		if (!window.confirm("Delete your account? This can't be undone.")) return;
+		deleteUser(user.id).then(() => logout());
+	};
 
-	// Solo mostramos los datos que el usuario realmente cargó
-	const infoFields = [
-		{ label: 'Email', value: user.email },
-		{ label: 'Teléfono', value: user.phoneNumber },
-		{ label: 'Nombre', value: user.firstName },
-		{ label: 'Apellido', value: user.lastName },
-		{ label: 'Género', value: user.gender },
-		{ label: 'Edad', value: user.age },
-	].filter(field => field.value)
+	const isShelter = user.accountType === "shelter";
+	const location = [user.city, user.province].filter(Boolean).join(", ");
+
+	const infoRows = [
+		{ icon: <Mail size={16} />, label: "Email", value: user.email },
+		{ icon: <Phone size={16} />, label: "Phone", value: user.phoneNumber },
+		{ icon: <MapPin size={16} />, label: "Location", value: location },
+	].filter((row) => row.value);
 
 	return (
 		<div className="profile-screen">
-			<Link className="link-unstyled" to={"/search"}>
-				<img src={back} alt="back" width={20} className="mt-4 arrow-pr" />
+			<Link className="link-unstyled profile-back-btn" to="/search">
+				<ArrowLeft size={20} />
 			</Link>
-		 	<h5 className="text-center prof-prof">Perfil</h5>
-			 <div className="user" >
-			 	<img
-						src={user.image}
-						alt={user.userName}
-						className="rounded-circle border mt-2 mb-3 prof-img "
-					/>
-				<h5 className="text-capitalize">{user.userName || 'Sin nombre de usuario'}</h5>
-			 </div>
+			<h1 className="profile-title">Your Profile</h1>
 
-				<div className="profile-card">
-					{infoFields.length > 0 ? (
-						<ul className="info-list">
-							{infoFields.map(field => (
-								<li key={field.label}>
-									<span className="info-label">{field.label}</span>
-									<span className="info-value">{field.value}</span>
-								</li>
-							))}
-						</ul>
-					) : (
-						<p className="info-empty">Todavía no completaste tu información. Tocá el lápiz para agregarla.</p>
+			<div className="profile-hero">
+				<img src={user.image} alt={user.userName} className="profile-avatar" />
+				<h2 className="profile-name">{user.userName || "No username set"}</h2>
+				<span className={`account-type-chip ${isShelter ? "shelter" : ""}`}>
+					{isShelter ? <Building2 size={14} /> : <Home size={14} />}
+					{isShelter ? user.shelterName || "Shelter" : "Individual adopter"}
+					{isShelter && user.shelterVerified && (
+						<ShieldCheck size={14} className="verified-icon" />
 					)}
+				</span>
+			</div>
 
-					<Link className="link-unstyled my-pets-link" to={"/myadoptions"}>
-						<PawPrint size={18} />
-						<span>Mis mascotas publicadas</span>
-					</Link>
-
-					<div className="other-info-buttons">
-						<Link className="link-unstyled action-btn" to={"/edit/profile"}>
-							<img src={edit} alt="edit" width={26}/>
-							<span>Editar</span>
-						</Link>
-						<button className="link-unstyled action-btn" onClick={() => logout(user.id)}>
-							<img src={logou} alt="logout" width={26}/>
-							<span>Salir</span>
-						</button>
-						<button className="link-unstyled action-btn danger" onClick={() => handleDelete(user.id)}>
-							<img src={trash} alt="trash" width={26}/>
-							<span>Eliminar</span>
-						</button>
+			<div className="profile-body">
+				{infoRows.length > 0 ? (
+					<div className="info-card">
+						{infoRows.map((row) => (
+							<div className="info-row" key={row.label}>
+								<span className="info-icon">{row.icon}</span>
+								<div>
+									<p className="info-label">{row.label}</p>
+									<p className="info-value">{row.value}</p>
+								</div>
+							</div>
+						))}
 					</div>
+				) : (
+					<p className="info-empty">
+						You haven't completed your profile yet. Tap "Edit Profile" to add
+						your info.
+					</p>
+				)}
+
+				<Link className="link-unstyled my-pets-link" to="/myadoptions">
+					<PawPrint size={18} />
+					<span>My published pets</span>
+				</Link>
+
+				<div className="profile-actions">
+					<Link
+						className="link-unstyled profile-action-primary"
+						to="/edit/profile"
+					>
+						<SquarePen size={18} />
+						Edit Profile
+					</Link>
+					<button
+						className="profile-action-secondary"
+						onClick={() => logout(user.id)}
+					>
+						<LogOut size={18} />
+						Log Out
+					</button>
+					<button className="profile-action-danger" onClick={handleDelete}>
+						<Trash2 size={18} />
+						Delete Account
+					</button>
 				</div>
+			</div>
 		</div>
 	);
 };

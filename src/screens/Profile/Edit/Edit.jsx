@@ -1,196 +1,131 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import { Home, Building2, ArrowLeft, Camera } from "lucide-react";
 import { useAuthContext } from "../../../contexts/AuthContext";
 import { updateUser, getCurrentUser } from "../../../services/UserService";
-import backArrow from "../../../assets/go-back.png";
-import { Link } from "react-router-dom";
-import './Edit.css'
+import Input from "../../../components/misc/Input/Input";
+import "./Edit.css";
 
-const Edit = ({ edit }) => {
-	const { user, getUser } = useAuthContext();
-	const navigate = useNavigate();
+const INITIAL_STATE = {
+  userName: "",
+  email: "",
+  phoneNumber: "",
+  accountType: "individual",
+  shelterName: "",
+  city: "",
+  province: "",
+  image: "",
+};
 
-	const [userState, setUserState] = useState({
-		userName: "",
-		email: "",
-		firstName: "",
-		lastName: "",
-		age: "",
-		gender: "",
-		phoneNumber: "",
-		image: "",
-	});
+const Edit = () => {
+  const { user, getUser } = useAuthContext();
+  const navigate = useNavigate();
+  const [userState, setUserState] = useState(INITIAL_STATE);
+  const [preview, setPreview] = useState("");
+  const [submitting, setSubmitting] = useState(false);
 
-	useEffect(() => {
-		if (edit) {
-			getCurrentUser().then((userFetched) => {
-				Object.keys(userFetched).forEach((key) => {
-					if (userFetched[key] === null) {
-						delete userFetched[key];
-					}
-				});
-				setUserState((prevState) => ({ ...prevState, ...userFetched }));
-			});
-		}
-	}, [edit]);
+  useEffect(() => {
+    getCurrentUser().then((fetched) => {
+      setUserState((prev) => ({
+        ...prev,
+        userName: fetched.userName || "",
+        email: fetched.email || "",
+        phoneNumber: fetched.phoneNumber || "",
+        accountType: fetched.accountType || "individual",
+        shelterName: fetched.shelterName || "",
+        city: fetched.city || "",
+        province: fetched.province || "",
+      }));
+      setPreview(fetched.image || "");
+    });
+  }, []);
 
-	const handleOnChange = (event) => {
-		const { value, name, type, files } = event.target;
-		if (type === "file") {
-			setUserState({ ...userState, [name]: files[0] });
-		} else {
-			setUserState({ ...userState, [name]: value });
-		}
-	};
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setUserState((prev) => ({ ...prev, [name]: value }));
+  };
 
-	const onSubmit = (event) => {
-		event.preventDefault();
-		const formData = new FormData();
-		for (let value in userState) {
-			formData.append(value, userState[value]);
-		}
+  const handlePhoto = (event) => {
+    const file = event.target.files[0];
+    if (!file) return;
+    setUserState((prev) => ({ ...prev, image: file }));
+    setPreview(URL.createObjectURL(file));
+  };
 
-		if (edit) {
-			updateUser(user.id, formData).then((edited) => {
-				getUser();
-				navigate("/profile");
-			});
-		}
-	};
+  const setAccountType = (accountType) => setUserState((prev) => ({ ...prev, accountType }));
 
-	return (
-		<div>
-			<Link className="link-unstyled" to={"/search"}>
-				<img src={backArrow} alt="back" width={20} className="mt-5 search-arrow" />
-			</Link>
-			<h1 className="text-center mb-2 edit-tt">Edit Your Profile</h1>
-			<div className="Create">
-				<form onSubmit={onSubmit} className=" mt-3  g-3">
-					<div className="row align-items-center">
-						<div className="col-md-6">
-							<label className="form-label" htmlFor="userName">
-								User Name
-							</label>
-							<input
-								className="form-control"
-								value={userState.userName}
-								onChange={handleOnChange}
-								name="userName"
-								type="text"
-								id="userName"
-								placeholder="user name"
-							/>
-						</div>
-						<div className="col-md-6">
-							<label className="form-label" htmlFor="email">
-								Email
-							</label>
-							<input
-								className="form-control"
-								value={userState.email}
-								onChange={handleOnChange}
-								name="email"
-								type="text"
-								id="email"
-								placeholder="email"
-							/>
-						</div>
-					</div>
-					<div className="row align-items-center">
-						<div className="col mt-3">
-							<label className="form-label" htmlFor="firstname">
-								First name
-							</label>
-							<input
-								className="form-control"
-								value={userState.firstName}
-								onChange={handleOnChange}
-								name="firstName"
-								type="text"
-								id="firstname"
-								placeholder="first name"
-							/>
-						</div>
-						<div className="col mt-3">
-							<label className="form-label" htmlFor="lastname">
-								Last Name
-							</label>
-							<input
-								className="form-control"
-								value={userState.lastName}
-								onChange={handleOnChange}
-								name="lastName"
-								type="text"
-								id="lastname"
-								placeholder="last name"
-							/>
-						</div>
-					</div>
-					<div className="row d-flex justify-content-around  ">
-						<div className="col-3 mt-2">
-							<label className="form-label" htmlFor="gender">
-								Gender
-							</label>
-							<input
-								className="form-control"
-								value={userState.gender}
-								onChange={handleOnChange}
-								name="gender"
-								type="text"
-								id="gender"
-								placeholder="Gender"
-							/>
-						</div>
-						<div className="col-3 mt-2 ">
-							<label className="form-label" htmlFor="age">
-								Age
-							</label>
-							<input
-								className="form-control "
-								value={userState.age}
-								onChange={handleOnChange}
-								name="age"
-								type="number"
-								id="age"
-								placeholder="Age"
-							/>
-						</div>
-						<div className="col-5 mt-2">
-							<label className="form-label" htmlFor="phonenumber">
-								Phone Number
-							</label>
-							<input
-								className="form-control"
-								value={userState.phoneNumber}
-								onChange={handleOnChange}
-								name="phoneNumber"
-								type="text"
-								id="phonenumber"
-								placeholder="Phone number"
-							/>
-						</div>
-					</div>
-					<div className="input-group mb-3 mt-4">
-						<input
-							type="file"
-							className="form-control"
-							id="file"
-							name="image"
-							onChange={handleOnChange}
-						/>
-						<label className="input-group-text" htmlFor="image">
-							Upload
-						</label>
-					</div>
-					<div className="mt-4 mb-4">
-						<button type="submit" className="button form-control">
-							Submit
-						</button>
-					</div>
-				</form>
-			</div>
-		</div>
-	);
+  const onSubmit = (event) => {
+    event.preventDefault();
+    setSubmitting(true);
+
+    const formData = new FormData();
+    Object.entries(userState).forEach(([key, value]) => {
+      if (value !== "" && value !== undefined) formData.append(key, value);
+    });
+
+    updateUser(user.id, formData)
+      .then(() => {
+        getUser();
+        navigate("/profile");
+      })
+      .finally(() => setSubmitting(false));
+  };
+
+  return (
+    <div className="edit-screen">
+      <Link className="link-unstyled edit-back-btn" to="/profile">
+        <ArrowLeft size={20} />
+      </Link>
+      <h1 className="edit-title">Complete Your Profile</h1>
+
+      <form onSubmit={onSubmit} className="edit-form">
+        <div className="edit-photo-picker">
+          <label htmlFor="image" className="edit-photo-label">
+            <img src={preview || user?.image} alt="Profile" className="edit-photo-preview" />
+            <span className="edit-photo-overlay"><Camera size={16} /></span>
+          </label>
+          <input type="file" id="image" name="image" accept="image/*" onChange={handlePhoto} hidden />
+        </div>
+
+        <Input label="Username" placeholder="Your username" name="userName" id="userName" value={userState.userName} onChange={handleChange} />
+        <Input label="Email" type="email" placeholder="you@email.com" name="email" id="email" value={userState.email} onChange={handleChange} />
+        <Input label="Phone number" placeholder="+1 555 000 0000" name="phoneNumber" id="phoneNumber" value={userState.phoneNumber} onChange={handleChange} />
+
+        <div className="edit-account-type">
+          <label className="f-label">Account type</label>
+          <div className="account-type-toggle">
+            <button
+              type="button"
+              className={`account-type-btn ${userState.accountType === "individual" ? "active" : ""}`}
+              onClick={() => setAccountType("individual")}
+            >
+              <Home size={16} /> Individual
+            </button>
+            <button
+              type="button"
+              className={`account-type-btn ${userState.accountType === "shelter" ? "active" : ""}`}
+              onClick={() => setAccountType("shelter")}
+            >
+              <Building2 size={16} /> Shelter
+            </button>
+          </div>
+        </div>
+
+        {userState.accountType === "shelter" && (
+          <Input label="Shelter name" placeholder="Your shelter's name" name="shelterName" id="shelterName" value={userState.shelterName} onChange={handleChange} />
+        )}
+
+        <div className="edit-row">
+          <Input label="City" placeholder="City" name="city" id="city" value={userState.city} onChange={handleChange} />
+          <Input label="Province / State" placeholder="Province or state" name="province" id="province" value={userState.province} onChange={handleChange} />
+        </div>
+
+        <button type="submit" className="button edit-submit" disabled={submitting}>
+          {submitting ? "Saving..." : "Save changes"}
+        </button>
+      </form>
+    </div>
+  );
 };
 
 export default Edit;

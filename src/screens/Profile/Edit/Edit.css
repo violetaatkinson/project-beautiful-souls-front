@@ -1,3 +1,109 @@
-.edit-tt {
-    margin-top: -27px;
+.edit-screen {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 20px 20px 40px;
+}
+
+.edit-back-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #f5f8fc;
+    color: #1b2430;
+}
+
+.edit-title {
+    font-size: 22px;
+    font-weight: 800;
+    color: #1b2430;
+    margin: 20px 0 24px;
+    text-align: center;
+}
+
+.edit-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.edit-photo-picker {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 4px;
+}
+
+.edit-photo-label {
+    position: relative;
+    cursor: pointer;
+}
+
+.edit-photo-preview {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #2F80ED;
+}
+
+.edit-photo-overlay {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #2F80ED;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #fff;
+}
+
+.edit-account-type .f-label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: #4a5568;
+    margin-bottom: 6px;
+}
+
+.account-type-toggle {
+    display: flex;
+    gap: 10px;
+}
+
+.account-type-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 12px;
+    border-radius: 12px;
+    border: 1.5px solid #e3e8f0;
+    background: #f5f8fc;
+    color: #6b7686;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.15s ease;
+}
+
+.account-type-btn.active {
+    background: linear-gradient(135deg, #2F80ED 0%, #56CCF2 100%);
+    border-color: transparent;
+    color: #fff;
+}
+
+.edit-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+.edit-submit {
+    margin-top: 8px;
 }
