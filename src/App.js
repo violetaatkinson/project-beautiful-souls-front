@@ -9,7 +9,7 @@ import MyPetsCreated from './screens/Adoptions/MyPetsCreated/MyPetsCreated';
 import MyLikes from './screens/Adoptions/MyLikes/MyLikes';
 import NewAdoption from './screens/Adoptions/NewAdoption/NewAdoption'
 import AdoptionList from './screens/Adoptions/AdoptionList/AdoptionList'
-import AdoptionDetail from './screens/Adoptions/AdoptionDetail/AdoptionDetail';
+import PetDetail from './screens/Adoptions/PetDetail/PetDetail';
 import ProtectedRoute from './components/misc/ProtectedRoute';
 import Search from './components/misc/Search/Search';
 import Edit from './screens/Profile/Edit/Edit';
@@ -93,7 +93,7 @@ function App() {
            <Route path="users/chat/:id" element={<Chat/>}/>
            <Route path="/users" element={<ListUsers/>}/>
            <Route path='/adoptions' element={<AdoptionList/>}/>
-           <Route path='/adoptions/:id' element={<AdoptionDetail/>}/>
+           <Route path='/adoptions/:id' element={<PetDetail/>}/>
            <Route path='/notifications' element={<Notification/>}/>
           
             
