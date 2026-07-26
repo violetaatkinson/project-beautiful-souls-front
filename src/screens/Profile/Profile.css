@@ -173,3 +173,8 @@
 .profile-action-danger:active {
     transform: scale(0.98);
 }
+
+.profile-action-primary:hover {
+    color: #fff;
+    text-decoration: none;
+}
