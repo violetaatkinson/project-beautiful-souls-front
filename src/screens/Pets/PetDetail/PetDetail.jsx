@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import { ArrowLeft, Heart, Syringe, Zap, Users, PawPrint } from "lucide-react";
+import { ArrowLeft, Syringe, Zap, Users, PawPrint } from "lucide-react";
 import { getPetDetail } from "../../../services/PetService";
 import "./PetDetail.css";
 
