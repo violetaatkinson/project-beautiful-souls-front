@@ -5,12 +5,11 @@ import Input from '../../components/misc/Input/Input'
 import RegisterSchema from './RegisterSchema'
 import Cat from "../../assets/cat.png";
 
-// eslint-disable-next-line 
+
 import register from "./Register.css";
 
 
 const INITIAL_VALUES = {
-    userName: '',
     email: '',
     password: ''
   }
@@ -40,13 +39,16 @@ const INITIAL_VALUES = {
             } })
           })
           .catch(err => {
-            console.log(err.response.data)
-    
-            err.response.data &&
-              Object.keys(err.response.data.errors)
+            const data = err?.response?.data
+
+            if (data?.errors) {
+              Object.keys(data.errors)
                 .forEach((errorKey) => {
-                  setFieldError(errorKey, err.response.data.errors[errorKey])
+                  setFieldError(errorKey, data.errors[errorKey])
                 })
+            } else {
+              setFieldError('email', data?.message || 'Something went wrong, please try again')
+            }
           })
           .finally(() => {
             setSubmitting(false)
@@ -60,18 +62,6 @@ const INITIAL_VALUES = {
            <div className="Register-form">
                 <h1>Register</h1>
                     <form onSubmit={handleSubmit}>        
-                        <div className="Register-form-group">
-                            <Input className="Register-form-group-1"
-                              
-                              placeholder="Your Username"
-                              name="userName"
-                              id="userName"
-                              value={values.userName}
-                              onChange={handleChange}
-                              error={errors.userName}
-                              onBlur={handleBlur}  
-                            />
-                        </div>
                         <div className="Register-form-group">
                             <Input
                               

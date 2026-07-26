@@ -10,8 +10,6 @@ import { listMessages } from "../../services/MessageService";
 const ListUsers = () => {
     const [likes, setLikes] = useState([]);
     const [users, setUsers] = useState([]);
-    // const [searchField, setSearchField] = useState("");
-    // const [likesFiltered, setLikesFiltered] = useState("");
     const [chats, setChats] = useState([])
 
     useEffect(() => {
@@ -36,17 +34,10 @@ const ListUsers = () => {
 		});
 	};
 
-    // filtrar solo los usuarios con los que haya hecho match de su pet
 
-    // search del pet.name y que tambien me devuelva el owner de ese pet
-    // const search = () => {
-    //     const likesFiltered = likes.filter((like) => like.name.toLowerCase().startsWith(searchField.toLowerCase()))
-    //     setLikesFiltered(likesFiltered)
-    // }
-
- 
     useEffect(() => {
 		getUsersLiked().then((users) => {
+            
 			setUsers(users);
 		});
 	}, []);

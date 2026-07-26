@@ -1,5 +1,5 @@
 import { useFormik } from 'formik';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import Input from '../../components/misc/Input/Input';
 import AuthContext from '../../contexts/AuthContext'
@@ -12,6 +12,7 @@ import Cat from "../../assets/cat.png";
 function Login() {
   const { state } = useLocation()
   const { login } = useContext(AuthContext)
+  const [loginError, setLoginError] = useState('')
 
   const INITIAL_VALUES = {
     email: (state && state.email) || '',
@@ -29,12 +30,20 @@ function Login() {
     validateOnChange: false,
   })
 
-  function onSubmit(values) { // Lo declaro como function en vez de const, porque asi por el hoisting la puedo usar en el useFormik
+  function onSubmit(values) { 
+    setLoginError('')
+
     userLogin(values)
       .then(({ accessToken }) => {
         login(accessToken)
-        setSubmitting(false)
         resetForm()
+      })
+      .catch(err => {
+        const message = err?.response?.data?.message || 'Email o contraseña incorrectos'
+        setLoginError(message)
+      })
+      .finally(() => {
+        setSubmitting(false)
       })
   }
 
@@ -72,7 +81,12 @@ function Login() {
             />
 
         </div>
-        <button type="submit" className="button mt-4">
+        {loginError && (
+          <div className="form-error">
+            {loginError}
+          </div>
+        )}
+        <button type="submit" className="button mt-4" disabled={isSubmitting}>
           {isSubmitting ? 'Loading' : 'Login'}
         </button>
       </form>

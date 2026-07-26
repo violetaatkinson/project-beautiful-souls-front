@@ -1,9 +1,36 @@
 .f-control {
     width: 100%;
     display: block;
-    border: none;
-    border-bottom: 1px solid #999;
-    padding: 6px 30px;
+    border: 1.5px solid #e3e8f0;
+    background-color: #f5f8fc;
+    border-radius: 12px;
+    padding: 13px 16px;
     box-sizing: border-box;
-    
+    font-size: 15px;
+    color: #1b2430;
+    transition: border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.f-control::placeholder {
+    color: #98a3b3;
+}
+
+.f-control:focus {
+    outline: none;
+    border-color: #2F80ED;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(47, 128, 237, 0.15);
+}
+
+.f-control.is-invalid {
+    border-color: #e0665a;
+    background-color: #fdf3f2;
+}
+
+.invalid-feedback {
+    display: block;
+    color: #c0392b;
+    font-size: 12px;
+    margin-top: 6px;
+    padding-left: 2px;
 }
