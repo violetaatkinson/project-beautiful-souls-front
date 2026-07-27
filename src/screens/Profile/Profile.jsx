@@ -74,7 +74,7 @@ const Profile = () => {
 
 					<Link className="link-unstyled my-pets-link" to="/myadoptions">
 						<PawPrint size={18} />
-						<span>My published pets</span>
+						<span>My Listings</span>
 					</Link>
 
 					<div className="profile-actions">

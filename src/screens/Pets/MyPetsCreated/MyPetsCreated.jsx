@@ -34,10 +34,10 @@ const MyPetsCreated = () => {
 		<NavbarLayout align="top">
 			<div className="mypets-screen">
 				<div className="mypets-header">
-					<h1 className="mypets-title">My Pets</h1>
+					<h1 className="mypets-title">My Listings</h1>
 					<Link className="link-unstyled mypets-add-btn" to="/adoptions/create">
 						<Plus size={16} />
-						Add pet
+						+ New Listing
 					</Link>
 				</div>
 
