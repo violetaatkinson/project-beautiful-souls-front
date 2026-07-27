@@ -217,7 +217,7 @@ function AdoptionList() {
               </Link>
             )}
             <button className="swipe-btn swipe-btn-like" onClick={() => handleLike(topPet)} aria-label="Like">
-              <Heart size={28} fill="currentColor" strokeWidth={0} />
+              <Heart size={24} fill="currentColor" strokeWidth={0} />
             </button>
           </div>
         )}

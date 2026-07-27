@@ -2,11 +2,11 @@ import { useState, useEffect, useContext } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import {
   ArrowLeft, Syringe, Zap, Users, PawPrint, Home,
-  MapPin, Phone, Mail, ShieldCheck, Coins, Calendar, Heart, X, MessageCircle,
+  MapPin, Phone, Mail, ShieldCheck, Coins, Calendar, Heart, X, MessageCircle, Sparkles,
 } from "lucide-react";
 import { getPetDetail, likePet, dislikePet } from "../../../services/PetService";
 import { useGeolocation } from "../../../hooks/useGeolocation";
-import { getPetBadges, formatPetAge } from "../../../utils/petBadges";
+import { getPetBadges, formatPetAge, PERSONALITY_COLORS } from "../../../utils/petBadges";
 import AuthContext from "../../../contexts/AuthContext";
 import "./PetDetail.css";
 
@@ -110,6 +110,22 @@ function PetDetail() {
           </Section>
         )}
 
+        {pet.personalityTags?.length > 0 && (
+          <Section icon={<Sparkles size={18} />} title="Personality">
+            <div className="personality-chips">
+              {pet.personalityTags.map((tag) => (
+                <span
+                  key={tag}
+                  className="personality-chip"
+                  style={{ backgroundColor: PERSONALITY_COLORS[tag] || "#8CA0B3" }}
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </Section>
+        )}
+
         <Section icon={<Syringe size={18} />} title="Health">
           <Fact label="Vaccinated" value={pet.health?.vaccinated} />
           <Fact label="Spayed/Neutered" value={pet.health?.sterilized} />
@@ -193,7 +209,7 @@ function PetDetail() {
           </Link>
         )}
         <button className="pet-action-btn pet-action-like" onClick={handleLike} aria-label="Like">
-          <Heart size={26} fill="currentColor" strokeWidth={0} />
+          <Heart size={22} fill="currentColor" strokeWidth={0} />
         </button>
       </div>
     </div>

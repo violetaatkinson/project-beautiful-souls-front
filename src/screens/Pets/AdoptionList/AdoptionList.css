@@ -104,9 +104,9 @@
 }
 
 .card-badge {
-    background: rgba(255, 255, 255, 0.22);
+    background: rgba(0, 0, 0, 0.4);
     backdrop-filter: blur(6px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 999px;
     padding: 4px 12px;
     font-size: 0.75rem;
@@ -140,27 +140,30 @@
     opacity: 0.4;
 }
 
+/* Los 4 botones del mismo tamaño, en fila pareja (como la referencia):
+   se distinguen por color/ícono, no por tamaño. El de Like es el único
+   con relleno de color porque es la acción principal. */
+.swipe-btn-back,
+.swipe-btn-dislike,
+.swipe-btn-message,
+.swipe-btn-like {
+    width: 54px;
+    height: 54px;
+}
+
 .swipe-btn-back {
-    width: 48px;
-    height: 48px;
     color: #f5a623;
 }
 
 .swipe-btn-dislike {
-    width: 56px;
-    height: 56px;
     color: #ff5a5f;
 }
 
 .swipe-btn-message {
-    width: 50px;
-    height: 50px;
     color: #2f80ed;
 }
 
 .swipe-btn-like {
-    width: 68px;
-    height: 68px;
     color: #fff;
     background: linear-gradient(135deg, #2f80ed, #56ccf2);
     box-shadow: 0 8px 22px rgba(47, 128, 237, 0.4);
