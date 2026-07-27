@@ -40,7 +40,8 @@
 
 .likes-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(140px, 160px));
+  justify-content: center;
   gap: 16px;
 }
 
@@ -165,6 +166,13 @@
   border-radius: 999px;
   box-shadow: 0 10px 24px rgba(47, 128, 237, 0.32);
   -webkit-tap-highlight-color: transparent;
+  text-decoration: none;
+}
+
+.likes-empty-cta:hover,
+.likes-empty-cta:visited {
+  text-decoration: none;
+  color: #fff;
 }
 
 .likes-empty-cta:active {

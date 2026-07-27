@@ -39,10 +39,7 @@ const MyLikes = () => {
 						<Heart size={40} strokeWidth={1.5} />
 					</span>
 					<h2>No favorites yet</h2>
-					<p>
-						Start exploring and save the pets that catch your eye — they'll all
-						live here.
-					</p>
+					<p>Pets you save will show up here.</p>
 					<Link to="/adoptions" className="likes-empty-cta">
 						<PawPrint size={18} />
 						Discover Pets
@@ -58,7 +55,8 @@ const MyLikes = () => {
 				<div className="likes-header">
 					<h1 className="likes-title">Liked Pets</h1>
 					<span className="likes-count">
-						{likedPets.length} {likedPets.length === 1 ? "pet" : "pets"}
+						{likedPets.length}{" "}
+						{likedPets.length === 1 ? "favorite" : "favorites"}
 					</span>
 				</div>
 
