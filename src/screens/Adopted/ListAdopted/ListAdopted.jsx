@@ -1,49 +1,59 @@
-import { getAdopted } from '../../../services/AdoptedService'
-import { NavbarLayout } from '../../../layout/NavbarLayout';
-import React, { useState, useEffect } from "react";
-import './ListAdopted.css'
-
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { Plus, PawPrint } from "lucide-react";
+import { getAdopted } from "../../../services/AdoptedService";
+import { NavbarLayout } from "../../../layout/NavbarLayout";
+import "./ListAdopted.css";
 
 function AdoptedList() {
-   
-    const [pets, setPets] = useState([]);
+	const [pets, setPets] = useState([]);
+	const [loading, setLoading] = useState(true);
 
-
-    useEffect(() => {
+	useEffect(() => {
 		getAdopted()
-            .then((adopted) => {
-                console.log(adopted)
-                setPets(adopted);
-            });
+			.then((adopted) => setPets(adopted))
+			.finally(() => setLoading(false));
 	}, []);
 
-    console.log(pets)
+	return (
+		<NavbarLayout align="top">
+			<div className="stories-screen">
+				<div className="stories-header">
+					<h1 className="stories-title">Pet Stories</h1>
+					<Link className="link-unstyled stories-add-btn" to="/adopted/create">
+						<Plus size={16} />
+						Share a story
+					</Link>
+				</div>
 
- 
-    return (
-        <NavbarLayout>
-            <div className="container">
-                <div className="row mt-4">
-                    {pets.map((pet) => {
-                            return (
-                                <div key={pet._id} className="col-12 col-md-6 col-lg-4 m-3" style={{ width: '22rem' }} >
-                                    <div className='card  p-3 mb-5 bg-body rounded adopted-card' >
-                                        <img src={pet.image} className="card-img-top adoption-img" alt="petImage" />
-                                        <div className="card-body info-adopted text-center">
-                                            <h5 className="card-title">{pet.petName}</h5>
-                                            <hr></hr>
-                                            <p className="card-text mt-2">{pet.content}</p>
-                                        </div>
-                                    </div>
-                                   
-                                       
-                                </div>
-                            )
-                        })}
-                    </div>
-            </div>
-        </NavbarLayout>
-    )
+				{loading ? (
+					<div className="stories-loading">
+						<span className="loader" />
+					</div>
+				) : pets.length > 0 ? (
+					<div className="stories-list">
+						{pets.map((pet) => (
+							<article key={pet._id} className="story-card">
+								<img src={pet.image} alt={pet.petName} className="story-card-img" />
+								<div className="story-card-body">
+									<h3 className="story-card-name">{pet.petName}</h3>
+									<p className="story-card-text">{pet.content}</p>
+								</div>
+							</article>
+						))}
+					</div>
+				) : (
+					<div className="stories-empty">
+						<span className="empty-logo">
+							<PawPrint size={26} strokeWidth={2.4} />
+						</span>
+						<h5>No stories yet</h5>
+						<p>Be the first to share a pet you've loved.</p>
+					</div>
+				)}
+			</div>
+		</NavbarLayout>
+	);
 }
 
-export default AdoptedList
+export default AdoptedList;

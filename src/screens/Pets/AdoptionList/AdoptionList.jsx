@@ -1,13 +1,14 @@
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect, useContext } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import { useSprings, animated, to as interpolate } from "@react-spring/web";
 import { useDrag } from "@use-gesture/react";
-import { Heart, X, RotateCcw, PawPrint } from "lucide-react";
+import { Heart, X, RotateCcw, PawPrint, MapPin, ShieldCheck, MessageCircle } from "lucide-react";
 
 import { getPets, likePet, dislikePet } from "../../../services/PetService";
 import { useGeolocation } from "../../../hooks/useGeolocation";
 import { getPetBadges, formatPetAge } from "../../../utils/petBadges";
 import { NavbarLayout } from "../../../layout/NavbarLayout";
+import AuthContext from "../../../contexts/AuthContext";
 import "./AdoptionList.css";
 
 const SWIPE_THRESHOLD = 120;
@@ -23,6 +24,7 @@ const cardStyle = (x, y, rot, scale) => ({
 function AdoptionList() {
   const navigate = useNavigate();
   const { coords } = useGeolocation();
+  const { user } = useContext(AuthContext);
   const [pets, setPets] = useState([]);
   const [loading, setLoading] = useState(true);
   const [lastRemoved, setLastRemoved] = useState(null);
@@ -161,9 +163,12 @@ function AdoptionList() {
                   )}
                   <div className="card-gradient" />
                   <div className="card-info">
-                    <h2>
+                    <h2 className="card-name-row">
                       {pet.name}
                       {age && `, ${age}`}
+                      {pet.owner?.shelterVerified && (
+                        <ShieldCheck size={20} className="card-verified" />
+                      )}
                     </h2>
                     <p className="card-subline">
                       {pet.breed || pet.species}
@@ -171,7 +176,8 @@ function AdoptionList() {
                     </p>
                     {(pet.distanceKm != null || pet.location?.city) && (
                       <p className="card-location">
-                        📍 {pet.distanceKm != null ? `${pet.distanceKm} km away` : pet.location.city}
+                        <MapPin size={14} />
+                        {pet.distanceKm != null ? `${pet.distanceKm} km away` : pet.location.city}
                       </p>
                     )}
                     {badges.length > 0 && (
@@ -201,6 +207,15 @@ function AdoptionList() {
             <button className="swipe-btn swipe-btn-dislike" onClick={() => handleDislike(topPet)} aria-label="Pass">
               <X size={26} />
             </button>
+            {topPet.owner && user && user.id !== topPet.owner._id && (
+              <Link
+                className="link-unstyled swipe-btn swipe-btn-message"
+                to={`/users/chat/${topPet.owner._id}/${topPet._id}`}
+                aria-label={`Message about ${topPet.name}`}
+              >
+                <MessageCircle size={22} />
+              </Link>
+            )}
             <button className="swipe-btn swipe-btn-like" onClick={() => handleLike(topPet)} aria-label="Like">
               <Heart size={28} fill="currentColor" strokeWidth={0} />
             </button>

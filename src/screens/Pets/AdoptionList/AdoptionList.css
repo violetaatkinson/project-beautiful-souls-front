@@ -70,6 +70,17 @@
     margin: 0;
 }
 
+.card-name-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.card-verified {
+    color: #56ccf2;
+    flex-shrink: 0;
+}
+
 .card-subline {
     margin: 4px 0 0;
     opacity: 0.9;
@@ -77,6 +88,9 @@
 }
 
 .card-location {
+    display: flex;
+    align-items: center;
+    gap: 4px;
     margin: 4px 0 0;
     font-size: 0.85rem;
     opacity: 0.85;
@@ -103,7 +117,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 24px;
+    gap: 16px;
     margin: 16px 0 28px;
 }
 
@@ -136,6 +150,12 @@
     width: 56px;
     height: 56px;
     color: #ff5a5f;
+}
+
+.swipe-btn-message {
+    width: 50px;
+    height: 50px;
+    color: #2f80ed;
 }
 
 .swipe-btn-like {
