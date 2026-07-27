@@ -14,7 +14,12 @@
   background: #f5f8fc;
   color: #1b2430;
   border: none;
+  cursor: pointer;
   margin-top: 1rem;
+}
+
+.wizard-back-btn:active {
+  transform: scale(0.94);
 }
 
 .wizard-title {
@@ -25,7 +30,7 @@
 .wizard-progress {
   display: flex;
   justify-content: space-between;
-  margin: 1.5rem 0;
+  margin: 1.25rem 0;
 }
 
 .wizard-step-dot {
@@ -59,12 +64,20 @@
   margin-top: 4px;
 }
 
+/* Cada panel de paso siempre arranca con un <label>. Antes ese label sumaba
+   su propio margin-top al margin-bottom del wizard-progress de arriba,
+   duplicando el espacio en los 4 pasos. Se anula solo en el primer campo
+   de cada paso; el resto de los labels mantiene separación uniforme. */
 .wizard-panel label {
   display: block;
-  margin-top: 1rem;
+  margin-top: 0.85rem;
   margin-bottom: 0.3rem;
   font-weight: 600;
   font-size: 0.9rem;
+}
+
+.wizard-panel label:first-child {
+  margin-top: 0;
 }
 
 .label-with-icon {
@@ -140,14 +153,21 @@
 .check-list {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
 }
 
 .check-item {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   font-weight: 400;
+}
+
+.check-item input[type="checkbox"] {
+  flex-shrink: 0;
+  width: 17px;
+  height: 17px;
+  margin: 0;
 }
 
 .compatibility-row {
@@ -195,5 +215,5 @@
 .wizard-actions {
   display: flex;
   justify-content: space-between;
-  margin-top: 2rem;
+  margin-top: 1.5rem;
 }

@@ -29,7 +29,7 @@ const COMPATIBILITY_OPTIONS = [
 	{ value: "no", label: "No" },
 ];
 
-const STEPS = ["Basic info", "Photos", "Health & personality", "Requirements"];
+const STEPS = ["Basic info", "Photos", "Traits", "Requirements"];
 
 const INITIAL_STATE = {
 	name: "",
@@ -233,7 +233,7 @@ const NewAdoption = ({ edit }) => {
 			</button>
 
 			<h1 className="text-center wizard-title">
-				{edit ? "Edit Pet" : "Publish a Pet"}
+				{edit ? "Edit Pet" : "List a Pet for Adoption"}
 			</h1>
 
 			<div className="wizard-progress">
@@ -360,7 +360,7 @@ const NewAdoption = ({ edit }) => {
 						</label>
 						<input
 							type="file"
-							accept="image/png,image/jpeg"
+							accept="image/png,image/jpeg,image/heic,image/heif,image/webp"
 							multiple
 							className="form-control"
 							onChange={handlePhotosSelected}
@@ -430,7 +430,7 @@ const NewAdoption = ({ edit }) => {
 										updateNested("health", "vaccinated", e.target.checked)
 									}
 								/>
-								Vaccinated
+								<span>Vaccinated</span>
 							</label>
 							<label className="check-item">
 								<input
@@ -440,7 +440,7 @@ const NewAdoption = ({ edit }) => {
 										updateNested("health", "sterilized", e.target.checked)
 									}
 								/>
-								Neutered/Spayed
+								<span>Neutered/Spayed</span>
 							</label>
 							<label className="check-item">
 								<input
@@ -450,7 +450,7 @@ const NewAdoption = ({ edit }) => {
 										updateNested("health", "dewormed", e.target.checked)
 									}
 								/>
-								Dewormed
+								<span>Dewormed</span>
 							</label>
 							<label className="check-item">
 								<input
@@ -464,7 +464,7 @@ const NewAdoption = ({ edit }) => {
 										)
 									}
 								/>
-								Has a known health condition
+								<span>Has a known health condition</span>
 							</label>
 						</div>
 
