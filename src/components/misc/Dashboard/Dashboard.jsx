@@ -1,18 +1,20 @@
-import { Home, PawPrint, MessageCircle, CircleUserRound } from 'lucide-react'
+import { Home, PawPrint, MessageCircle, User } from 'lucide-react'
 import { NavLink } from 'react-router-dom'
 import './Dashboard.css'
 
 // El corazón de "Liked Pets" ya no vive acá (esa pantalla se sacó del
 // todo). En su lugar va el chat, y el chat le cede su lugar viejo al
 // perfil, que antes solo se podía abrir tocando el avatar de arriba.
-// Profile usa el mismo componente/ícono de línea que el resto (antes
-// mostraba la foto real del usuario, pero eso lo hacía ver distinto e
-// inconsistente al lado de los otros 3 íconos).
+// Profile usa "User" (silueta simple, sin círculo propio) para que
+// quede igual de "plano" que Home/PawPrint/MessageCircle. CircleUserRound
+// traía su propio círculo dibujado adentro del ícono, y al rellenarlo en
+// el estado activo terminaba pareciendo un puntito azul sólido en vez de
+// un ícono normal.
 const NAV_ITEMS = [
     { to: '/search', icon: Home },
     { to: '/adoptions', icon: PawPrint },
     { to: '/users', icon: MessageCircle },
-    { to: '/profile', icon: CircleUserRound },
+    { to: '/profile', icon: User },
 ]
 
 function Dashboard () {

@@ -32,6 +32,7 @@ function PetDetail() {
   const age = formatPetAge(pet);
   const isShelter = pet.owner?.accountType === "shelter";
   const hasPhotos = pet.images?.length > 0;
+  const canMessageOwner = Boolean(user && pet.owner && user.id !== pet.owner._id);
 
   const markBroken = (i) => setBrokenImages((prev) => new Set(prev).add(i));
 
@@ -174,15 +175,6 @@ function PetDetail() {
                 <Mail size={16} /> {pet.owner.email}
               </a>
             )}
-            {user && user.id !== pet.owner._id && (
-              <Link
-                className="link-unstyled owner-message-btn"
-                to={`/users/chat/${pet.owner._id}/${pet._id}`}
-              >
-                <MessageCircle size={18} />
-                Message about {pet.name}
-              </Link>
-            )}
           </div>
         )}
       </div>
@@ -191,6 +183,15 @@ function PetDetail() {
         <button className="pet-action-btn pet-action-dislike" onClick={handleDislike} aria-label="Pass">
           <X size={24} />
         </button>
+        {canMessageOwner && (
+          <Link
+            className="link-unstyled pet-action-btn pet-action-message"
+            to={`/users/chat/${pet.owner._id}/${pet._id}`}
+            aria-label={`Message about ${pet.name}`}
+          >
+            <MessageCircle size={22} />
+          </Link>
+        )}
         <button className="pet-action-btn pet-action-like" onClick={handleLike} aria-label="Like">
           <Heart size={26} fill="currentColor" strokeWidth={0} />
         </button>

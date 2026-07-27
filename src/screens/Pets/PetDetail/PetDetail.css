@@ -217,24 +217,6 @@
   font-size: 0.9rem;
 }
 
-.owner-message-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  margin-top: 10px;
-  padding: 12px;
-  border-radius: 14px;
-  background: linear-gradient(135deg, #2f80ed, #56ccf2);
-  color: #fff;
-  font-weight: 700;
-  font-size: 0.9rem;
-}
-
-.owner-message-btn:active {
-  transform: scale(0.97);
-}
-
 .pet-actions {
   position: fixed;
   bottom: 0;
@@ -267,6 +249,12 @@
   width: 54px;
   height: 54px;
   color: #ff5a5f;
+}
+
+.pet-action-message {
+  width: 50px;
+  height: 50px;
+  color: #2f80ed;
 }
 
 .pet-action-like {

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Search, Heart, PawPrint } from "lucide-react";
+import { Heart, PawPrint } from "lucide-react";
 import { NavbarLayout } from "../../layout/NavbarLayout";
 import { getLikes, getUsersLiked } from "../../services/UserService";
 import { listMessages } from "../../services/MessageService";
@@ -48,11 +48,6 @@ const ListUsers = () => {
     return (
         <NavbarLayout align="top">
             <div className="matches-screen">
-                <div className="matches-search">
-                    <Search size={17} strokeWidth={2} />
-                    <input type="search" placeholder="Search" aria-label="Search" />
-                </div>
-
                 <section className="matches-section">
                     <h4 className="matches-heading">New matches</h4>
                     {likes.length > 0 ? (

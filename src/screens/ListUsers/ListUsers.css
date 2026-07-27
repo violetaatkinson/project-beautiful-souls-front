@@ -9,26 +9,6 @@
   width: 100%;
 }
 
-.matches-search {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: #f5f8fc;
-  border-radius: 999px;
-  padding: 10px 16px;
-  color: #9aa5b5;
-  margin-bottom: 8px;
-}
-
-.matches-search input {
-  border: none;
-  background: none;
-  outline: none;
-  font-size: 14px;
-  width: 100%;
-  color: #1b2430;
-}
-
 .matches-section {
   padding: 20px 0;
   border-bottom: 1px solid #f0f2f6;
