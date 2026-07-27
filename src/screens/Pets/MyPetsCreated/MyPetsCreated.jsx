@@ -23,14 +23,15 @@ const MyPetsCreated = () => {
 	}, []);
 
 	const handleDelete = (id) => {
-		if (!window.confirm("Delete this pet listing? This can't be undone.")) return;
+		if (!window.confirm("Delete this pet listing? This can't be undone."))
+			return;
 		deletePet(id).then(() => {
 			setMyPets((prev) => prev.filter((pet) => pet._id !== id));
 		});
 	};
 
 	return (
-		<NavbarLayout>
+		<NavbarLayout align="top">
 			<div className="mypets-screen">
 				<div className="mypets-header">
 					<h1 className="mypets-title">My Pets</h1>
@@ -58,7 +59,9 @@ const MyPetsCreated = () => {
 									>
 										<div
 											className={`mypets-photo ${!photo ? "no-photo" : ""}`}
-											style={photo ? { backgroundImage: `url(${photo})` } : undefined}
+											style={
+												photo ? { backgroundImage: `url(${photo})` } : undefined
+											}
 										>
 											{!photo && <PawPrint size={26} strokeWidth={1.8} />}
 										</div>

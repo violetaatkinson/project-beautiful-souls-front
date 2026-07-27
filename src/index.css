@@ -20,6 +20,12 @@ code {
   font-family: 'Readex Pro', sans-serif;
 }
 
+
+a,
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
 .App {
   min-height: 100dvh;
   display: flex;
@@ -35,6 +41,12 @@ code {
   flex-direction: column;
   justify-content: center;
   justify-content: safe center;
+}
+
+/* Para pantallas tipo lista (My Pets, etc.) que no deben quedar centradas
+   verticalmente cuando el contenido es corto, sino arrancar arriba. */
+.page-content.align-top {
+  justify-content: flex-start;
 }
 
 .desktop-block {

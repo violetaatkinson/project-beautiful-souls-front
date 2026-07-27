@@ -1,221 +1,210 @@
 .mypets-screen {
-    max-width: 480px;
-    margin: 0 auto;
-    padding: 20px 20px 40px;
-    width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 20px 20px 40px;
+  width: 100%;
 }
 
 .mypets-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
 }
 
 .mypets-title {
-    font-size: 20px;
-    font-weight: 800;
-    color: #1b2430;
-    margin: 0;
+  font-size: 20px;
+  font-weight: 800;
+  color: #1b2430;
+  margin: 0;
 }
 
 .mypets-add-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: linear-gradient(135deg, #2F80ED 0%, #56CCF2 100%);
-    color: #fff;
-    font-size: 13px;
-    font-weight: 600;
-    padding: 8px 14px;
-    border-radius: 999px;
-    box-shadow: 0 6px 14px rgba(47, 128, 237, 0.25);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: linear-gradient(135deg, #2F80ED 0%, #56CCF2 100%);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 999px;
+  box-shadow: 0 6px 14px rgba(47, 128, 237, 0.25);
+  -webkit-tap-highlight-color: transparent;
 }
 
 .mypets-list {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .mypets-card {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    background: #f5f8fc;
-    border-radius: 16px;
-    padding: 10px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #f5f8fc;
+  border-radius: 16px;
+  padding: 10px;
 }
 
 .mypets-photo-link {
-    flex-shrink: 0;
+  flex-shrink: 0;
 }
 
 .mypets-photo {
-    width: 64px;
-    height: 64px;
-    border-radius: 12px;
-    background-size: cover;
-    background-position: center;
-    background-color: #e8edf4;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #9aa5b5;
+  width: 64px;
+  height: 64px;
+  border-radius: 12px;
+  background-size: cover;
+  background-position: center;
+  background-color: #e8edf4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #9aa5b5;
 }
 
 .mypets-photo.no-photo {
-    background: linear-gradient(135deg, #dce6f5 0%, #eef2f8 100%);
+  background: linear-gradient(135deg, #dce6f5 0%, #eef2f8 100%);
 }
 
 .mypets-info {
-    flex: 1;
-    min-width: 0;
+  flex: 1;
+  min-width: 0;
 }
 
 .mypets-name {
-    margin: 0;
-    font-size: 15px;
-    font-weight: 700;
-    color: #1b2430;
-    text-transform: capitalize;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  color: #1b2430;
+  text-transform: capitalize;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .mypets-subline {
-    margin: 2px 0 6px;
-    font-size: 12.5px;
-    color: #6b7686;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  margin: 2px 0 6px;
+  font-size: 12.5px;
+  color: #6b7686;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .status-chip {
-    display: inline-block;
-    font-size: 11px;
-    font-weight: 600;
-    padding: 3px 10px;
-    border-radius: 999px;
-    text-transform: capitalize;
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 999px;
+  text-transform: capitalize;
 }
 
 .status-chip.status-available {
-    background: #e6f7ec;
-    color: #2f9e44;
+  background: #e6f7ec;
+  color: #2f9e44;
 }
 
 .status-chip.status-pending {
-    background: #fff4e0;
-    color: #d98c00;
+  background: #fff4e0;
+  color: #d98c00;
 }
 
 .status-chip.status-adopted {
-    background: #eef0f4;
-    color: #6b7686;
+  background: #eef0f4;
+  color: #6b7686;
 }
 
 .mypets-actions {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex-shrink: 0;
 }
 
 .mypets-icon-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    background: #fff;
-    color: #2F80ED;
-    border: none;
-    cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #fff;
+  color: #2F80ED;
+  border: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
 }
 
 .mypets-icon-btn.danger {
-    color: #c0392b;
+  color: #c0392b;
 }
 
 .mypets-loading {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 60px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 0;
 }
 
 .loader {
-    width: 40px;
-    height: 40px;
-    border: 8px solid #eef2f8;
-    border-radius: 50%;
-    position: relative;
-    transform: rotate(45deg);
-    box-sizing: border-box;
+  width: 40px;
+  height: 40px;
+  border: 8px solid #eef2f8;
+  border-radius: 50%;
+  position: relative;
+  transform: rotate(45deg);
+  box-sizing: border-box;
 }
 
 .loader::before {
-    content: "";
-    position: absolute;
-    box-sizing: border-box;
-    inset: -8px;
-    border-radius: 50%;
-    border: 8px solid #2F80ED;
-    animation: prixClipFix 1.2s infinite linear;
+  content: "";
+  position: absolute;
+  box-sizing: border-box;
+  inset: -8px;
+  border-radius: 50%;
+  border: 8px solid #2F80ED;
+  animation: prixClipFix 1.2s infinite linear;
 }
 
 @keyframes prixClipFix {
-    0% {
-        clip-path: polygon(50% 50%, 0 0, 0 0, 0 0, 0 0, 0 0)
-    }
-
-    25% {
-        clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 0, 100% 0, 100% 0)
-    }
-
-    50% {
-        clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 100% 100%, 100% 100%)
-    }
-
-    75% {
-        clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 100%)
-    }
-
-    100% {
-        clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 0, 0 0)
-    }
+  0%   { clip-path: polygon(50% 50%, 0 0, 0 0, 0 0, 0 0, 0 0) }
+  25%  { clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 0, 100% 0, 100% 0) }
+  50%  { clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 100% 100%, 100% 100%) }
+  75%  { clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 100%) }
+  100% { clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 0, 0 0) }
 }
 
 .mypets-empty {
-    text-align: center;
-    padding: 60px 20px;
-    color: #6b7686;
+  text-align: center;
+  padding: 60px 20px;
+  color: #6b7686;
 }
 
 .mypets-empty .empty-logo {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    background: #f0f4ff;
-    color: #2F80ED;
-    margin-bottom: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #f0f4ff;
+  color: #2F80ED;
+  margin-bottom: 14px;
 }
 
 .mypets-empty h5 {
-    font-size: 15px;
-    font-weight: 700;
-    color: #1b2430;
-    margin: 0 0 4px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #1b2430;
+  margin: 0 0 4px;
 }
 
 .mypets-empty p {
-    font-size: 13px;
-    margin: 0;
+  font-size: 13px;
+  margin: 0;
 }
