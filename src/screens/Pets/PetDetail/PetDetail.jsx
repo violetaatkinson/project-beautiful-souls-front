@@ -6,7 +6,7 @@ import {
 } from "lucide-react";
 import { getPetDetail, likePet, dislikePet } from "../../../services/PetService";
 import { useGeolocation } from "../../../hooks/useGeolocation";
-import { getPetBadges, formatPetAge, PERSONALITY_COLORS } from "../../../utils/petBadges";
+import { getPetBadges, formatPetAge } from "../../../utils/petBadges";
 import AuthContext from "../../../contexts/AuthContext";
 import "./PetDetail.css";
 
@@ -114,13 +114,7 @@ function PetDetail() {
           <Section icon={<Sparkles size={18} />} title="Personality">
             <div className="personality-chips">
               {pet.personalityTags.map((tag) => (
-                <span
-                  key={tag}
-                  className="personality-chip"
-                  style={{ backgroundColor: PERSONALITY_COLORS[tag] || "#8CA0B3" }}
-                >
-                  {tag}
-                </span>
+                <span key={tag} className="chip">{tag}</span>
               ))}
             </div>
           </Section>

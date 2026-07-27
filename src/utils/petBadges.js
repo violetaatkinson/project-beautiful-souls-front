@@ -1,17 +1,3 @@
-// Un color distinto por rasgo de personalidad (inspirado en los chips de
-// "intereses" de las apps de citas), pero eligiendo tonos que conviven
-// bien con el azul de la marca en vez de copiar una paleta ajena.
-export const PERSONALITY_COLORS = {
-	Playful: "#FF7AA2",
-	Calm: "#56CCF2",
-	Affectionate: "#FF9466",
-	Independent: "#9B7EDE",
-	Shy: "#8CA0B3",
-	Protective: "#EB5757",
-	Curious: "#2F9E74",
-	Sociable: "#F2B84C",
-};
-
 export function getPetBadges(pet) {
 	const badges = [];
 

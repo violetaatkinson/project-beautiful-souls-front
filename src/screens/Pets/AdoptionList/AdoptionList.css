@@ -2,12 +2,16 @@
     position: relative;
     flex: 1;
     min-height: 420px;
-    padding: 10px 12px 0;
+    padding: 8px 8px 0;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
+/* La foto tiene que ocupar TODO el espacio disponible, sin una franja
+   blanca reservada abajo para los botones: por eso .swipe-actions ya no
+   es un hermano que le come altura a .card-stack, sino un overlay
+   absoluto encima de la propia foto (ver más abajo). */
 .card-stack {
     position: relative;
     width: 100%;
@@ -60,7 +64,7 @@
 .card-info {
     position: relative;
     z-index: 1;
-    padding: 24px;
+    padding: 24px 24px 96px;
     color: #fff;
 }
 
@@ -113,12 +117,19 @@
     font-weight: 600;
 }
 
+/* Overlay flotando sobre la propia foto (no una barra separada abajo con
+   fondo blanco): así la imagen llega hasta el final de la pantalla sin
+   dejar espacio muerto. */
 .swipe-actions {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 22px;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 16px;
-    margin: 10px 0 14px;
+    z-index: 5;
 }
 
 .swipe-btn {
