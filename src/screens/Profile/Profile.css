@@ -4,31 +4,12 @@
     padding: 20px 20px 40px;
 }
 
-.profile-back-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background: #f5f8fc;
-    color: #1b2430;
-    border: none;
-    cursor: pointer;
-    -webkit-tap-highlight-color: transparent;
-    outline: none;
-}
-
-.profile-back-btn:active {
-    transform: scale(0.94);
-}
-
 .profile-title {
     text-align: center;
     font-size: 20px;
     font-weight: 800;
     color: #1b2430;
-    margin: 16px 0 8px;
+    margin: 0 0 8px;
 }
 
 .profile-hero {
