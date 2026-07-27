@@ -1,26 +1,59 @@
+.my-likes {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 20px 20px 40px;
+}
+
 .likes-title {
-    letter-spacing: 0.5px;
-    font-weight: 700;
+    text-align: center;
+    letter-spacing: 0.3px;
+    font-weight: 800;
     color: #1b2430;
-    font-size: 21px;
+    font-size: 20px;
+    margin: 0 0 20px;
+}
+
+.likes-loading {
+    text-align: center;
+    color: #6b7686;
+    font-size: 14px;
+    padding: 60px 0;
 }
 
 .likes-empty {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     text-align: center;
-    color: #d16b78;
-    padding: 60px 32px 0;
+    padding: 60px 20px;
+    color: #6b7686;
+}
+
+.likes-empty .empty-logo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #fdf0f1;
+    color: #e0665a;
+    margin-bottom: 14px;
+}
+
+.likes-empty h5 {
+    font-size: 15px;
+    font-weight: 700;
+    color: #1b2430;
+    margin: 0 0 4px;
+}
+
+.likes-empty p {
+    font-size: 13px;
+    margin: 0;
 }
 
 .likes-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 14px;
-    padding: 16px;
-    max-width: 480px;
-    margin: 0 auto;
 }
 
 .like-card {
@@ -36,6 +69,14 @@
     background-size: cover;
     background-position: center;
     background-color: #e8edf4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #9aa5b5;
+}
+
+.like-card-img.no-photo {
+    background: linear-gradient(135deg, #dce6f5 0%, #eef2f8 100%);
 }
 
 .like-card-name {
@@ -48,7 +89,7 @@
     color: white;
     font-weight: 700;
     text-transform: capitalize;
-    background: linear-gradient(to top, rgba(0,0,0,0.65), transparent);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.65), transparent);
 }
 
 .like-remove-btn {
@@ -65,5 +106,6 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
 }
