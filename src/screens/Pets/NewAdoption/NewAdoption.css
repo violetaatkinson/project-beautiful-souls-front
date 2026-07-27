@@ -24,13 +24,13 @@
 
 .wizard-title {
   margin-top: 1rem;
-  font-size: 1.4rem;
+  font-size: 1.35rem;
 }
 
 .wizard-progress {
   display: flex;
   justify-content: space-between;
-  margin: 1.25rem 0;
+  margin: 1.1rem 0 1.25rem;
 }
 
 .wizard-step-dot {
@@ -64,20 +64,26 @@
   margin-top: 4px;
 }
 
-/* Cada panel de paso siempre arranca con un <label>. Antes ese label sumaba
-   su propio margin-top al margin-bottom del wizard-progress de arriba,
-   duplicando el espacio en los 4 pasos. Se anula solo en el primer campo
-   de cada paso; el resto de los labels mantiene separación uniforme. */
-.wizard-panel label {
-  display: block;
-  margin-top: 0.85rem;
-  margin-bottom: 0.3rem;
-  font-weight: 600;
-  font-size: 0.9rem;
+/* Ritmo vertical unificado: un solo "gap" en el panel del paso maneja el
+   espacio ENTRE campos. Cada campo (label + input) vive en su propio
+   .field-group, con un margen chico y fijo solo entre su label y su input.
+   El espaciado ya no depende de acumular margin-top en cada label — eso
+   era lo que generaba huecos distintos en cada paso (ej: el de Breed). */
+.wizard-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
 
-.wizard-panel label:first-child {
-  margin-top: 0;
+.field-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.field-group label {
+  margin: 0 0 6px;
+  font-weight: 600;
+  font-size: 0.9rem;
 }
 
 .label-with-icon {
@@ -92,11 +98,17 @@
   gap: 0.75rem;
 }
 
+.hint-text {
+  font-size: 0.78rem;
+  color: #6b7686;
+  margin: 6px 0 0;
+}
+
 .photo-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 8px;
-  margin-top: 0.5rem;
+  margin-top: 8px;
 }
 
 .photo-thumb {
@@ -161,13 +173,23 @@
   align-items: center;
   gap: 10px;
   font-weight: 400;
+  cursor: pointer;
 }
 
+/* El gap de arriba ya separa el checkbox del texto. Se agrega ADEMAS un
+   margin-right explícito en el propio input como red de seguridad: si por
+   algún motivo "gap" no se aplica bien con un nodo de texto suelto como
+   hijo del flex, la separación no depende de un solo mecanismo. */
 .check-item input[type="checkbox"] {
   flex-shrink: 0;
   width: 17px;
   height: 17px;
-  margin: 0;
+  margin: 0 10px 0 0;
+  accent-color: #2F80ED;
+}
+
+.check-item span {
+  display: inline-block;
 }
 
 .compatibility-row {
@@ -175,6 +197,10 @@
   align-items: center;
   justify-content: space-between;
   margin-top: 0.5rem;
+}
+
+.compatibility-row:first-of-type {
+  margin-top: 8px;
 }
 
 .compatibility-row select {

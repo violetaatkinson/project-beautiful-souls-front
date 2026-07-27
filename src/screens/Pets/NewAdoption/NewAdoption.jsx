@@ -136,6 +136,7 @@ const NewAdoption = ({ edit }) => {
 		}));
 	};
 
+	// Solo pide AL MENOS 1 foto (no las 4). MAX_PHOTOS es un tope, no un mínimo.
 	const stepIsValid = () => {
 		if (step === 0) return data.name && data.species && data.sex && data.size;
 		if (step === 1) return edit ? true : photos.length > 0;
@@ -251,38 +252,44 @@ const NewAdoption = ({ edit }) => {
 			<form onSubmit={onSubmit} className="wizard-form">
 				{step === 0 && (
 					<div className="wizard-panel">
-						<label>Name</label>
-						<input
-							className="form-control"
-							value={data.name}
-							onChange={(e) => updateField("name", e.target.value)}
-							placeholder="Pet's name"
-						/>
+						<div className="field-group">
+							<label>Name</label>
+							<input
+								className="form-control"
+								value={data.name}
+								onChange={(e) => updateField("name", e.target.value)}
+								placeholder="Pet's name"
+							/>
+						</div>
 
-						<label>Species</label>
-						<select
-							className="form-select"
-							value={data.species}
-							onChange={(e) => updateField("species", e.target.value)}
-						>
-							<option value="">Select a species</option>
-							{SPECIES.map((s) => (
-								<option key={s} value={s}>
-									{s}
-								</option>
-							))}
-						</select>
+						<div className="field-group">
+							<label>Species</label>
+							<select
+								className="form-select"
+								value={data.species}
+								onChange={(e) => updateField("species", e.target.value)}
+							>
+								<option value="">Select a species</option>
+								{SPECIES.map((s) => (
+									<option key={s} value={s}>
+										{s}
+									</option>
+								))}
+							</select>
+						</div>
 
-						<label>Breed (optional)</label>
-						<input
-							className="form-control"
-							value={data.breed}
-							onChange={(e) => updateField("breed", e.target.value)}
-							placeholder="Mixed breed, Labrador, etc."
-						/>
+						<div className="field-group">
+							<label>Breed (optional)</label>
+							<input
+								className="form-control"
+								value={data.breed}
+								onChange={(e) => updateField("breed", e.target.value)}
+								placeholder="Mixed breed, Labrador, etc."
+							/>
+						</div>
 
 						<div className="row-fields">
-							<div>
+							<div className="field-group">
 								<label>Years</label>
 								<input
 									type="number"
@@ -292,7 +299,7 @@ const NewAdoption = ({ edit }) => {
 									onChange={(e) => updateField("ageYears", e.target.value)}
 								/>
 							</div>
-							<div>
+							<div className="field-group">
 								<label>Months</label>
 								<input
 									type="number"
@@ -305,40 +312,44 @@ const NewAdoption = ({ edit }) => {
 							</div>
 						</div>
 
-						<label>Sex</label>
-						<select
-							className="form-select"
-							value={data.sex}
-							onChange={(e) => updateField("sex", e.target.value)}
-						>
-							<option value="">Select an option</option>
-							{SEX.map((s) => (
-								<option key={s} value={s}>
-									{s}
-								</option>
-							))}
-						</select>
+						<div className="field-group">
+							<label>Sex</label>
+							<select
+								className="form-select"
+								value={data.sex}
+								onChange={(e) => updateField("sex", e.target.value)}
+							>
+								<option value="">Select an option</option>
+								{SEX.map((s) => (
+									<option key={s} value={s}>
+										{s}
+									</option>
+								))}
+							</select>
+						</div>
 
-						<label>Size</label>
-						<select
-							className="form-select"
-							value={data.size}
-							onChange={(e) => updateField("size", e.target.value)}
-						>
-							<option value="">Select a size</option>
-							{SIZES.map((s) => (
-								<option key={s} value={s}>
-									{s}
-								</option>
-							))}
-						</select>
+						<div className="field-group">
+							<label>Size</label>
+							<select
+								className="form-select"
+								value={data.size}
+								onChange={(e) => updateField("size", e.target.value)}
+							>
+								<option value="">Select a size</option>
+								{SIZES.map((s) => (
+									<option key={s} value={s}>
+										{s}
+									</option>
+								))}
+							</select>
+						</div>
 					</div>
 				)}
 
 				{step === 1 && (
 					<div className="wizard-panel">
 						{existingImages.length > 0 && (
-							<>
+							<div className="field-group">
 								<label>Current photos</label>
 								<div className="photo-grid">
 									{existingImages.map((url) => (
@@ -350,224 +361,245 @@ const NewAdoption = ({ edit }) => {
 								<p className="hint-text">
 									Uploading new photos will replace these.
 								</p>
-							</>
+							</div>
 						)}
 
-						<label>
-							{existingImages.length > 0
-								? "Replace photos"
-								: `Photos (up to ${MAX_PHOTOS})`}
-						</label>
-						<input
-							type="file"
-							accept="image/png,image/jpeg,image/heic,image/heif,image/webp"
-							multiple
-							className="form-control"
-							onChange={handlePhotosSelected}
-							disabled={photos.length >= MAX_PHOTOS}
-						/>
+						<div className="field-group">
+							<label>
+								{existingImages.length > 0 ? "Replace photos" : "Add photos"}
+							</label>
+							<input
+								type="file"
+								accept="image/png,image/jpeg,image/heic,image/heif,image/webp"
+								multiple
+								className="form-control"
+								onChange={handlePhotosSelected}
+								disabled={photos.length >= MAX_PHOTOS}
+							/>
+							<p className="hint-text">
+								{edit
+									? `Up to ${MAX_PHOTOS} photos.`
+									: `1 photo is enough to publish — add up to ${MAX_PHOTOS} if you have more.`}
+							</p>
+						</div>
 
-						<div className="photo-grid">
-							{photos.map((file, i) => (
-								<div key={i} className="photo-thumb">
-									<img
-										src={URL.createObjectURL(file)}
-										alt={`Upload ${i + 1}`}
-									/>
+						{photos.length > 0 && (
+							<div className="photo-grid">
+								{photos.map((file, i) => (
+									<div key={i} className="photo-thumb">
+										<img
+											src={URL.createObjectURL(file)}
+											alt={`Upload ${i + 1}`}
+										/>
+										<button
+											type="button"
+											className="photo-remove"
+											onClick={() => removePhoto(i)}
+										>
+											<X size={14} />
+										</button>
+									</div>
+								))}
+							</div>
+						)}
+					</div>
+				)}
+
+				{step === 2 && (
+					<div className="wizard-panel">
+						<div className="field-group">
+							<label>Personality</label>
+							<div className="chip-select">
+								{PERSONALITY_TAGS.map((tag) => (
 									<button
 										type="button"
-										className="photo-remove"
-										onClick={() => removePhoto(i)}
+										key={tag}
+										className={`chip-option ${data.personalityTags.includes(tag) ? "selected" : ""}`}
+										onClick={() => togglePersonalityTag(tag)}
 									>
-										<X size={14} />
+										{data.personalityTags.includes(tag) && <Check size={12} />}
+										<span>{tag}</span>
 									</button>
+								))}
+							</div>
+						</div>
+
+						<div className="field-group">
+							<label className="label-with-icon">
+								<Zap size={14} /> Energy level
+							</label>
+							<select
+								className="form-select"
+								value={data.energyLevel}
+								onChange={(e) => updateField("energyLevel", e.target.value)}
+							>
+								<option value="">Not specified</option>
+								{ENERGY_LEVELS.map((l) => (
+									<option key={l} value={l}>
+										{l}
+									</option>
+								))}
+							</select>
+						</div>
+
+						<div className="field-group">
+							<label>Health</label>
+							<div className="check-list">
+								<label className="check-item">
+									<input
+										type="checkbox"
+										checked={data.health.vaccinated}
+										onChange={(e) =>
+											updateNested("health", "vaccinated", e.target.checked)
+										}
+									/>
+									<span>Vaccinated</span>
+								</label>
+								<label className="check-item">
+									<input
+										type="checkbox"
+										checked={data.health.sterilized}
+										onChange={(e) =>
+											updateNested("health", "sterilized", e.target.checked)
+										}
+									/>
+									<span>Neutered/Spayed</span>
+								</label>
+								<label className="check-item">
+									<input
+										type="checkbox"
+										checked={data.health.dewormed}
+										onChange={(e) =>
+											updateNested("health", "dewormed", e.target.checked)
+										}
+									/>
+									<span>Dewormed</span>
+								</label>
+								<label className="check-item">
+									<input
+										type="checkbox"
+										checked={data.health.hasKnownConditions}
+										onChange={(e) =>
+											updateNested(
+												"health",
+												"hasKnownConditions",
+												e.target.checked,
+											)
+										}
+									/>
+									<span>Has a known health condition</span>
+								</label>
+							</div>
+
+							{data.health.hasKnownConditions && (
+								<input
+									className="form-control mt-2"
+									placeholder="Tell us more"
+									value={data.health.conditionsDetails}
+									onChange={(e) =>
+										updateNested("health", "conditionsDetails", e.target.value)
+									}
+								/>
+							)}
+						</div>
+
+						<div className="field-group">
+							<label>Living with others</label>
+							{["withKids", "withDogs", "withCats"].map((field) => (
+								<div key={field} className="compatibility-row">
+									<span>
+										{
+											{
+												withKids: "With kids",
+												withDogs: "With dogs",
+												withCats: "With cats",
+											}[field]
+										}
+									</span>
+									<select
+										className="form-select"
+										value={data.compatibility[field]}
+										onChange={(e) =>
+											updateNested("compatibility", field, e.target.value)
+										}
+									>
+										{COMPATIBILITY_OPTIONS.map((opt) => (
+											<option key={opt.value} value={opt.value}>
+												{opt.label}
+											</option>
+										))}
+									</select>
 								</div>
 							))}
 						</div>
 					</div>
 				)}
 
-				{step === 2 && (
-					<div className="wizard-panel">
-						<label>Personality</label>
-						<div className="chip-select">
-							{PERSONALITY_TAGS.map((tag) => (
-								<button
-									type="button"
-									key={tag}
-									className={`chip-option ${data.personalityTags.includes(tag) ? "selected" : ""}`}
-									onClick={() => togglePersonalityTag(tag)}
-								>
-									{data.personalityTags.includes(tag) && <Check size={12} />}
-									<span>{tag}</span>
-								</button>
-							))}
-						</div>
-
-						<label className="label-with-icon">
-							<Zap size={14} /> Energy level
-						</label>
-						<select
-							className="form-select"
-							value={data.energyLevel}
-							onChange={(e) => updateField("energyLevel", e.target.value)}
-						>
-							<option value="">Not specified</option>
-							{ENERGY_LEVELS.map((l) => (
-								<option key={l} value={l}>
-									{l}
-								</option>
-							))}
-						</select>
-
-						<label>Health</label>
-						<div className="check-list">
-							<label className="check-item">
-								<input
-									type="checkbox"
-									checked={data.health.vaccinated}
-									onChange={(e) =>
-										updateNested("health", "vaccinated", e.target.checked)
-									}
-								/>
-								<span>Vaccinated</span>
-							</label>
-							<label className="check-item">
-								<input
-									type="checkbox"
-									checked={data.health.sterilized}
-									onChange={(e) =>
-										updateNested("health", "sterilized", e.target.checked)
-									}
-								/>
-								<span>Neutered/Spayed</span>
-							</label>
-							<label className="check-item">
-								<input
-									type="checkbox"
-									checked={data.health.dewormed}
-									onChange={(e) =>
-										updateNested("health", "dewormed", e.target.checked)
-									}
-								/>
-								<span>Dewormed</span>
-							</label>
-							<label className="check-item">
-								<input
-									type="checkbox"
-									checked={data.health.hasKnownConditions}
-									onChange={(e) =>
-										updateNested(
-											"health",
-											"hasKnownConditions",
-											e.target.checked,
-										)
-									}
-								/>
-								<span>Has a known health condition</span>
-							</label>
-						</div>
-
-						{data.health.hasKnownConditions && (
-							<input
-								className="form-control mt-2"
-								placeholder="Tell us more"
-								value={data.health.conditionsDetails}
-								onChange={(e) =>
-									updateNested("health", "conditionsDetails", e.target.value)
-								}
-							/>
-						)}
-
-						<label className="mt-3">Living with others</label>
-						{["withKids", "withDogs", "withCats"].map((field) => (
-							<div key={field} className="compatibility-row">
-								<span>
-									{
-										{
-											withKids: "With kids",
-											withDogs: "With dogs",
-											withCats: "With cats",
-										}[field]
-									}
-								</span>
-								<select
-									className="form-select"
-									value={data.compatibility[field]}
-									onChange={(e) =>
-										updateNested("compatibility", field, e.target.value)
-									}
-								>
-									{COMPATIBILITY_OPTIONS.map((opt) => (
-										<option key={opt.value} value={opt.value}>
-											{opt.label}
-										</option>
-									))}
-								</select>
-							</div>
-						))}
-					</div>
-				)}
-
 				{step === 3 && (
 					<div className="wizard-panel">
-						<label>Description</label>
-						<textarea
-							className="form-control"
-							rows={4}
-							value={data.description}
-							onChange={(e) => updateField("description", e.target.value)}
-							placeholder="Tell us about their personality, story, what makes them special..."
-						/>
-
-						<label>Adoption requirements (optional)</label>
-						<div className="requirement-input">
-							<input
+						<div className="field-group">
+							<label>Description</label>
+							<textarea
 								className="form-control"
-								value={requirementDraft}
-								onChange={(e) => setRequirementDraft(e.target.value)}
-								placeholder="e.g. Home with a yard"
-								onKeyDown={(e) =>
-									e.key === "Enter" && (e.preventDefault(), addRequirement())
-								}
+								rows={4}
+								value={data.description}
+								onChange={(e) => updateField("description", e.target.value)}
+								placeholder="Tell us about their personality, story, what makes them special..."
 							/>
-							<button
-								type="button"
-								className="btn btn-outline-secondary"
-								onClick={addRequirement}
-							>
-								Add
-							</button>
 						</div>
-						<ul className="requirement-list">
-							{data.adoptionRequirements.map((req, i) => (
-								<li key={i}>
-									{req}
-									<button type="button" onClick={() => removeRequirement(i)}>
-										<X size={14} />
-									</button>
-								</li>
-							))}
-						</ul>
 
-						<label>Location (optional)</label>
-						<div className="row-fields">
-							<input
-								className="form-control"
-								placeholder="City"
-								value={data.location.city}
-								onChange={(e) =>
-									updateNested("location", "city", e.target.value)
-								}
-							/>
-							<input
-								className="form-control"
-								placeholder="Province/State"
-								value={data.location.province}
-								onChange={(e) =>
-									updateNested("location", "province", e.target.value)
-								}
-							/>
+						<div className="field-group">
+							<label>Adoption requirements (optional)</label>
+							<div className="requirement-input">
+								<input
+									className="form-control"
+									value={requirementDraft}
+									onChange={(e) => setRequirementDraft(e.target.value)}
+									placeholder="e.g. Home with a yard"
+									onKeyDown={(e) =>
+										e.key === "Enter" && (e.preventDefault(), addRequirement())
+									}
+								/>
+								<button
+									type="button"
+									className="btn btn-outline-secondary"
+									onClick={addRequirement}
+								>
+									Add
+								</button>
+							</div>
+							<ul className="requirement-list">
+								{data.adoptionRequirements.map((req, i) => (
+									<li key={i}>
+										{req}
+										<button type="button" onClick={() => removeRequirement(i)}>
+											<X size={14} />
+										</button>
+									</li>
+								))}
+							</ul>
+						</div>
+
+						<div className="field-group">
+							<label>Location (optional)</label>
+							<div className="row-fields">
+								<input
+									className="form-control"
+									placeholder="City"
+									value={data.location.city}
+									onChange={(e) =>
+										updateNested("location", "city", e.target.value)
+									}
+								/>
+								<input
+									className="form-control"
+									placeholder="Province/State"
+									value={data.location.province}
+									onChange={(e) =>
+										updateNested("location", "province", e.target.value)
+									}
+								/>
+							</div>
 						</div>
 					</div>
 				)}
