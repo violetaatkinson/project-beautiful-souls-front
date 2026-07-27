@@ -546,6 +546,17 @@ const NewAdoption = ({ edit }) => {
 								onChange={(e) => updateField("description", e.target.value)}
 								placeholder="Tell us about their personality, story, what makes them special..."
 							/>
+							<p
+								className={`char-hint ${
+									data.description.trim().length >= 10 ? "ok" : ""
+								}`}
+							>
+								{data.description.trim().length >= 10
+									? "✓ Looks good"
+									: `${10 - data.description.trim().length} more character${
+											10 - data.description.trim().length === 1 ? "" : "s"
+										} needed`}
+							</p>
 						</div>
 
 						<div className="field-group">

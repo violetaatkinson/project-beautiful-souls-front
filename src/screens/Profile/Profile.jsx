@@ -53,9 +53,7 @@ const Profile = () => {
 				<h2 className="profile-name">{user.userName || "No username set"}</h2>
 				<span className={`account-type-chip ${isShelter ? "shelter" : ""}`}>
 					{isShelter ? <Building2 size={14} /> : <Home size={14} />}
-					<span>
-						{isShelter ? user.shelterName || "Shelter" : "Individual adopter"}
-					</span>
+					<span>{isShelter ? user.shelterName || "Shelter" : "Individual adopter"}</span>
 					{isShelter && user.shelterVerified && (
 						<ShieldCheck size={14} className="verified-icon" />
 					)}

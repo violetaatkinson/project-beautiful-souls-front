@@ -64,11 +64,6 @@
   margin-top: 4px;
 }
 
-/* Ritmo vertical unificado: un solo "gap" en el panel del paso maneja el
-   espacio ENTRE campos. Cada campo (label + input) vive en su propio
-   .field-group, con un margen chico y fijo solo entre su label y su input.
-   El espaciado ya no depende de acumular margin-top en cada label — eso
-   era lo que generaba huecos distintos en cada paso (ej: el de Breed). */
 .wizard-panel {
   display: flex;
   flex-direction: column;
@@ -102,6 +97,16 @@
   font-size: 0.78rem;
   color: #6b7686;
   margin: 6px 0 0;
+}
+
+.char-hint {
+  font-size: 0.78rem;
+  color: #d33;
+  margin: 6px 0 0;
+}
+
+.char-hint.ok {
+  color: #2f9e44;
 }
 
 .photo-grid {
@@ -176,10 +181,6 @@
   cursor: pointer;
 }
 
-/* El gap de arriba ya separa el checkbox del texto. Se agrega ADEMAS un
-   margin-right explícito en el propio input como red de seguridad: si por
-   algún motivo "gap" no se aplica bien con un nodo de texto suelto como
-   hijo del flex, la separación no depende de un solo mecanismo. */
 .check-item input[type="checkbox"] {
   flex-shrink: 0;
   width: 17px;
