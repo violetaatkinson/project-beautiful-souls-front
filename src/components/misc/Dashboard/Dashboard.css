@@ -41,18 +41,3 @@
     background-color: rgba(47, 128, 237, 0.12);
     transform: translateY(-1px);
 }
-
-.dash-pill-profile {
-    padding: 3px;
-}
-
-.dash-profile-img {
-    width: 26px;
-    height: 26px;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-.dash-pill-profile.active .dash-profile-img {
-    box-shadow: 0 0 0 2px #2F80ED;
-}

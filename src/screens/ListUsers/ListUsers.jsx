@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { Search, Heart, PawPrint } from "lucide-react";
 import { NavbarLayout } from "../../layout/NavbarLayout";
 import { getLikes, getUsersLiked } from "../../services/UserService";
-import { likeAdoptions } from "../../services/AdoptionService";
 import { listMessages } from "../../services/MessageService";
 import { useSocket } from "../../contexts/SocketContext";
 
@@ -34,126 +34,137 @@ const ListUsers = () => {
     }, [socket]);
 
     useEffect(() => {
-		getLikes()
-            .then((dbLikes) =>
-            setLikes(dbLikes.filter((like) => like))); // Te quita los nulls y los undefined
-	}, []);
-
-    // eslint-disable-next-line no-unused-vars
-    const handleLike = (id) => {
-		likeAdoptions(id).then((res) => {
-			const likedPet = likes.filter((pet) => pet._id !== id);
-			setLikes(likedPet);
-            // hacer un setPets, pero quitandome la pet que tiene este id
-		});
-	};
+        getLikes().then((dbLikes) => setLikes(dbLikes.filter((like) => like)));
+    }, []);
 
     useEffect(() => {
         // Cada fila es un par (usuario, mascota): alguien que likeó una de
         // mis mascotas puntuales, no solo "un usuario" suelto. Así se sabe
         // de entrada por cuál mascota se interesó, antes incluso de
         // empezar a chatear.
-		getUsersLiked().then((rows) => {
-			setInterestedUsers(rows);
-		});
-	}, []);
+        getUsersLiked().then((rows) => setInterestedUsers(rows));
+    }, []);
 
     return (
-        <NavbarLayout>
+        <NavbarLayout align="top">
+            <div className="matches-screen">
+                <div className="matches-search">
+                    <Search size={17} strokeWidth={2} />
+                    <input type="search" placeholder="Search" aria-label="Search" />
+                </div>
 
-            <section>
-
-                <form className="d-flex list-user mt-2">
-                    <input className="form-control me-2 bg-light" type="search" placeholder="Search" aria-label="Search"/>
-                </form>
-            </section>
-
-            <section>
-                <hr></hr>
-                <h4 className="mt-1  new-matches">New matches</h4>
-                    { likes.length > 0  ?
-
-                    <div className="container-likes">
-
-                            {likes.map((like) => {
-                                return(
-                                    <div key={like._id} className="container-card ">
-                                        <img src={like.image} alt={like.name} width={110} height={145} className="mt-3 matches-img"/>
-                                        <Link className="link-unstyled like-name" to={`/adoptions/${like._id}`}>
-                                            <h5 className="text-capitalize">{like.name}</h5>
-
-                                        </Link>
+                <section className="matches-section">
+                    <h4 className="matches-heading">New matches</h4>
+                    {likes.length > 0 ? (
+                        <div className="avatar-row">
+                            {likes.map((like) => (
+                                <Link
+                                    key={like._id}
+                                    className="link-unstyled avatar-row-item"
+                                    to={`/adoptions/${like._id}`}
+                                >
+                                    <div className="avatar-circle">
+                                        {like.image ? (
+                                            <img src={like.image} alt={like.name} />
+                                        ) : (
+                                            <PawPrint size={22} strokeWidth={1.8} />
+                                        )}
                                     </div>
-                                )
-                            })}
+                                    <p className="avatar-row-label text-capitalize">{like.name}</p>
+                                </Link>
+                            ))}
+                        </div>
+                    ) : (
+                        <EmptyRow
+                            icon={<Heart size={22} strokeWidth={2} />}
+                            title="No matches yet"
+                            text="Pets you like will show up here."
+                        />
+                    )}
+                </section>
 
-                    </div>
-
-                    : <div>
-                        <p className="text-secondary no-matches mt-4 ">No matches yet ....</p>
-                      </div>
-                    }
-            </section>
-
-
-            <section>
-                <hr></hr>
-                <h4 className="new-matches">Interested in your pets</h4>
-                {interestedUsers.length > 0  ?
-                    <div className="container-user-matches">
-                        {interestedUsers.map(({ user, pet }) => (
-                            <Link
-                                key={`${user.id}_${pet.id}`}
-                                to={`/users/chat/${user.id}/${pet.id}`}
-                                className="link-unstyled"
-                            >
-                                <div className="mt-3 container-card-matches ">
-                                    <span className="container-match">
-                                        <img src={user.image} alt={user.userName} className="rounded-circle border mt-2 mb-3" width="70" height="70"/>
-                                        <p className="text-secondary better text-capitalize interested-user-name">{user.userName}</p>
-                                        <p className="text-secondary interested-in-pet text-capitalize">likes {pet.name}</p>
-                                    </span>
-                                </div>
-                            </Link>
-                        ))}
-                    </div>
-                :   <div className="text-secondary mt-2">
-                        <p className="new-matches">First create an adoption ...</p>
-                    </div>
-                }
-            </section>
-
-            <section>
-
-                    <hr></hr>
-                    <h4 className="mt-1 new-matches">Messages</h4>
-
-                    {chats.map((chat) => (
-                        <Link
-                            key={`${chat.user.id}_${chat.pet.id}`}
-                            to={`/users/chat/${chat.user.id}/${chat.pet.id}`}
-                            className="link-unstyled"
-                        >
-                            <div className="mt-3 chat-user">
-                                <div className="chat-user-row">
-                                    <img src={chat.user.image} alt={chat.user.userName} className="chat-user-avatar" />
-                                    <div className="chat-user-info">
-                                        <h6 className="text-capitalize">{chat.user.userName}</h6>
-                                        <p className="chat-pet-ref text-capitalize">
-                                            <img src={chat.pet.image} alt={chat.pet.name} className="chat-pet-thumb" />
-                                            {chat.pet.name}
-                                        </p>
+                <section className="matches-section">
+                    <h4 className="matches-heading">Interested in your pets</h4>
+                    {interestedUsers.length > 0 ? (
+                        <div className="avatar-row">
+                            {interestedUsers.map(({ user, pet }) => (
+                                <Link
+                                    key={`${user.id}_${pet.id}`}
+                                    className="link-unstyled avatar-row-item"
+                                    to={`/users/chat/${user.id}/${pet.id}`}
+                                >
+                                    <div className="avatar-circle">
+                                        {user.image && <img src={user.image} alt={user.userName} />}
                                     </div>
-                                </div>
-                                <p className="text-secondary chat-last-message">{chat.lastMessage}</p>
-                                <hr></hr>
-                            </div>
-                        </Link>
-                    ))}
+                                    <p className="avatar-row-label text-capitalize">{user.userName}</p>
+                                    <p className="avatar-row-sublabel text-capitalize">
+                                        likes {pet.name}
+                                    </p>
+                                </Link>
+                            ))}
+                        </div>
+                    ) : (
+                        <EmptyRow
+                            icon={<PawPrint size={22} strokeWidth={2} />}
+                            title="No interest yet"
+                            text="People who like your pets will show up here."
+                        />
+                    )}
+                </section>
 
-            </section>
+                <section className="matches-section">
+                    <h4 className="matches-heading">Messages</h4>
+                    {chats.length > 0 ? (
+                        <div className="chat-list">
+                            {chats.map((chat) => (
+                                <Link
+                                    key={`${chat.user.id}_${chat.pet.id}`}
+                                    to={`/users/chat/${chat.user.id}/${chat.pet.id}`}
+                                    className="link-unstyled chat-row"
+                                >
+                                    <div className="avatar-circle chat-row-avatar">
+                                        {chat.user.image && (
+                                            <img src={chat.user.image} alt={chat.user.userName} />
+                                        )}
+                                    </div>
+                                    <div className="chat-row-body">
+                                        <div className="chat-row-top">
+                                            <h6 className="text-capitalize">{chat.user.userName}</h6>
+                                            <span className="chat-row-pet">
+                                                <img
+                                                    src={chat.pet.image}
+                                                    alt={chat.pet.name}
+                                                    className="chat-pet-thumb"
+                                                />
+                                                <span className="text-capitalize">{chat.pet.name}</span>
+                                            </span>
+                                        </div>
+                                        <p className="chat-row-preview">{chat.lastMessage}</p>
+                                    </div>
+                                </Link>
+                            ))}
+                        </div>
+                    ) : (
+                        <EmptyRow
+                            icon={<PawPrint size={22} strokeWidth={2} />}
+                            title="No messages yet"
+                            text="Start a conversation from a pet's profile."
+                        />
+                    )}
+                </section>
+            </div>
         </NavbarLayout>
     )
 }
+
+const EmptyRow = ({ icon, title, text }) => (
+    <div className="matches-empty">
+        <span className="matches-empty-icon">{icon}</span>
+        <div>
+            <p className="matches-empty-title">{title}</p>
+            <p className="matches-empty-text">{text}</p>
+        </div>
+    </div>
+);
 
 export default ListUsers
