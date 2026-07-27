@@ -23,62 +23,72 @@ const MyLikes = () => {
 		});
 	};
 
+	if (loading) {
+		return (
+			<NavbarLayout>
+				<p className="likes-loading">Loading...</p>
+			</NavbarLayout>
+		);
+	}
+
+	if (likedPets.length === 0) {
+		return (
+			<NavbarLayout>
+				<div className="likes-empty-screen">
+					<span className="likes-empty-illustration">
+						<Heart size={40} strokeWidth={1.5} />
+					</span>
+					<h2>No favorites yet</h2>
+					<p>
+						Start exploring and save the pets that catch your eye — they'll all
+						live here.
+					</p>
+					<Link to="/adoptions" className="likes-empty-cta">
+						<PawPrint size={18} />
+						Discover Pets
+					</Link>
+				</div>
+			</NavbarLayout>
+		);
+	}
+
 	return (
 		<NavbarLayout align="top">
 			<div className="my-likes">
 				<div className="likes-header">
 					<h1 className="likes-title">Liked Pets</h1>
-					{!loading && likedPets.length > 0 && (
-						<span className="likes-count">
-							{likedPets.length} {likedPets.length === 1 ? "pet" : "pets"}
-						</span>
-					)}
+					<span className="likes-count">
+						{likedPets.length} {likedPets.length === 1 ? "pet" : "pets"}
+					</span>
 				</div>
 
-				{loading && <p className="likes-loading">Loading...</p>}
-
-				{!loading && likedPets.length === 0 && (
-					<div className="likes-empty">
-						<span className="empty-logo">
-							<Heart size={26} strokeWidth={2.4} />
-						</span>
-						<h5>No favorites yet</h5>
-						<p>
-							Swipe right on pets you love in Discover — they'll all show up
-							here so you can find them again.
-						</p>
-					</div>
-				)}
-
-				{!loading && likedPets.length > 0 && (
-					<div className="likes-grid">
-						{likedPets.map((pet) => (
-							<div key={pet._id} className="like-card">
-								<Link to={`/adoptions/${pet._id}`} className="link-unstyled">
-									<div
-										className={`like-card-img ${!pet.image ? "no-photo" : ""}`}
-										style={
-											pet.image
-												? { backgroundImage: `url(${pet.image})` }
-												: undefined
-										}
-									>
-										{!pet.image && <PawPrint size={32} strokeWidth={1.8} />}
-									</div>
-									<p className="like-card-name">{pet.name}</p>
-								</Link>
-								<button
-									type="button"
-									className="like-remove-btn"
-									onClick={() => handleRemoveLike(pet._id)}
-									aria-label="Remove from favorites"
+				<div className="likes-grid">
+					{likedPets.map((pet) => (
+						<div key={pet._id} className="like-card">
+							<Link to={`/adoptions/${pet._id}`} className="link-unstyled">
+								<div
+									className={`like-card-img ${!pet.image ? "no-photo" : ""}`}
+									style={
+										pet.image
+											? { backgroundImage: `url(${pet.image})` }
+											: undefined
+									}
 								>
-									<Heart size={16} fill="currentColor" strokeWidth={0} />
-								</button>
-							</div>
-						))}
-					</div>
-				)}
+									{!pet.image && <PawPrint size={32} strokeWidth={1.8} />}
+								</div>
+								<p className="like-card-name">{pet.name}</p>
+							</Link>
+							<button
+								type="button"
+								className="like-remove-btn"
+								onClick={() => handleRemoveLike(pet._id)}
+								aria-label="Remove from favorites"
+							>
+								<Heart size={16} fill="currentColor" strokeWidth={0} />
+							</button>
+						</div>
+					))}
+				</div>
 			</div>
 		</NavbarLayout>
 	);
