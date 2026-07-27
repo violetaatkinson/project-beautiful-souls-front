@@ -2,6 +2,38 @@
     padding: 8px;
 }
 
+.chat-pet-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 4px 14px;
+    color: #1b2430;
+}
+
+.chat-pet-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.chat-pet-label {
+    margin: 0;
+    font-size: 11px;
+    color: #6b7686;
+}
+
+.chat-pet-name {
+    margin: 0;
+}
+
+.Chat-typing-indicator {
+    color: #6b7686;
+    font-size: 13px;
+    font-style: italic;
+    padding: 4px 8px;
+}
+
 .Chat p {
     margin: 0;
 }

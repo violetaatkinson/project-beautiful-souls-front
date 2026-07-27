@@ -22,9 +22,6 @@ export const getPetDetail = (id, coords) =>
 		.get(withCoordsQuery(`/adoptions/${id}`, coords))
 		.then((res) => res);
 
-export const getLikedPets = () =>
-	authenticatedHttp.get(`/like`).then((res) => res);
-
 export const createPet = (body) =>
 	authenticatedHttp.post("/adoptions/create", body).then((res) => res);
 

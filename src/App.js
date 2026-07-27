@@ -6,7 +6,6 @@ import Login from "./screens/Login/Login";
 import UnprotectedRoute from "./components/misc/UnprotectedRoute";
 import Profile from "./screens/Profile/Profile";
 import MyPetsCreated from "./screens/Pets/MyPetsCreated/MyPetsCreated";
-import MyLikes from "./screens/Pets/MyLikes/MyLikes";
 import NewAdoption from "./screens/Pets/NewAdoption/NewAdoption";
 import AdoptionList from "./screens/Pets/AdoptionList/AdoptionList";
 import PetDetail from "./screens/Pets/PetDetail/PetDetail";
@@ -98,18 +97,10 @@ function App() {
 								</ProtectedRoute>
 							}
 						/>
-						<Route
-							path="/likes"
-							element={
-								<ProtectedRoute>
-									<MyLikes />
-								</ProtectedRoute>
-							}
-						/>
 						<Route path="/adopted/create" element={<NewAdopted />} />
 						<Route path="/search" element={<Search />} />
 						<Route path="/adopted" element={<ListAdopted />} />
-						<Route path="users/chat/:id" element={<Chat />} />
+						<Route path="users/chat/:id/:petId" element={<Chat />} />
 						<Route path="/users" element={<ListUsers />} />
 						<Route path="/adoptions" element={<AdoptionList />} />
 						<Route path="/adoptions/:id" element={<PetDetail />} />

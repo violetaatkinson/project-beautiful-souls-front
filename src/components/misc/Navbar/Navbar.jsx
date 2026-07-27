@@ -1,18 +1,16 @@
-import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Bell } from 'lucide-react'
-import AuthContext from "../../../contexts/AuthContext";
 import './Navbar.css'
 
 
 function Navbar () {
-    const { user } = useContext(AuthContext);
-
     return (
         <div className='navbar bg-light'>
-            <Link className="link-unstyled nav-profile" to={"/profile"}>
-                <img src={user.image} alt="user" className="rounded-circle user-img" width={32} height={32}/>
-            </Link>
+            {/* El acceso al perfil se mudó al nav de abajo (Dashboard), donde
+                ahora se ve el avatar real del usuario. Este espacio queda
+                vacío a propósito para que "Beautiful Souls" se siga viendo
+                centrado en el grid de 3 columnas. */}
+            <span aria-hidden="true" />
 
             <Link to="/search" className="link-unstyled brand-mark">
                 <span className="brand-text">Beautiful Souls</span>

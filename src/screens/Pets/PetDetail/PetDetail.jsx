@@ -1,12 +1,13 @@
-import { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useState, useEffect, useContext } from "react";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import {
   ArrowLeft, Syringe, Zap, Users, PawPrint, Home,
-  MapPin, Phone, Mail, ShieldCheck, Coins, Calendar, Heart, X,
+  MapPin, Phone, Mail, ShieldCheck, Coins, Calendar, Heart, X, MessageCircle,
 } from "lucide-react";
 import { getPetDetail, likePet, dislikePet } from "../../../services/PetService";
 import { useGeolocation } from "../../../hooks/useGeolocation";
 import { getPetBadges, formatPetAge } from "../../../utils/petBadges";
+import AuthContext from "../../../contexts/AuthContext";
 import "./PetDetail.css";
 
 const COMPAT_LABEL = { yes: "Yes", no: "No", unknown: "Not specified" };
@@ -18,6 +19,7 @@ function PetDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
   const { coords } = useGeolocation();
+  const { user } = useContext(AuthContext);
 
   useEffect(() => {
     getPetDetail(id, coords).then(setPet);
@@ -171,6 +173,15 @@ function PetDetail() {
               <a className="owner-contact-row" href={`mailto:${pet.owner.email}`}>
                 <Mail size={16} /> {pet.owner.email}
               </a>
+            )}
+            {user && user.id !== pet.owner._id && (
+              <Link
+                className="link-unstyled owner-message-btn"
+                to={`/users/chat/${pet.owner._id}/${pet._id}`}
+              >
+                <MessageCircle size={18} />
+                Message about {pet.name}
+              </Link>
             )}
           </div>
         )}
