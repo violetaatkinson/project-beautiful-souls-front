@@ -13,6 +13,13 @@
     border-radius: 50%;
     background: #f5f8fc;
     color: #1b2430;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.profile-back-btn:active {
+    transform: scale(0.94);
 }
 
 .profile-title {

@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
 	ArrowLeft,
 	MapPin,
@@ -20,6 +20,7 @@ import "./Profile.css";
 
 const Profile = () => {
 	const { user } = useContext(AuthContext);
+	const navigate = useNavigate();
 
 	const handleDelete = () => {
 		if (!window.confirm("Delete your account? This can't be undone.")) return;
@@ -37,9 +38,14 @@ const Profile = () => {
 
 	return (
 		<div className="profile-screen">
-			<Link className="link-unstyled profile-back-btn" to="/search">
+			<button
+				type="button"
+				className="profile-back-btn"
+				onClick={() => navigate(-1)}
+				aria-label="Back"
+			>
 				<ArrowLeft size={20} />
-			</Link>
+			</button>
 			<h1 className="profile-title">Your Profile</h1>
 
 			<div className="profile-hero">
@@ -47,7 +53,9 @@ const Profile = () => {
 				<h2 className="profile-name">{user.userName || "No username set"}</h2>
 				<span className={`account-type-chip ${isShelter ? "shelter" : ""}`}>
 					{isShelter ? <Building2 size={14} /> : <Home size={14} />}
-					{isShelter ? user.shelterName || "Shelter" : "Individual adopter"}
+					<span>
+						{isShelter ? user.shelterName || "Shelter" : "Individual adopter"}
+					</span>
 					{isShelter && user.shelterVerified && (
 						<ShieldCheck size={14} className="verified-icon" />
 					)}
