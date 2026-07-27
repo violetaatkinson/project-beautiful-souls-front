@@ -1,16 +1,11 @@
 .profile-screen {
-    position: relative;
     max-width: 480px;
     margin: 0 auto;
     padding: 20px 20px 40px;
-    padding-top: calc(max(20px, env(safe-area-inset-top)) + 56px);
 }
 
 .profile-back-btn {
-    position: absolute;
-    top: max(20px, env(safe-area-inset-top));
-    left: 20px;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     width: 36px;
@@ -20,9 +15,8 @@
     color: #1b2430;
     border: none;
     cursor: pointer;
-    padding: 0;
-    margin: 0;
-    z-index: 2;
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
 }
 
 .profile-back-btn:active {
@@ -34,7 +28,7 @@
     font-size: 20px;
     font-weight: 800;
     color: #1b2430;
-    margin: 0 0 8px;
+    margin: 16px 0 8px;
 }
 
 .profile-hero {
