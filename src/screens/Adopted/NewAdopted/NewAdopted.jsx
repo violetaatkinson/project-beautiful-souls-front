@@ -59,11 +59,8 @@ const NewAdopted = () => {
 				<ArrowLeft size={20} />
 			</button>
 
-			<h1 className="story-title">Share a Story</h1>
-			<p className="story-subtitle">
-				Tell the world about a pet you've loved — a happy adoption, a
-				lifelong companion, however you want to remember them.
-			</p>
+			<h1 className="story-title">A Pet You've Loved</h1>
+			<p className="story-subtitle">However you want to remember them.</p>
 
 			<form onSubmit={onSubmit} className="story-form">
 				<div className="story-photo-field">
