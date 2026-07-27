@@ -26,7 +26,14 @@ const MyLikes = () => {
 	return (
 		<NavbarLayout align="top">
 			<div className="my-likes">
-				<h1 className="likes-title">Liked Pets</h1>
+				<div className="likes-header">
+					<h1 className="likes-title">Liked Pets</h1>
+					{!loading && likedPets.length > 0 && (
+						<span className="likes-count">
+							{likedPets.length} {likedPets.length === 1 ? "pet" : "pets"}
+						</span>
+					)}
+				</div>
 
 				{loading && <p className="likes-loading">Loading...</p>}
 
@@ -35,8 +42,11 @@ const MyLikes = () => {
 						<span className="empty-logo">
 							<Heart size={26} strokeWidth={2.4} />
 						</span>
-						<h5>No liked pets yet</h5>
-						<p>Swipe right on a pet you love and it'll show up here</p>
+						<h5>No favorites yet</h5>
+						<p>
+							Swipe right on pets you love in Discover — they'll all show up
+							here so you can find them again.
+						</p>
 					</div>
 				)}
 

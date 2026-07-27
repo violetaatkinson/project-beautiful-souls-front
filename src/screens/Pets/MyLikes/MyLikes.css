@@ -4,13 +4,31 @@
     padding: 20px 20px 40px;
 }
 
+.likes-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
 .likes-title {
     text-align: center;
     letter-spacing: 0.3px;
     font-weight: 800;
     color: #1b2430;
     font-size: 20px;
-    margin: 0 0 20px;
+    margin: 0;
+}
+
+.likes-count {
+    font-size: 12px;
+    font-weight: 600;
+    color: #6b7686;
+    background: #f5f8fc;
+    padding: 3px 10px;
+    border-radius: 999px;
 }
 
 .likes-loading {
@@ -22,7 +40,7 @@
 
 .likes-empty {
     text-align: center;
-    padding: 60px 20px;
+    padding: 60px 24px;
     color: #6b7686;
 }
 
@@ -42,12 +60,15 @@
     font-size: 15px;
     font-weight: 700;
     color: #1b2430;
-    margin: 0 0 4px;
+    margin: 0 0 6px;
 }
 
 .likes-empty p {
     font-size: 13px;
+    line-height: 1.5;
     margin: 0;
+    max-width: 260px;
+    margin-inline: auto;
 }
 
 .likes-grid {
