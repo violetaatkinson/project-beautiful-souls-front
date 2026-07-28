@@ -90,11 +90,6 @@ function PetDetail() {
       </div>
 
       <div className="pet-body">
-        {/* DEBUG TEMPORAL: sacar apenas encontremos el problema del botón de chat */}
-        <p style={{ background: "#fee", color: "#900", padding: "8px", fontSize: "11px", wordBreak: "break-all", border: "1px solid #900" }}>
-          DEBUG — user.id: {String(user?.id)} | pet.owner: {JSON.stringify(pet.owner)} | ownerId: {String(ownerId)} | canMessageOwner: {String(canMessageOwner)}
-        </p>
-
         {badges.length > 0 && (
           <div className="pet-chips">
             {badges.map((b) => <span key={b.key} className="chip">{b.label}</span>)}

@@ -163,12 +163,6 @@ function AdoptionList() {
                   )}
                   <div className="card-gradient" />
                   <div className="card-info">
-                    {/* DEBUG TEMPORAL: sacar apenas encontremos el problema del botón de chat */}
-                    {isTop && (
-                      <p style={{ background: "#fee", color: "#900", padding: "6px", fontSize: "10px", wordBreak: "break-all", border: "1px solid #900" }}>
-                        DEBUG — user.id: {String(user?.id)} | pet.owner: {JSON.stringify(pet.owner)}
-                      </p>
-                    )}
                     <h2 className="card-name-row">
                       {pet.name}
                       {age && `, ${age}`}
