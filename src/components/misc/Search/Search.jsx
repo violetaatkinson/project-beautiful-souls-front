@@ -34,7 +34,7 @@ const ACTIONS = [
 		to: "/adopted",
 		icon: CheckCircle2,
 		title: "Adopted",
-		subtitle: "They found their home",
+		subtitle: "Read their stories",
 	},
 ];
 
