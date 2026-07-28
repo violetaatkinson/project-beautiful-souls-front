@@ -45,14 +45,13 @@ const Notifications = () => {
 	return (
 		<NavbarLayout align="top">
 			<div className="notifs-screen">
-				<div className="notifs-header">
-					<h1 className="notifs-title">Notifications</h1>
-					{notifications.length > 0 && (
+				{notifications.length > 0 && (
+					<div className="notifs-header">
 						<button type="button" className="notifs-clear-btn" onClick={handleClearAll}>
 							Clear all
 						</button>
-					)}
-				</div>
+					</div>
+				)}
 
 				{loading ? null : notifications.length > 0 ? (
 					<div className="notifs-list">

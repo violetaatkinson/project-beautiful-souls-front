@@ -223,6 +223,24 @@
   font-size: 0.9rem;
 }
 
+.owner-message-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 10px;
+  padding: 12px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #2f80ed, #56ccf2);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.owner-message-btn:active {
+  transform: scale(0.97);
+}
+
 .pet-actions {
   position: fixed;
   bottom: 0;

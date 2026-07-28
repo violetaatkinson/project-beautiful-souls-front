@@ -185,6 +185,15 @@ function PetDetail() {
                 <Mail size={16} /> {pet.owner.email}
               </a>
             )}
+            {canMessageOwner && (
+              <Link
+                className="link-unstyled owner-message-btn"
+                to={`/users/chat/${pet.owner._id}/${pet._id}`}
+              >
+                <MessageCircle size={18} />
+                Chat with owner
+              </Link>
+            )}
           </div>
         )}
       </div>

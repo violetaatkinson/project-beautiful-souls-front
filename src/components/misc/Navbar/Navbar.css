@@ -2,13 +2,12 @@
     display: grid;
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
-    background-color: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(10px);
+    background: linear-gradient(90deg, #2F80ED 0%, #56CCF2 100%);
     padding: 12px 20px;
     position: sticky;
     top: 0;
     z-index: 20;
-    box-shadow: 0 2px 14px rgba(20, 55, 120, 0.08);
+    box-shadow: 0 2px 14px rgba(20, 55, 120, 0.18);
 }
 
 .nav-profile {
@@ -26,17 +25,14 @@
     font-weight: 700;
     font-size: 19px;
     letter-spacing: 0.3px;
-    background: linear-gradient(90deg, #2F80ED, #56CCF2);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: #fff;
     white-space: nowrap;
 }
 
 .user-img {
-    border: 2px solid #2F80ED;
+    border: 2px solid #fff;
     object-fit: cover;
-    box-shadow: 0 2px 8px rgba(47, 128, 237, 0.25);
+    box-shadow: 0 2px 8px rgba(20, 55, 120, 0.25);
 }
 
 .bell {
@@ -47,12 +43,12 @@
     width: 36px;
     height: 36px;
     border-radius: 50%;
-    color: #a7b0be;
+    color: rgba(255, 255, 255, 0.85);
     transition: color 0.2s ease, background 0.2s ease, transform 0.12s ease;
 }
 
 .bell:active {
-    color: #2F80ED;
-    background: rgba(47, 128, 237, 0.1);
+    color: #fff;
+    background: rgba(255, 255, 255, 0.18);
     transform: scale(0.9);
 }
