@@ -110,7 +110,7 @@ const MyPetsCreated = () => {
 							<PawPrint size={26} strokeWidth={2.4} />
 						</span>
 						<h5>No pets published yet</h5>
-						<p>Tap "Add pet" to publish your first listing</p>
+						<p>Tap "New Posting" to publish your first listing</p>
 					</div>
 				)}
 			</div>
