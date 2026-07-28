@@ -1,66 +1,154 @@
-# 🐾 Beautiful Souls — Frontend
+<h1 align="center">🐾 Beautiful Souls</h1>
 
-**Beautiful Souls** is a mobile-first web app that connects animal shelters and individual owners with potential adopters through a swipe-based discovery flow, direct chat with pet owners, and a community wall of adoption stories.
+<p align="center">
+  <strong>Swipe. Match. Adopt.</strong>
+</p>
 
-Live app: [beautifulsouls.vercel.app](https://beautifulsouls.vercel.app/login)
-Backend repo: [Proyect - Beautiful Souls](https://github.com/violetaatkinson/Proyect---Beautiful---Souls)
+<p align="center">
+  A mobile-first web application built with <strong>React</strong> that connects animal shelters and individual owners with potential adopters through swipe-based discovery, direct real-time chat, and a community wall of adoption stories.
+</p>
 
-## ✨ Features
+<p align="center">
+  <img src="./src/assets/readme/home-screen.png" width="280" alt="Beautiful Souls home screen"/>
+</p>
 
-- **Swipe to discover** — Tinder-style card deck (drag gestures + spring animations) to browse adoptable pets near you.
-- **Pet profiles** — full detail page with health info, personality traits, compatibility with kids/dogs/cats, adoption requirements, and owner contact.
-- **Direct chat with owners** — real-time messaging (Socket.IO) scoped per pet, so a conversation about one pet never mixes with a conversation about another.
-- **Matches** — see who's interested in your pets and jump straight into a chat about a specific listing.
-- **List a pet** — multi-step wizard (basic info → photos → traits → requirements) with up to 4 photos per pet.
-- **My Listings** — manage (edit/delete) the pets you've published.
-- **Pet Stories** — a community wall to share a pet you've loved, happy adoption or otherwise.
-- **Notifications** — likes, new messages, and publish confirmations, with a clear-all option.
-- **Geolocation-aware** — pets can be sorted by distance when the browser shares your location.
-- **Shelter accounts** — individual or shelter account types, with a verified badge for shelters.
+---
 
-## 🛠 Tech stack
+# 📂 Source Code
 
-- [React 18](https://react.dev/) (Create React App / `react-scripts`)
-- [React Router v6](https://reactrouter.com/)
-- [Axios](https://axios-http.com/) for API calls
-- [Socket.IO client](https://socket.io/) for real-time chat
-- [@react-spring/web](https://www.react-spring.dev/) + [@use-gesture/react](https://use-gesture.netlify.app/) for the swipe deck
-- [Formik](https://formik.org/) + [Yup](https://github.com/jquense/yup) for auth forms
-- [lucide-react](https://lucide.dev/) for icons
-- [Bootstrap](https://getbootstrap.com/) (base utility classes) with custom CSS per screen
-- `jwt-decode` for reading the access token client-side
+Frontend repository:
 
-## 📁 Project structure
+https://github.com/violetaatkinson/beautiful-sols-react
 
+Backend repository:
+
+https://github.com/violetaatkinson/Proyect---Beautiful---Souls
+
+Live app:
+
+https://beautifulsouls.vercel.app/login
+
+---
+
+# ✨ Main Features
+
+## 🐕 Discover
+
+* Tinder-style swipe deck to browse adoptable pets, with drag gestures and spring animations.
+* Full pet profile: health info, personality traits, compatibility with kids/dogs/cats, adoption requirements, fee, and rescue date.
+* Distance-aware sorting when the browser shares your location.
+
+## 💬 Chat
+
+* Direct, real-time messaging with a pet's owner (Socket.IO), reachable straight from the swipe card or the pet's profile.
+* Conversations are scoped **per pet**, not just per person — talking to the same owner about two different pets keeps two separate threads.
+* Live "typing…" indicator.
+
+## 🦮 Publish & manage listings
+
+* Multi-step wizard to list a pet (basic info → photos → traits → requirements), up to 4 photos.
+* "My Listings" screen to edit or delete your own pets.
+
+## 🤝 Matches
+
+* See who liked your pets and jump straight into a conversation about that specific listing.
+
+## 🎞️ Pet Stories
+
+* A community wall to share a pet you've loved — happy adoption or otherwise.
+
+## 🔔 Notifications
+
+* Likes, new messages, and publish confirmations, with a clear-all option.
+
+## 👤 Profile & accounts
+
+* Individual or shelter account types, with a verified badge for shelters.
+* Edit profile, log out, delete account.
+
+---
+
+# 🛠️ Technologies Used
+
+### Frontend
+
+* React 18 (Create React App)
+* React Router v6
+* JavaScript ES6+
+* Axios
+* Formik + Yup (auth forms)
+
+### Real-time & Interaction
+
+* Socket.IO Client
+* @react-spring/web
+* @use-gesture/react
+
+### UI
+
+* lucide-react (icons)
+* Bootstrap (base utilities) + custom CSS per screen
+* Custom hooks (`useGeolocation`)
+
+### Auth & Session
+
+* JWT (`jwt-decode`)
+* localStorage-based access token persistence
+* React Context (`AuthContext`, `SocketContext`)
+
+---
+
+# 📂 Project Structure
+
+```text
+beautiful-sols-react/
+│
+├── public/
+│
+├── src/
+│   ├── assets/            Static images
+│   ├── components/misc/   Navbar, Dashboard (bottom nav), Search, route guards
+│   ├── constants/
+│   ├── contexts/          AuthContext, SocketContext
+│   ├── helpers/            JWT verification helper
+│   ├── hooks/               useGeolocation
+│   ├── layout/              NavbarLayout
+│   ├── screens/              Home, Login, Register, Pets (AdoptionList, PetDetail,
+│   │                          NewAdoption, MyPetsCreated), Profile, Chat, ListUsers,
+│   │                          Notifications, Adopted (NewAdopted, ListAdopted)
+│   ├── services/              PetService, UserService, MessageService, AdoptedService,
+│   │                          NotificationService, AuthService, BaseService
+│   ├── token/                 Access token storage helpers
+│   └── utils/                  Pet badges, age formatting
+│
+├── App.js
+├── index.js
+└── package.json
 ```
-src/
-├── assets/            Static images
-├── components/misc/   Shared UI: Navbar, Dashboard (bottom nav), Search, route guards
-├── constants/          App-wide constants
-├── contexts/           AuthContext (session/user) and SocketContext (Socket.IO connection)
-├── helpers/             Small utility functions (e.g. JWT verification)
-├── hooks/               Custom hooks (e.g. useGeolocation)
-├── layout/              NavbarLayout (wraps screens with top/bottom nav)
-├── screens/              One folder per screen/feature (Adopted, Pets, Profile, Chat, ListUsers, Notifications, Login, Register, Home...)
-├── services/            One file per API resource (PetService, UserService, MessageService, AdoptedService, NotificationService, AuthService, BaseService)
-├── token/                Access token storage (localStorage) helpers
-└── utils/                Presentation helpers (pet badges, age formatting)
-```
 
-## 🚀 Getting started
+---
 
-### Prerequisites
+# 📱 Installation & Testing
 
-- Node.js 16+
-- The [backend](https://github.com/violetaatkinson/Proyect---Beautiful---Souls) running locally or deployed
+## Try it live
 
-### Install
+https://beautifulsouls.vercel.app/login
+
+The app is mobile-only by design — on screens wider than 600px it shows a "please open on your phone" message instead of the UI. Use your browser's device toolbar / responsive mode to preview it on desktop.
+
+## Run locally
+
+Requires the [backend](https://github.com/violetaatkinson/Proyect---Beautiful---Souls) running (locally or deployed) to actually load data.
+
+---
+
+# 🧪 Development Testing
+
+Install dependencies:
 
 ```bash
 npm install
 ```
-
-### Environment variables
 
 Create a `.env` file in the project root:
 
@@ -68,32 +156,40 @@ Create a `.env` file in the project root:
 REACT_APP_API_URL=http://localhost:3001/api
 ```
 
-Point this at your backend's `/api` base URL (local or deployed).
-
-### Run
+Start the app:
 
 ```bash
 npm start
 ```
 
-Opens the app at [http://localhost:3000](http://localhost:3000). The app is designed for mobile viewports — on screens wider than 600px it shows a "please open on your phone" message instead of the app UI.
+Opens at [http://localhost:3000](http://localhost:3000).
 
-### Other scripts
+Other scripts:
 
 ```bash
 npm run build   # production build
-npm test        # test runner (react-scripts)
+npm test        # test runner
 ```
 
-## 🔌 Real-time chat
+---
 
-The app connects to the backend's Socket.IO server once the user is authenticated (token sent via the socket handshake). Each user joins a room keyed by their own id, so the server can push:
+# 🚀 Future Improvements
 
-- `message:new` — a new message in a conversation you're part of
-- `typing` — the other person in a conversation is typing
+* Push notifications.
+* Read receipts and message editing in chat.
+* Filters on the discover deck (species, size, distance range).
+* Multi-photo carousel editing directly in "My Listings".
+* Shelter dashboard with adoption analytics.
+* Progressive Web App (installable, offline-friendly).
 
-Conversations are scoped by **(user, pet)**, not just by user — so if you're talking to the same person about two different pets, those show up as two separate threads.
+---
 
-## 📱 Note
+# 🎯 Project Goal
 
-This is a mobile-only experience by design (see `.desktop-block` in `index.css`). Use your browser's device toolbar / responsive mode to preview it on desktop.
+Beautiful Souls was built to explore how a familiar, high-engagement interaction pattern — the swipe deck — can be repurposed for a good cause: helping shelters and owners find the right home for a pet, and making it effortless to go from "I like this pet" to "I'm talking to their owner." The project covers a full mobile-first UI, gesture-based interactions, geolocation, image uploads, and real-time communication end to end.
+
+---
+
+# 👩‍💻 Author
+
+**Violeta Atkinson**
