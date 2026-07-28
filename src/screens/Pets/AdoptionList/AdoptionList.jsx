@@ -207,10 +207,10 @@ function AdoptionList() {
             <button className="swipe-btn swipe-btn-dislike" onClick={() => handleDislike(topPet)} aria-label="Pass">
               <X size={26} />
             </button>
-            {topPet.owner && user && user.id !== topPet.owner._id && (
+            {topPet.owner && user && user.id !== topPet.owner.id && (
               <Link
                 className="link-unstyled swipe-btn swipe-btn-message"
-                to={`/users/chat/${topPet.owner._id}/${topPet._id}`}
+                to={`/users/chat/${topPet.owner.id}/${topPet._id}`}
                 aria-label={`Message about ${topPet.name}`}
               >
                 <MessageCircle size={22} />

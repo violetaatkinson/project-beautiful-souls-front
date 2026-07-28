@@ -32,7 +32,7 @@ function PetDetail() {
   const age = formatPetAge(pet);
   const isShelter = pet.owner?.accountType === "shelter";
   const hasPhotos = pet.images?.length > 0;
-  const canMessageOwner = Boolean(user && pet.owner && user.id !== pet.owner._id);
+  const canMessageOwner = Boolean(user && pet.owner && user.id !== pet.owner.id);
 
   const markBroken = (i) => setBrokenImages((prev) => new Set(prev).add(i));
 
@@ -188,7 +188,7 @@ function PetDetail() {
             {canMessageOwner && (
               <Link
                 className="link-unstyled owner-message-btn"
-                to={`/users/chat/${pet.owner._id}/${pet._id}`}
+                to={`/users/chat/${pet.owner.id}/${pet._id}`}
               >
                 <MessageCircle size={18} />
                 Chat with owner
@@ -205,7 +205,7 @@ function PetDetail() {
         {canMessageOwner && (
           <Link
             className="link-unstyled pet-action-btn pet-action-message"
-            to={`/users/chat/${pet.owner._id}/${pet._id}`}
+            to={`/users/chat/${pet.owner.id}/${pet._id}`}
             aria-label={`Message about ${pet.name}`}
           >
             <MessageCircle size={22} />
